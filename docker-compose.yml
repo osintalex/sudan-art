@@ -1,0 +1,39 @@
+# Reference https://docs.docker.com/compose/compose-file/compose-file-v3/
+
+version: '3.9'
+
+services:
+  db:
+    image: postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+  django:
+    build: ./sudan-art/django-backend
+    environment:
+      DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY}
+      DATABASE_ENGINE: ${DATABASE_ENGINE}
+      DATABASE_NAME: ${DATABASE_NAME}
+      DATABASE_USERNAME: ${DATABASE_USERNAME}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+      DATABASE_HOST: ${DATABASE_HOST}
+      DATABASE_PORT: ${DATABASE_PORT}
+      DJANGO_CORS_ORIGINS: ${DJANGO_CORS_ORIGINS}
+      DJANGO_DEBUG: ${DJANGO_DEBUG}
+      DJANGO_LOGGING: ${DJANGO_LOGGING}
+    command: ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+    volumes:
+      - ./sudan-art/django-backend:/app/django-backend
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+  frontend:
+    build: ./sudan-art/react-frontend
+    command: ["npm", "start"]
+    volumes:
+      - ./sudan-art/react-frontend:/app/react-frontend
+    ports:
+      - "3000:3000"

@@ -1,0 +1,25 @@
+@media only screen and (min-width: 768px) {
+  .masonry {
+    column-count: 5;
+    column-gap: 12px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .masonry {
+    column-count: 3;
+    column-gap: 12px;
+  }
+  .search-container > .search-results {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 0.3rem;
+  }
+  .search-container > .search-results > .search-image {
+    width: 8rem;
+    height: 8rem;
+    border: 3px solid #d7e3eb;
+    margin: 0.3rem;
+    
+  }
+}

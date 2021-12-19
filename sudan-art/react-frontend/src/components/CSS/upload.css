@@ -1,0 +1,126 @@
+.upload-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.image-tag {
+  margin: 0.3rem;
+}
+.tag-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 1rem;
+  max-width: 20rem;
+  flex-wrap: wrap;
+}
+.fake-upload-button {
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  color: "#d7e3eb";
+  align-items: center;
+  background-attachment: scroll;
+  background-clip: border-box;
+  background-color: rgba(0, 0, 0, 0);
+  background-image: radial-gradient(circle at 50% 50%, #b52626, #bc2828, #c22b2b, #c82d2d, #cf3030, #d03838, #d14040, #d24848, #d35050, #d45757, #d55f5f, #d66767);  background-origin: padding-box;
+  background-position: 0% 0%;
+  background-position-x: 0%;
+  background-position-y: 0%;
+  background-repeat: repeat;
+  background-size: auto;
+  border-bottom-style: solid;
+  border-bottom-width: 0px;
+  border-left-style: solid;
+  border-left-width: 0px;
+  border-right-style: solid;
+  border-right-width: 0px;
+  border-top-style: solid;
+  border-top-width: 0px;
+  box-sizing: border-box;
+  color: rgb(215, 227, 235);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: varta;
+  font-feature-settings: "kern";
+  font-kerning: auto;
+  font-language-override: normal;
+  font-optical-sizing: auto;
+  font-size: 16px;
+  font-size-adjust: none;
+  font-stretch: 100%;
+  font-style: normal;
+  font-variant: normal;
+  font-variant-alternates: normal;
+  font-variant-caps: normal;
+  font-variant-east-asian: normal;
+  font-variant-ligatures: normal;
+  font-variant-numeric: normal;
+  font-variant-position: normal;
+  font-variation-settings: normal;
+  font-weight: 600;
+  height: 48px;
+  justify-content: center;
+  line-height: 19.2px;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 0px;
+  margin-bottom: 0.5rem;
+  min-width: 40px;
+  outline-color: rgba(0, 0, 0, 0);
+  outline-offset: 2px;
+  outline-style: solid;
+  outline-width: 2px;
+  overflow: visible;
+  overflow-wrap: break-word;
+  overflow-x: visible;
+  overflow-y: visible;
+  padding-bottom: 0px;
+  padding-inline-end: 16px;
+  padding-inline-start: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 0px;
+  position: relative;
+  text-align: center;
+  text-rendering: optimizelegibility;
+  text-transform: none;
+  transition-duration: 0.2s;
+  transition-property: background-color, border-color, color, fill, stroke,
+    opacity, box-shadow, transform;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: 200px;
+  -moz-box-align: center;
+  -moz-box-pack: center;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+#upload-submit-button {
+  background: radial-gradient(circle at 50% 50%, #b52626, #bc2828, #c22b2b, #c82d2d, #cf3030, #d03838, #d14040, #d24848, #d35050, #d45757, #d55f5f, #d66767);  color: #d7e3eb;
+  margin-top: 1rem;
+}
+
+#upload-form-input {
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+#upload-tagger {
+  margin-top: 1rem;
+}
+
+#upload-feedback-emoji {
+  margin-left: 0.3rem;
+}
+
+
