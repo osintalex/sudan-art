@@ -8,7 +8,7 @@ from PIL import Image
 from io import BytesIO
 from django.core.files import File
 import re
-from django_backend.media_storage import PublicMediaStorage
+from media_storage import PublicMediaStorage
 # Create your models here.
 
 validate_artist = RegexValidator(
