@@ -10,8 +10,12 @@ RUN pip install --upgrade pip
 RUN adduser --disabled-login worker
 USER worker
 WORKDIR /home/worker/app/django-backend
-COPY --chown=worker:worker requirements.txt requirements.txt
+COPY --chown=worker:worker ["django_backend/*.py", "django_backend/"]
+COPY --chown=worker:worker ["sudan_art/", "sudan_art/"]
+COPY --chown=worker:worker ["manage.py", "requirements.txt", "./"]
 ENV PATH="/home/worker/.local/bin:${PATH}"
 RUN pip install -r requirements.txt
+RUN pip install gunicorn
 EXPOSE 8000
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+#CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["gunicorn", "--bind", ":8000", "--workers", "4", "django_backend.wsgi:application"]
