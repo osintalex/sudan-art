@@ -38,7 +38,7 @@ export default function Search() {
         apiQueryParameters += `&${key}=${value}`;
       }
     }
-    fetch(`http://localhost:8000/api/artwork/?${apiQueryParameters}`)
+    fetch(`http://157.245.47.223:8000/api/artwork/?${apiQueryParameters}`)
       .then((response) => {
         return response.json();
       })

@@ -10,7 +10,7 @@ export default function LandingPage() {
   const counter = useRef(0);
 
   useEffect(() => {
-    fetch(`http://localhost:8000/recent/`)
+    fetch(`http://157.245.47.223:8000/recent/`)
       .then((response) => {
         return response.json();
       })

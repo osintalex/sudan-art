@@ -34,7 +34,7 @@ export default function Upload() {
       data.append("artist", artist);
       data.append("tags", selectedTags.toString());
 
-      fetch("http://localhost:8000/upload/", {
+      fetch("http://157.245.47.223:8000/upload/", {
         method: "POST",
         body: data,
       })
