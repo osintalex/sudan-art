@@ -3,13 +3,6 @@
 version: '3.9'
 
 services:
-  db:
-    image: postgres
-    restart: always
-    ports:
-      - "5432:5432"
-    environment:
-      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
   django:
     build: ./sudan-art/django-backend
     environment:
@@ -25,8 +18,6 @@ services:
       DJANGO_LOGGING: ${DJANGO_LOGGING}
     ports:
       - "8000:8000"
-    depends_on:
-      - db
   frontend:
     build: ./sudan-art/react-frontend
     ports:
