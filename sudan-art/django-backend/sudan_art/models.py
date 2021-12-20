@@ -8,7 +8,7 @@ from PIL import Image
 from io import BytesIO
 from django.core.files import File
 import re
-
+from django_backend.media_storage import PublicMediaStorage
 # Create your models here.
 
 validate_artist = RegexValidator(
@@ -56,7 +56,7 @@ class Artwork(models.Model):
     id = models.UUIDField(
         primary_key=True, default=uuid.uuid4, editable=False, unique=True
     )
-    image = models.ImageField(upload_to=image_absolute_path)
+    image = models.ImageField(storage=PublicMediaStorage())
     date_uploaded = models.DateField(auto_now_add=True)
 
     class Meta:
