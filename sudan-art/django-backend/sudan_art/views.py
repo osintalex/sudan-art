@@ -56,7 +56,7 @@ def add_artwork(request):
 
 
 @api_view(['GET'])
-def recent_artwork(request):
+def recent_artwork():
     queryset = Artwork.objects.order_by("-date_uploaded")[:20]
     serializer = ArtworkSerializer(queryset, many=True)
     return Response(serializer.data)
