@@ -108,11 +108,12 @@ export default function Search() {
                   className="search-image"
                   alt={pic.artist}
                   key={`image ${pic.tags} ${index}`}
-                  onLoad={(e) => (e.target.src = pic.image)}
-                  onError={(e) => {
-                    e.target.onerror = null;
-                  }}
-                  src={placeholder}
+                  // onLoad={(e) => (e.target.src = pic.image)}
+                  // onError={(e) => {
+                  //   e.target.onerror = null;
+                  // }}
+                  // src={placeholder}
+                  src={pic.image}
                   onClick={() => {
                     setPopoverImageDetails({
                       src: pic.image,
