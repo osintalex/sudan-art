@@ -30,6 +30,7 @@ class ArtworkList(generics.ListAPIView):
         query_dict = {k: v for k, v in self.request.query_params.items() if v}
         if set(query_dict.keys()) == {'search'}:
             queryset = Artwork.objects.all()
+            logger.info(queryset)
             return queryset
         else:
             filter_keyword_arguments_dict = {}
