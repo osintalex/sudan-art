@@ -3,7 +3,14 @@
 version: '3.9'
 
 services:
+  nginx:
+    build: ./sudan-art/react-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - django
   django:
+    restart: unless-stopped
     build: ./sudan-art/django-backend
     environment:
       DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY}
@@ -23,7 +30,3 @@ services:
       STATIC_ENDPOINT_URL: ${STATIC_ENDPOINT_URL}
     ports:
       - "8000:8000"
-  frontend:
-    build: ./sudan-art/react-frontend
-    ports:
-      - "80:80"
