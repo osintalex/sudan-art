@@ -14,5 +14,4 @@ WORKDIR /usr/share/nginx/html
 RUN rm -rf ./*
 COPY --from=builder /app/react-frontend/build .
 EXPOSE 80
-#CMD ["npm", "start"]
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
