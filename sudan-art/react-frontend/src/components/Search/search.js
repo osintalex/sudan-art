@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState} from "react";
 import NavBar from "../Navbar/navbar.js";
 import Emoji from "../Emoji/emoji.js";
 import {
@@ -28,45 +28,40 @@ export default function Search() {
     alt: "",
   });
 
-  const getMaPics = useCallback(
-    async (query) => {
-      setQuery(query);
-      setSubmit(true);
-      setLoading(true);
-      let apiQueryParameters = `search=${query.query}&page=${page}`;
-      for (let [key, value] of Object.entries(query)) {
-        if (value && key !== "query") {
-          apiQueryParameters += `&${key}=${value}`;
-        }
+  const getMaPics = async (query) => {
+    setQuery(query);
+    setSubmit(true);
+    setLoading(true);
+    let apiQueryParameters = `search=${query.query}&page=${page}`;
+    for (let [key, value] of Object.entries(query)) {
+      if (value && key !== "query") {
+        apiQueryParameters += `&${key}=${value}`;
       }
-      fetch(`http://157.245.47.223:8000/api/artwork/?${apiQueryParameters}`)
-        .then((response) => {
-          return response.json();
-        })
-        .then((response) => {
-          console.log(response);
-          // todo this works but I don't understand why, ask someone
-          setPics((previousImages) => {
-            return [...previousImages, ...response.results];
-          });
-          setPage((prevPageNumber) => prevPageNumber + 1);
-          if (response.next) {
-            setHasMore(true);
-          } else {
-            setHasMore(false);
-          }
-          setLoading(false);
-        })
-        .catch((error) => {
-          console.error(error);
+    }
+    fetch(`http://157.245.47.223:8000/api/artwork/?${apiQueryParameters}`)
+      .then((response) => {
+        return response.json();
+      })
+      .then((response) => {
+        console.log(response)
+        // todo this works but I don't understand why, ask someone
+        setPics((previousImages) => {
+          return [...previousImages, ...response.results];
         });
-    },
-    [page]
-  );
+        setPage((prevPageNumber) => prevPageNumber + 1);
+        if (response.next) {
+          setHasMore(true);
+        } else {
+          setHasMore(false);
+        }
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+      
+  };
 
-  useEffect(() => {
-    getMaPics();
-  }, [getMaPics]);
   return (
     <>
       <NavBar />
@@ -123,7 +118,7 @@ export default function Search() {
                       src: pic.image,
                       alt: pic.alt_description,
                       artist: pic.artist,
-                      date: pic.date_uploaded,
+                      date: pic.date_uploaded
                     });
                     onOpen(true);
                   }}
