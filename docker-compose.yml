@@ -3,12 +3,6 @@
 version: '3.9'
 
 services:
-  nginx:
-    build: ./sudan-art/react-frontend
-    ports:
-      - "80:80"
-    depends_on:
-      - django
   django:
     restart: unless-stopped
     build: ./sudan-art/django-backend
@@ -30,3 +24,10 @@ services:
       STATIC_ENDPOINT_URL: ${STATIC_ENDPOINT_URL}
     ports:
       - "8000:8000"
+  nginx:
+    build: ./sudan-art/react-frontend
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    depends_on:
+      - django
