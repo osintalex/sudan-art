@@ -23,11 +23,19 @@ services:
       STATIC_BUCKET_NAME: ${STATIC_BUCKET_NAME}
       STATIC_ENDPOINT_URL: ${STATIC_ENDPOINT_URL}
     ports:
-      - "8000:8000"
+      - 8000:8000
   nginx:
     build: ./sudan-art/react-frontend
     restart: unless-stopped
     ports:
-      - "80:80"
+      - 80:80
+      - 443:443
     depends_on:
       - django
+    volumes:
+       - ./certbot/www:/var/www/certbot/:ro
+       - ./certbot/conf/:/etc/nginx/ssl/:ro
+  certbot:
+    image: certbot/cerbot:latest
+    volumes:
+      - ./certbot/www/:/var/www/certbot/:rw
