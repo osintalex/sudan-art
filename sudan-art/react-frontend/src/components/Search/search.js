@@ -48,9 +48,9 @@ export default function Search() {
         setPics((previousImages) => {
           return [...previousImages, ...response.results];
         });
-        setPage((prevPageNumber) => prevPageNumber + 1);
         if (response.next) {
           setHasMore(true);
+          setPage((prevPageNumber) => prevPageNumber + 1);
         } else {
           setHasMore(false);
         }
