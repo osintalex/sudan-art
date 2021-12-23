@@ -34,7 +34,7 @@ export default function Upload() {
       data.append("artist", artist);
       data.append("tags", selectedTags.toString());
 
-      fetch("http://157.245.47.223:8000/upload/", {
+      fetch("https://sudan-art.com/upload/", {
         method: "POST",
         body: data,
       })

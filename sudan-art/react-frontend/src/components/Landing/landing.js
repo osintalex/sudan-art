@@ -10,7 +10,7 @@ export default function LandingPage() {
   const counter = useRef(0);
 
   useEffect(() => {
-    fetch(`http://157.245.47.223:8000/recent/`)
+    fetch(`https://sudan-art.com/recent/`)
       .then((response) => {
         return response.json();
       })
