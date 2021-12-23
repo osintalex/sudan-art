@@ -1,2 +1,16 @@
 env
-/media/images/*
+sudan-art/django-backend/media/images/*
+sudan-art/react-frontend/node_modules/
+sudan-art/react-frontend/.pnp/
+sudan-art/react-frontend/.pnp.js
+sudan-art/react-frontend/coverage/
+sudan-art/react-frontend/build/
+sudan-art/react-frontend/.DS_Store
+sudan-art/react-frontend/.env.local
+sudan-art/react-frontend/.env.development.local
+sudan-art/react-frontend/.env.test.local
+sudan-art/react-frontend/.env.production.local
+sudan-art/react-frontend/npm-debug.log*
+sudan-art/react-frontend/yarn-debug.log*
+sudan-art/react-frontend/yarn-error.log*
+secrets

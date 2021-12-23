@@ -28,20 +28,16 @@ class ArtworkList(generics.ListAPIView):
         query_params = ValidateQueryParams(data=self.request.query_params)
         query_params.is_valid(raise_exception=True)
         query_dict = {k: v for k, v in self.request.query_params.items() if v}
-        if set(query_dict.keys()) == {'search'}:
-            queryset = Artwork.objects.all()
-            return queryset
-        else:
-            filter_keyword_arguments_dict = {}
-            for key, value in query_dict.items():
-                if key == 'artist':
-                    filter_keyword_arguments_dict['artist__icontains'] = value
-                if key == 'date_from':
-                    filter_keyword_arguments_dict['date_uploaded__gte'] = value
-                if key == 'date_to':
-                    filter_keyword_arguments_dict['date_uploaded__lte'] = value
-            queryset = Artwork.objects.filter(**filter_keyword_arguments_dict)
-            return queryset
+        filter_keyword_arguments_dict = {}
+        for key, value in query_dict.items():
+            if key == 'artist':
+                filter_keyword_arguments_dict['artist__icontains'] = value
+            if key == 'date_from':
+                filter_keyword_arguments_dict['date_uploaded__gte'] = value
+            if key == 'date_to':
+                filter_keyword_arguments_dict['date_uploaded__lte'] = value
+        queryset = Artwork.objects.filter(**filter_keyword_arguments_dict)
+        return queryset
 
 
 @api_view(['POST'])

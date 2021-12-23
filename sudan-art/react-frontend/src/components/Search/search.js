@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
 import NavBar from "../Navbar/navbar.js";
 import Emoji from "../Emoji/emoji.js";
 import {
@@ -38,18 +38,19 @@ export default function Search() {
         apiQueryParameters += `&${key}=${value}`;
       }
     }
-    fetch(`http://localhost:8000/api/artwork/?${apiQueryParameters}`)
+    fetch(`https://sudan-art.com/api/artwork/?${apiQueryParameters}`)
       .then((response) => {
         return response.json();
       })
       .then((response) => {
+        console.log(response)
         // todo this works but I don't understand why, ask someone
         setPics((previousImages) => {
           return [...previousImages, ...response.results];
         });
-        setPage((prevPageNumber) => prevPageNumber + 1);
         if (response.next) {
           setHasMore(true);
+          setPage((prevPageNumber) => prevPageNumber + 1);
         } else {
           setHasMore(false);
         }
@@ -58,6 +59,7 @@ export default function Search() {
       .catch((error) => {
         console.error(error);
       });
+      
   };
 
   return (
@@ -106,11 +108,12 @@ export default function Search() {
                   className="search-image"
                   alt={pic.artist}
                   key={`image ${pic.tags} ${index}`}
-                  onLoad={(e) => (e.target.src = pic.image)}
-                  onError={(e) => {
-                    e.target.onerror = null;
-                  }}
-                  src={placeholder}
+                  // onLoad={(e) => (e.target.src = pic.image)}
+                  // onError={(e) => {
+                  //   e.target.onerror = null;
+                  // }}
+                  // src={placeholder}
+                  src={pic.image}
                   onClick={() => {
                     setPopoverImageDetails({
                       src: pic.image,

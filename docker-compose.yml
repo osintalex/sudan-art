@@ -3,14 +3,8 @@
 version: '3.9'
 
 services:
-  db:
-    image: postgres
-    restart: always
-    ports:
-      - "5432:5432"
-    environment:
-      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
   django:
+    restart: unless-stopped
     build: ./sudan-art/django-backend
     environment:
       DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY}
@@ -23,16 +17,26 @@ services:
       DJANGO_CORS_ORIGINS: ${DJANGO_CORS_ORIGINS}
       DJANGO_DEBUG: ${DJANGO_DEBUG}
       DJANGO_LOGGING: ${DJANGO_LOGGING}
-    volumes:
-      - ./sudan-art/django-backend:/home/worker/app/django-backend
+      DJANGO_ALLOWED_HOSTS: ${DJANGO_ALLOWED_HOSTS}
+      STATIC_ACCESS_KEY_ID: ${STATIC_ACCESS_KEY_ID}
+      STATIC_SECRET_KEY: ${STATIC_SECRET_KEY}
+      STATIC_BUCKET_NAME: ${STATIC_BUCKET_NAME}
+      STATIC_ENDPOINT_URL: ${STATIC_ENDPOINT_URL}
     ports:
-      - "8000:8000"
-    depends_on:
-      - db
-  frontend:
+      - 8000:8000
+  nginx:
     build: ./sudan-art/react-frontend
-    command: ["node_modules/.bin/react-scripts", "start"]
-    volumes:
-      - ./sudan-art/react-frontend:/app/react-frontend
+    restart: unless-stopped
     ports:
-      - "3000:3000"
+      - 80:80
+      - 443:443
+    depends_on:
+      - django
+    volumes:
+      - ./certbot/www:/var/www/certbot/:ro
+      - ./certbot/conf/:/etc/nginx/ssl/:ro
+  certbot:
+    image: certbot/certbot:latest
+    volumes:
+      - ./certbot/www/:/var/www/certbot/:rw
+      - ./certbot/conf/:/etc/letsencrypt/:rw
