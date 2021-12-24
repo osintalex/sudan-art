@@ -15,7 +15,8 @@ import {
 import Thumbnail from "./thumbnail.js";
 import Tagger from "./tags.js";
 import UploadFeedback from "./uploadFeedback.js";
-import { config } from "../../constants.js"
+import { config } from "../../constants.js";
+import Emoji from "../Emoji/emoji.js"
 
 export default function Upload() {
   const [fileValue, setFileValue] = useState("");
@@ -198,6 +199,11 @@ export default function Upload() {
                     >
                       Submit
                     </Button>
+                    {!success && submitted && !errors && (
+                      <div id="upload-emoji-spinner">
+                        <Emoji symbol="🇸🇩" fontSize="30px" />
+                      </div>
+                    )}
                   </FormControl>
                 </form>
               </Stack>
