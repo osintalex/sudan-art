@@ -16,13 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include, re_path
 from sudan_art import views
-from rest_framework import routers
 from django.conf import settings
 from django.conf.urls.static import static
 
-
-# router = routers.DefaultRouter()
-# router.register(r'artwork', views.ArtworkList, 'artwork')
 
 urlpatterns = [
     path('admin/', admin.site.urls),

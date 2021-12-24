@@ -15,6 +15,7 @@ import {
 import Thumbnail from "./thumbnail.js";
 import Tagger from "./tags.js";
 import UploadFeedback from "./uploadFeedback.js";
+import { config } from "../../constants.js"
 
 export default function Upload() {
   const [fileValue, setFileValue] = useState("");
@@ -34,7 +35,7 @@ export default function Upload() {
       data.append("artist", artist);
       data.append("tags", selectedTags.toString());
 
-      fetch("https://sudan-art.com/upload/", {
+      fetch(`${config.url}/upload/`, {
         method: "POST",
         body: data,
       })

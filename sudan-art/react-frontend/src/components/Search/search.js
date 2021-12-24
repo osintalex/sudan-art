@@ -14,6 +14,7 @@ import {
 import SearchForm from "./searchForm.js";
 import placeholder from "../Navbar/eye_logo.png";
 import ImagePopover from "./imagePopover.js";
+import { config } from "../../constants.js"
 
 export default function Search() {
   const [pics, setPics] = useState([]);
@@ -38,13 +39,12 @@ export default function Search() {
         apiQueryParameters += `&${key}=${value}`;
       }
     }
-    fetch(`https://sudan-art.com/api/artwork/?${apiQueryParameters}`)
+    fetch(`${config.url}/api/artwork/?${apiQueryParameters}`)
       .then((response) => {
         return response.json();
       })
       .then((response) => {
         console.log(response)
-        // todo this works but I don't understand why, ask someone
         setPics((previousImages) => {
           return [...previousImages, ...response.results];
         });

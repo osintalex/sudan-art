@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Button, Center, Box } from "@chakra-ui/react";
 import { useNavigate } from "react-router";
 import Emoji from "../Emoji/emoji.js";
+import { config } from "../../constants.js"
 
 export default function LandingPage() {
   const navigate = useNavigate();
@@ -10,7 +11,7 @@ export default function LandingPage() {
   const counter = useRef(0);
 
   useEffect(() => {
-    fetch(`https://sudan-art.com/recent/`)
+    fetch(`${config.url}/recent/`)
       .then((response) => {
         return response.json();
       })
@@ -59,7 +60,7 @@ export default function LandingPage() {
                   className="landing-image"
                   alt={pic.artist}
                   key={`image ${pic.tags} ${index}`}
-                  src={`http://localhost:8000${pic.image}`}
+                  src={pic.image}
                   onLoad={handleOnLoad}
                 />
               </div>
