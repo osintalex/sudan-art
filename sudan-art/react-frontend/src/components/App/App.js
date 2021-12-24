@@ -26,7 +26,7 @@ function App() {
           <Route exact path="/" element={<LandingPage />}></Route>
           <Route exact path="/mrhaba" element={<Introduction />}></Route>
           <Route exact path="/contact" element={<Contact />}></Route>
-          <Route exact path="/uploads" element={<Upload />}></Route>
+          <Route exact path="/create" element={<Upload />}></Route>
           <Route exact path="/search" element={<Search />}></Route>
         </Routes>
       </Router>
