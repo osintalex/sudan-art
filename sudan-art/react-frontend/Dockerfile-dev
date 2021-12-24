@@ -1,0 +1,10 @@
+FROM node:14-buster-slim
+
+# Set working directory for react project
+WORKDIR /app/react-frontend
+COPY ["package.json", "package-lock.json", "./"]
+COPY ["public/", "public/"]
+COPY ["src/", "src/"]
+RUN npm install
+EXPOSE 3000
+CMD ["npm", "start"]

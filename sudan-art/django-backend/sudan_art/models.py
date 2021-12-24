@@ -3,7 +3,6 @@ from django.db import models
 from django.core.validators import RegexValidator
 from django.core.exceptions import ValidationError
 from django.utils.text import slugify
-import os
 from PIL import Image
 from io import BytesIO
 from django.core.files import File
@@ -45,10 +44,10 @@ def validate_tags(value):
             )
 
 
-def image_absolute_path(instance, filename):
+def rename_images(instance, filename):
     extension = filename.split('.')[-1]
-    filename = '{}.{}'.format(slugify(instance.artist + instance.tags, extension), extension)
-    return os.path.join('images', filename)
+    new_filename = '{}.{}'.format(slugify(instance.artist + instance.tags, extension), extension)
+    return new_filename
 
 
 class Artwork(models.Model):
@@ -58,9 +57,9 @@ class Artwork(models.Model):
         primary_key=True, default=uuid.uuid4, editable=False, unique=True
     )
     if settings.DEBUG:
-        image = models.ImageField(upload_to=image_absolute_path)
+        image = models.ImageField(upload_to=rename_images)
     else:
-        image = models.ImageField(storage=PublicMediaStorage())
+        image = models.ImageField(storage=PublicMediaStorage(), upload_to=rename_images)
     date_uploaded = models.DateField(auto_now_add=True)
 
     class Meta:

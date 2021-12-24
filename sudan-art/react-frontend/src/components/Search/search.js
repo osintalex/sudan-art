@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import NavBar from "../Navbar/navbar.js";
 import Emoji from "../Emoji/emoji.js";
 import {
@@ -12,9 +12,9 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import SearchForm from "./searchForm.js";
-import placeholder from "../Navbar/eye_logo.png";
 import ImagePopover from "./imagePopover.js";
-import { config } from "../../constants.js"
+import { config } from "../../constants.js";
+import ImageRenderer from "../ImageRenderer/imageRenderer.js"
 
 export default function Search() {
   const [pics, setPics] = useState([]);
@@ -25,8 +25,10 @@ export default function Search() {
   const [query, setQuery] = useState("");
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [popoverImageDetails, setPopoverImageDetails] = useState({
-    src: "",
-    alt: "",
+    imageSrc: "",
+    imageDescription: "",
+    imageArtist: "",
+    imageDate: "",
   });
 
   const getMaPics = async (query) => {
@@ -44,7 +46,6 @@ export default function Search() {
         return response.json();
       })
       .then((response) => {
-        console.log(response)
         setPics((previousImages) => {
           return [...previousImages, ...response.results];
         });
@@ -59,9 +60,8 @@ export default function Search() {
       .catch((error) => {
         console.error(error);
       });
-      
   };
-
+  console.log(popoverImageDetails);
   return (
     <>
       <NavBar />
@@ -104,22 +104,16 @@ export default function Search() {
           <div className="search-results">
             {pics.map((pic, index) => {
               return (
-                <img
+                <ImageRenderer
                   className="search-image"
                   alt={pic.artist}
-                  key={`image ${pic.tags} ${index}`}
-                  // onLoad={(e) => (e.target.src = pic.image)}
-                  // onError={(e) => {
-                  //   e.target.onerror = null;
-                  // }}
-                  // src={placeholder}
                   src={pic.image}
                   onClick={() => {
                     setPopoverImageDetails({
-                      src: pic.image,
-                      alt: pic.alt_description,
-                      artist: pic.artist,
-                      date: pic.date_uploaded
+                      imageSrc: pic.image,
+                      imageDescription: pic.alt_description,
+                      imageArtist: pic.artist,
+                      imageDate: pic.date_uploaded,
                     });
                     onOpen(true);
                   }}

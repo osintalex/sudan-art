@@ -10,7 +10,7 @@ export function handleClick(routeName, navigate) {
       navigate("/contact");
       break;
     case "Upload":
-      navigate("/upload");
+      navigate("/uploads");
       break;
     case "Search":
       navigate("/search");

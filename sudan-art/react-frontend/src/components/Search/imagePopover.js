@@ -6,28 +6,34 @@ import {
   ModalFooter,
   ModalHeader,
   ModalBody,
+  ModalCloseButton,
   Button,
   Image,
   Text,
 } from "@chakra-ui/react";
 
 export default function ImagePopover(props) {
+  const { imageSrc, imageDescription, imageArtist, imageDate } =
+    props.popoverImageDetails;
   return (
     <>
       <Modal isOpen={props.isOpen} onClose={props.onClose}>
         <ModalOverlay />
         <ModalContent color="gray.50">
-          <ModalHeader className="search-modal-header">{props.artist}</ModalHeader>
+          <ModalHeader className="search-modal-header">
+            {imageArtist}
+          </ModalHeader>
+          <ModalCloseButton />
           <ModalBody className="search-modal-body">
-            <Text fontSize="md" color="gray.50" as="i">
-              {props.date}
-            </Text>
             <Image
               className="search-popover-image"
-              alt={props.popoverImageDetails.alt_description}
-              src={props.popoverImageDetails.src}
+              alt={imageDescription}
+              src={imageSrc}
               onClick={props.onOpen}
             />
+            <Text fontSize="md" color="gray.50" as="i" align="center">
+              {imageDate}
+            </Text>
           </ModalBody>
 
           <ModalFooter className="search-modal-footer">
