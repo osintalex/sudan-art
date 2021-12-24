@@ -6,13 +6,6 @@
   margin-top: 3rem;
 }
 
-.upload-spinner-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  margin-top: 1rem;
-}
 .image-tag {
   margin: 0.3rem;
 }
