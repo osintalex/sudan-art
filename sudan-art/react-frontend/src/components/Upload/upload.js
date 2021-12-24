@@ -199,21 +199,22 @@ export default function Upload() {
                     >
                       Submit
                     </Button>
-                    <div
-                      id="upload-emoji-spinner"
-                      style={{
-                        display:
-                          !success && submitted && !errors ? "block" : "none",
-                      }}
-                    >
-                      <Emoji symbol="🇸🇩" fontSize="30px" />
-                    </div>
                   </FormControl>
                 </form>
               </Stack>
             </Stack>
           </Container>
         </Box>
+      </div>
+      <div className="upload-spinner-container">
+        <div
+          id="upload-emoji-spinner"
+          style={{
+            display: !success && submitted && !errors ? "block" : "none",
+          }}
+        >
+          <Emoji symbol="🇸🇩" fontSize="30px" />
+        </div>
       </div>
     </>
   );
