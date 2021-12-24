@@ -46,7 +46,7 @@ def validate_tags(value):
 
 def rename_images(instance, filename):
     extension = filename.split('.')[-1]
-    new_filename = '{}.{}'.format(slugify(instance.artist + instance.tags + instance.id, extension), extension)
+    new_filename = '{}.{}'.format(slugify(instance.artist + instance.tags + str(instance.id), extension), extension)
     return new_filename
 
 
