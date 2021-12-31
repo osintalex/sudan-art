@@ -3,6 +3,9 @@ import { useNavigate } from "react-router";
 import { NAV_ITEMS } from "./navItems.js";
 import { handleClick } from "./clickHandler.js";
 
+/**
+ * Component for destkop navigation.
+ */
 const DesktopNav = () => {
   const linkColor = "gray.200";
   const linkHoverColor = "gray.50";

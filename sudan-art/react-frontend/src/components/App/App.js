@@ -16,7 +16,9 @@ import "../CSS/search.css"
 import "../CSS/upload.css";
 import "../CSS/nav.css";
 
-
+/**
+ * Main app component along with client side routing from React Router DOM.
+ */
 function App() {
   return (
     <>

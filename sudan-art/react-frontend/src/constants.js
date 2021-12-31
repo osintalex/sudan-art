@@ -1,3 +1,5 @@
+// Simple way to handle different production and development urls for the backend API
+
 const prod = {
   url: 'https://sudan-art.com'
 };

@@ -2,7 +2,16 @@ import { Flex, Stack, useDisclosure, Link } from "@chakra-ui/react";
 import { useNavigate } from "react-router";
 import { NAV_ITEMS } from "./navItems.js";
 import { handleClick } from "./clickHandler.js";
+
+/**
+ * Component for mobile navigation.
+ */
 const MobileNav = () => {
+  /**
+   * Function to programatically create the mobile navigation menu
+   * @param {Object} navItem import from navItems.js, these are just the available menu items
+   * @returns JSX of mobile navigation menu
+   */
   const MobileNavItem = ({ label }) => {
     const { onToggle } = useDisclosure();
     const navigate = useNavigate();

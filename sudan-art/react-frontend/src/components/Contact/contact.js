@@ -12,6 +12,9 @@ import NavBar from "../Navbar/navbar.js";
 import protestImage from "./protest.png";
 
 // Based off https://chakra-templates.dev/page-sections/hero CTA with Illustration
+/**
+ * Main contact component
+ */
 const Contact = () => {
   return (
     <>

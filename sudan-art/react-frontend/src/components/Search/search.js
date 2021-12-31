@@ -14,8 +14,11 @@ import {
 import SearchForm from "./searchForm.js";
 import ImagePopover from "./imagePopover.js";
 import { config } from "../../constants.js";
-import ImageRenderer from "../ImageRenderer/imageRenderer.js"
+import ImageRenderer from "../ImageRenderer/imageRenderer.js";
 
+/**
+ * Main search component.
+ */
 export default function Search() {
   const [pics, setPics] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -46,9 +49,11 @@ export default function Search() {
         return response.json();
       })
       .then((response) => {
+        // This bit adds more images on if there is more
         setPics((previousImages) => {
           return [...previousImages, ...response.results];
         });
+        // Then handle a boolean state to track if there is indeed more below + relevant pagination
         if (response.next) {
           setHasMore(true);
           setPage((prevPageNumber) => prevPageNumber + 1);
@@ -61,7 +66,6 @@ export default function Search() {
         console.error(error);
       });
   };
-  console.log(popoverImageDetails);
   return (
     <>
       <NavBar />
@@ -117,6 +121,7 @@ export default function Search() {
                     });
                     onOpen(true);
                   }}
+                  aria-label="search result image"
                 />
               );
             })}

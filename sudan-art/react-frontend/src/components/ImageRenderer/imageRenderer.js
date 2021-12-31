@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import placeholder from "../Navbar/eye_logo.png";
 
+/**
+ * Made this so that images show an eye logo as a placeholder before rendering.
+ * @param {React Component Props} props alt, src, className, onClick handler, label
+ * @returns an <img> tag with fallback rendering
+ */
 export default function ImageRenderer(props) {
   const [loading, setLoading] = useState(false);
 
@@ -17,6 +22,7 @@ export default function ImageRenderer(props) {
           onLoad={handleOnLoad}
           className={props.className}
           onClick={props.onClick}
+          aria-label={props.label}
         ></img>
       ) : (
         <img
@@ -25,6 +31,7 @@ export default function ImageRenderer(props) {
           onLoad={handleOnLoad}
           className={props.className}
           onClick={props.onClick}
+          aria-label={props.label}
         ></img>
       )}
     </>

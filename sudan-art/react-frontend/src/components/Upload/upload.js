@@ -18,6 +18,18 @@ import UploadFeedback from "./uploadFeedback.js";
 import { config } from "../../constants.js";
 import Emoji from "../Emoji/emoji.js";
 
+/**
+ * Main upload component. There are a few fiddly things going on here:
+ * 1. I wrote my own form component since most libraries or other defaults don't like file uploads
+ * 2. For ease I handled all the validation in the backend, so after submission the file goes to the 
+ * backend API and then you get the error message back. It's just way easier to do this in python than
+ * try to handle client side image validation that isn't secure anyway so would just be duplicated. The
+ * idea of the thumbnail part is to improve user experience so they can see the image is uploaded anyhow prior
+ * to submission.
+ * 3. I used a label to sit on top of a file upload input button. This is because the latter is impossible to
+ * style, so I've just hidden it with CSS.
+ * @returns 
+ */
 export default function Upload() {
   const [fileValue, setFileValue] = useState("");
   const [selectedTags, setSelectedTags] = useState([]);
@@ -116,6 +128,8 @@ export default function Upload() {
                         success={success}
                       />
                     )}
+                    {/* Here is the label I'm using to sit on top of the file upload id component since I can't
+                    really style it otherwise */}
                     <label htmlFor="file-upload" className="fake-upload-button">
                       Browse
                     </label>

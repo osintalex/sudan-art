@@ -13,7 +13,10 @@ import {
 import notFoundImage from "./404.png";
 import { Link as ReactRouterLink } from "react-router-dom";
 
-export default function Contact() {
+/**
+ * Not found component; routing for this handled in App.js
+ */
+export default function NotFound() {
   return (
     <>
       <NavBar />

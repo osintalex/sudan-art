@@ -3,6 +3,12 @@ import { Tag, TagLabel, TagCloseButton, Input } from "@chakra-ui/react";
 
 // I reworked this
 //https://dev.to/prvnbist/create-a-tags-input-component-in-reactjs-ki
+/**
+ * Tagger component
+ * @param {React Component Props} props passed down from upload.js; setTags and selectedTags which are used
+ * to manage the state of which tags the user has chosen in the parent component.
+ * @returns JSX for the Tagger component.
+ */
 export default function Tagger(props) {
   const makeRepeated = (arr, repeats) =>
     Array.from({ length: repeats }, () => arr).flat();

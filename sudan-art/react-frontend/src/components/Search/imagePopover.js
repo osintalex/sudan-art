@@ -12,6 +12,13 @@ import {
   Text,
 } from "@chakra-ui/react";
 
+/**
+ * Popover for users to click on images once the search results have returned - this way they can see artist
+ * and upload date
+ * @param {React Component Props} props popoverImageDetails is an object containing the image details, 
+ * isOpen, onClose, onOpen are all passed down from the Chakra Modal component see - search.js
+ * @returns a modal popover in JSX 
+ */
 export default function ImagePopover(props) {
   const { imageSrc, imageDescription, imageArtist, imageDate } =
     props.popoverImageDetails;

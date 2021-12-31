@@ -13,6 +13,9 @@ import exampleImage from "./example.jpeg";
 import { Link as ReactRouterLink } from "react-router-dom";
 
 // Based off https://chakra-templates.dev/page-sections/hero CTA with Illustration
+/**
+ * Introduction component
+ */
 const Introduction = () => {
   return (
     <>

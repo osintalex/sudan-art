@@ -14,7 +14,10 @@ import DesktopNav from "./desktopNavigation.js";
 import MobileNav from "./mobileNavigation.js";
 
 // Based off the with sub navigation one here https://chakra-templates.dev/navigation/navbar
-export default function WithSubnavigation() {
+/**
+ * Main navigation component with destkop and mobile versions.
+ */
+export default function NavBar() {
   const { isOpen, onToggle } = useDisclosure();
 
   return (

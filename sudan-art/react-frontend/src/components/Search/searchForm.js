@@ -9,6 +9,12 @@ import {
 } from "@chakra-ui/react";
 import { Formik, Form, Field } from "formik";
 
+/**
+ * React search form component.
+ * @param {React Component Props} props setPics passed down from search.js and handlesubmit also passed down from
+ * search.js parent component
+ * @returns JSX for the search form!
+ */
 export default function SearchForm(props) {
   return (
     <Formik
@@ -25,11 +31,16 @@ export default function SearchForm(props) {
         } else if (
           !/^[\u0621-\u064A\u0660-\u0669 a-zA-Z0-9]{3,30}$/i.test(values.search)
         ) {
-          errors.search = "Invalid search terms. Only Arabic, English, and numbers allowed. You must use at least three"
-          + "characters.";
+          errors.search =
+            "Invalid search terms. Only Arabic, English, and numbers allowed. You must use at least three" +
+            "characters.";
         }
-        if (values.artist && !/^[\u0621-\u064A\u0660-\u0669 a-zA-Z0-9]{1,30}$/i.test(values.artist)) {
-          errors.artist = "Invalid artist term. Only Arabic, English, and numbers allowed.";
+        if (
+          values.artist &&
+          !/^[\u0621-\u064A\u0660-\u0669 a-zA-Z0-9]{1,30}$/i.test(values.artist)
+        ) {
+          errors.artist =
+            "Invalid artist term. Only Arabic, English, and numbers allowed.";
         }
         return errors;
       }}
@@ -52,7 +63,7 @@ export default function SearchForm(props) {
                 isInvalid={form.errors.search && form.touched.search}
                 id="image-description"
               >
-                <FormLabel htmlFor="name" id="search-form-label">
+                <FormLabel htmlFor="search terms" id="search-form-label">
                   <Text id="search-form-text" fontSize="lg" color="gray.800">
                     Search terms
                   </Text>
@@ -148,6 +159,7 @@ export default function SearchForm(props) {
             type="submit"
             id="search-button"
             disabled={isSubmitting}
+            aria-label="search button"
           >
             Search
           </Button>

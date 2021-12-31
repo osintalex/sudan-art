@@ -2,8 +2,11 @@ import React, { useState, useEffect, useRef } from "react";
 import { Button, Center, Box } from "@chakra-ui/react";
 import { useNavigate } from "react-router";
 import Emoji from "../Emoji/emoji.js";
-import { config } from "../../constants.js"
+import { config } from "../../constants.js";
 
+/**
+ * Main landing page component.
+ */
 export default function LandingPage() {
   const navigate = useNavigate();
   const [pics, setPics] = useState([]);
@@ -22,9 +25,17 @@ export default function LandingPage() {
         console.error(error);
       });
   }, []);
+
+  /**
+   * Very simple click handler to go to the intro page on clicking the main enter button.
+   */
   function handleClick() {
     navigate("/mrhaba");
   }
+  /**
+   * This blocks the page from rendering the images until at least 20 images have loaded since it looks crap
+   * otherwise. Also avoids some ugly layout shifts.
+   */
   const handleOnLoad = () => {
     counter.current += 1;
     if (counter.current >= 20) {
@@ -35,7 +46,7 @@ export default function LandingPage() {
   return (
     <>
       <div style={{ display: loading ? "block" : "none" }}>
-        <div id="spinning-emoji">
+        <div id="spinning-emoji" aria-label="loading spinner">
           <Emoji symbol="🇸🇩" fontSize="30px" />
         </div>
       </div>
@@ -55,7 +66,11 @@ export default function LandingPage() {
         <div className="masonry">
           {pics.map((pic, index) => {
             return (
-              <div className="masonry-item" key={`div ${pic.tags} ${index}`}>
+              <div
+                className="masonry-item"
+                key={`div ${pic.tags} ${index}`}
+                aria-label="revolutionary art image"
+              >
                 <img
                   className="landing-image"
                   alt={pic.artist}

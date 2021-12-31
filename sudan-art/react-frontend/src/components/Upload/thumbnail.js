@@ -1,5 +1,11 @@
 import React from "react";
 
+/**
+ * Simple thumbnail component to show a preview of the image when uploaded successfully.
+ * @param {React Component Props} props file, handed down from parent upload component which manages state
+ * of uploaded file
+ * @returns JSX for Thumbnail image; only renders if the file is uploaded
+ */
 export default function Thumbnail(props) {
   if (props.file) {
     return (
@@ -13,14 +19,14 @@ export default function Thumbnail(props) {
             props.file
               ? {
                   marginTop: "0.3rem",
-                  border: "2px solid #292f3a"
-
+                  border: "2px solid #292f3a",
                 }
               : null
           }
         />
       </div>
     );
+  } else {
+    return null;
   }
-  else {return null}
 }
