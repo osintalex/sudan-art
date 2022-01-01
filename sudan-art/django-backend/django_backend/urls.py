@@ -21,13 +21,14 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('upload/', views.add_artwork),
-    path('api/artwork/', views.ArtworkList.as_view(), name='artworks'),
-    path('recent/', views.recent_artwork),
-
+    path("admin/", admin.site.urls),
+    path("upload/", views.add_artwork, name="upload"),
+    path("api/artwork/", views.ArtworkList.as_view(), name="search"),
+    path("recent/", views.recent_artwork, name="recent"),
 ]
 
+# In production media files are served from a CDN, in development they are server (insecurly) from the
+# development Django server which is what this setting allows for. The DEBUG value is handled in the
+# by environment variables
 if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL,
-                          document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
