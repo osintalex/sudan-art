@@ -14,7 +14,6 @@ services:
     build: ./sudan-art/django-backend
     environment:
       DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY}
-      DJANGO_LOGGING: ${DJANGO_LOGGING}
       DJANGO_SETTINGS_MODULE: ${DJANGO_SETTINGS_MODULE}
     volumes:
       - ./sudan-art/django-backend:/home/worker/app/django-backend
