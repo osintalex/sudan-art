@@ -50,3 +50,4 @@ development experience
 * Try a more advanced [nginx config](https://gkedge.gitbooks.io/react-router-in-the-real/content/nginx.html) for the production version
 * Remove the create react app favicon
 * Reduce filesize - try using webp instead of jpeg in the backend
+* Add image tags to popover for image search results
