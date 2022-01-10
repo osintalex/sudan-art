@@ -76,6 +76,8 @@ export default function SearchForm(props) {
                   _hover={{ color: "gray.700" }}
                   width="20rem"
                   color="gray.700"
+                  aria-label="search terms input"
+                  type="text"
                 />
                 <FormErrorMessage>{form.errors.search}</FormErrorMessage>
               </FormControl>

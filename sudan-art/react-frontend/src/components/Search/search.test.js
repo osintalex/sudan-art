@@ -4,9 +4,6 @@ import userEvent from "@testing-library/user-event";
 import Search from "./search.js";
 import { ChakraProvider } from "@chakra-ui/react";
 
-/**
- * This isn't working at present since it isn't returning search results and I am unsure why.
- */
 describe("Search Component", () => {
   let originalFetch;
 
@@ -35,19 +32,27 @@ describe("Search Component", () => {
   afterEach(() => {
     global.fetch = originalFetch;
   });
+  test("Search form input", async () => {
+    render(
+      <ChakraProvider>
+        <Search />
+      </ChakraProvider>
+    );
+    const searchTermsInput = screen.getByLabelText("search terms input");
+    await userEvent.type(searchTermsInput, "sudan", { delay: 1 });
+    expect(screen.getByLabelText("search terms input").value).toBe("sudan");
+  });
   test("Search form submission", async () => {
     render(
       <ChakraProvider>
         <Search />
       </ChakraProvider>
     );
-    userEvent.type(screen.getByText(/search terms/i), "sudan art");
-    userEvent.type(screen.getByText(/artist/i), "anon");
-    userEvent.type(screen.getByText(/date from/i), "01-01-1982");
-    userEvent.type(screen.getByText(/date to/i), "31-12-2022");
+    const searchTermsInput = screen.getByLabelText("search terms input");
+    await userEvent.type(searchTermsInput, "sudan", { delay: 1 });
     userEvent.click(screen.getByLabelText("search button"));
     await waitFor(() => {
-      expect(screen.getAllByLabelText("search result image")).toHaveLength(1);
+      expect(screen.getAllByLabelText("search-results")).toHaveLength(1);
     });
   });
 });

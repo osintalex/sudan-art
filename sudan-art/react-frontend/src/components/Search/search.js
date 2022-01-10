@@ -82,7 +82,7 @@ export default function Search() {
             >
               <Stack spacing={4}>
                 <FormLabel className="search-form-label">
-                  <Heading color="gray.800">Find revolutionary art </Heading>
+                  <Heading color="gray.800">Find revolutionary art</Heading>
                 </FormLabel>
                 <br />
 
@@ -105,9 +105,10 @@ export default function Search() {
       )}
       {submitted && (
         <div className="search-container">
-          <div className="search-results">
+          <div className="search-results" aria-label="search-results">
             {pics.map((pic, index) => {
               return (
+                <div key={`search-image-container ${index}`}>
                 <ImageRenderer
                   className="search-image"
                   alt={pic.artist}
@@ -123,6 +124,7 @@ export default function Search() {
                   }}
                   aria-label="search result image"
                 />
+                </div>
               );
             })}
             <ImagePopover
