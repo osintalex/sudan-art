@@ -39,6 +39,7 @@ describe("Search Component", () => {
       </ChakraProvider>
     );
     const searchTermsInput = screen.getByLabelText("search terms input");
+    // Delay avoids a weird bug https://github.com/testing-library/user-event/issues/539
     await userEvent.type(searchTermsInput, "sudan", { delay: 1 });
     expect(screen.getByLabelText("search terms input").value).toBe("sudan");
   });
