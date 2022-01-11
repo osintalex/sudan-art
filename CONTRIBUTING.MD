@@ -49,5 +49,6 @@ development experience
 * Find a performant way to get random 20 objects from the database for the landing page rather than most recent
 * Try a more advanced [nginx config](https://gkedge.gitbooks.io/react-router-in-the-real/content/nginx.html) for the production version
 * Remove the create react app favicon
-* Reduce filesize - try using webp instead of jpeg in the backend
+* Reduce filesize on landing page - try using better prompt images that are actually revolutionary art
+* Improve file compression on the backend for uploaded images
 * Add image tags to popover for image search results
