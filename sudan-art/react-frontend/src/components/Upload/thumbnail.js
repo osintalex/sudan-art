@@ -11,6 +11,7 @@ export default function Thumbnail(props) {
     return (
       <div className="tag-container">
         <img
+          aria-label="image-preview"
           src={props.file ? URL.createObjectURL(props.file) : null}
           alt={props.file ? props.file.name : null}
           height={props.file ? 200 : null}
