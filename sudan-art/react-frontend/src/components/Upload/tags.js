@@ -44,6 +44,7 @@ export default function Tagger(props) {
       <Input
         type="text"
         id="upload-tagger"
+        aria-label="image-tagger"
         onKeyUp={(event) => addTags(event)}
         placeholder="Press enter to add tags"
         _focus={{ boxShadow: "outline", color: "gray.800" }}
