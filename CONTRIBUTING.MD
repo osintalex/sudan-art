@@ -38,7 +38,6 @@ Make sure to run the test suites before starting work and submitting any pull re
 Here is a long list of stuff to do - help welcome! :dizzy_face:
 
 * Add unit tests to Dockerfiles
-* Finish writing frontend unit tests
 * Improve unit test coverage with a focus on security for backend
 * A Django custom management command to add some default images to the dev server for a better local
 development experience
