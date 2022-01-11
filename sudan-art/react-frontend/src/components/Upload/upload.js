@@ -21,14 +21,14 @@ import Emoji from "../Emoji/emoji.js";
 /**
  * Main upload component. There are a few fiddly things going on here:
  * 1. I wrote my own form component since most libraries or other defaults don't like file uploads
- * 2. For ease I handled all the validation in the backend, so after submission the file goes to the 
+ * 2. For ease I handled all the validation in the backend, so after submission the file goes to the
  * backend API and then you get the error message back. It's just way easier to do this in python than
  * try to handle client side image validation that isn't secure anyway so would just be duplicated. The
  * idea of the thumbnail part is to improve user experience so they can see the image is uploaded anyhow prior
  * to submission.
  * 3. I used a label to sit on top of a file upload input button. This is because the latter is impossible to
  * style, so I've just hidden it with CSS.
- * @returns 
+ * @returns
  */
 export default function Upload() {
   const [fileValue, setFileValue] = useState("");
@@ -54,9 +54,10 @@ export default function Upload() {
       })
         .then((response) => {
           if (response.status === 400) {
+
             return response.json();
           }
-          if (response.ok) {
+          if (response.status === 201) {
             setSuccess(true);
             onOpen(true);
           }
@@ -91,7 +92,7 @@ export default function Upload() {
       <NavBar />
       <br />
       <div className="upload-container">
-        <Box position={"relative"}>
+        <Box position="relative">
           <Container as={SimpleGrid} maxW={"7xl"}>
             <Stack
               bg={"gray.50"}
@@ -137,6 +138,7 @@ export default function Upload() {
                       id="file-upload"
                       name="file"
                       type="file"
+                      aria-label="image-upload"
                       onChange={(event) => {
                         if (event.currentTarget.files[0].size > 10000000) {
                           setErrors(
@@ -189,6 +191,7 @@ export default function Upload() {
                     </FormLabel>
                     <Input
                       id="artist"
+                      aria-label="artist-name-input"
                       className="artist-input"
                       onChange={(event) => {
                         event.preventDefault();
@@ -206,6 +209,7 @@ export default function Upload() {
                     />
                     <br />
                     <Button
+                      aria-label="upload-form-submission"
                       height="48px"
                       width="200px"
                       id="upload-submit-button"
