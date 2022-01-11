@@ -54,7 +54,6 @@ in the root directory of the repository, the same directory you just ran `git br
 4. Populate this file. You need the following values:
 ```
 DJANGO_SECRET_KEY=<make your own secret key>
-DJANGO_DEBUG=1
 DJANGO_SETTINGS_MODULE=django_backend.dev_settings
 ```
 4. Install docker and make sure it's running; follow the instructions [here](https://docs.docker.com/engine/install/).
