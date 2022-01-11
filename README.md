@@ -42,7 +42,7 @@ the anti-coup resistance movement in Myanmar.
 * React 
 * React testing library
 * React Router
-* Charka UI
+* Chakra UI
 
 
 ## Setup
