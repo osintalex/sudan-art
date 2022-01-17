@@ -6,6 +6,7 @@ COPY ["package.json", "package-lock.json", "./"]
 COPY ["public/", "public/"]
 COPY ["src/", "src/"]
 RUN npm install
+RUN npm test
 RUN npm run build
 
 FROM nginx:1.21.4-alpine
