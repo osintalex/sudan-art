@@ -15,5 +15,6 @@ COPY --chown=worker:worker ["sudan_art/", "sudan_art/"]
 COPY --chown=worker:worker ["manage.py", "requirements.txt", "./"]
 ENV PATH="/home/worker/.local/bin:${PATH}"
 RUN pip install -r requirements.txt
+RUN python manage.py test sudan_art.tests
 EXPOSE 8000
 CMD ["gunicorn", "--bind", ":8000", "--workers", "4", "django_backend.wsgi:application"]
