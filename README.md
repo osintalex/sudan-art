@@ -57,7 +57,7 @@ DJANGO_SECRET_KEY=<make your own secret key>
 DJANGO_SETTINGS_MODULE=django_backend.dev_settings
 ```
 4. Install docker and make sure it's running; follow the instructions [here](https://docs.docker.com/engine/install/).
-5. Now from the root directory of the repository, run `docker-compose -f docker-compose-dev.yml --env-file env up -d`. 
+5. Now from the root directory of the repository, run `docker-compose -f docker-compose-dev.yml --env-file env up --build -d`. 
 This will take some time, so check there are no basic errors then go have a break
 6. Run `docker ps -a` to get the id of the django container - it's also the number long id output by the command
 above
