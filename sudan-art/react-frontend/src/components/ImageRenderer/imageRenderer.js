@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import placeholder from "../Navbar/eye_logo.png";
+import placeholder from "../Navbar/eye_logo.svg";
 
 /**
  * Made this so that images show an eye logo as a placeholder before rendering.

@@ -9,7 +9,7 @@ import {
   Image,
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
-import logo from "./eye_logo.png";
+import logo from "./eye_logo.svg";
 import DesktopNav from "./desktopNavigation.js";
 import MobileNav from "./mobileNavigation.js";
 
@@ -52,6 +52,7 @@ export default function NavBar() {
             boxSize="30px"
             className="nav-image"
             objectFit="cover"
+            style={{ filter: "invert(1)"}}
           />
 
           <Flex display={{ base: "none", md: "flex" }} ml={10}>
