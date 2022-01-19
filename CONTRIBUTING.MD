@@ -50,3 +50,4 @@ development experience
 * Reduce filesize on landing page - try using better prompt images that are actually revolutionary art
 * Improve file compression on the backend for uploaded images
 * Add image tags to popover for image search results
+* Upgrade TLS to 1.3 for security
