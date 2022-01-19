@@ -29,24 +29,19 @@ This site is a full stack web application that uses:
 ## Getting Started
 
 Please follow the set up instructions on the [homepage](https://github.com/osintalex/sudan-art#setup).
-If anything doesn't work or is unclear, feel free to submit a pull request!
+If anything doesn't work or is unclear, feel free to submit a pull request! Please create a new branch for your work,
+push to the remote and then ask to merge.
 
-Make sure to run the test suites before starting work and submitting any pull requests.
+Please also make sure to run the test suites before starting work and submitting any pull requests.
 
 ## To Dos
 
 Here is a long list of stuff to do - help welcome! :dizzy_face:
 
 * Improve unit test coverage with a focus on security for backend
-* A Django custom management command to add some default images to the dev server for a better local
-development experience
 * A Browse section on the frontend where users can scroll through recent uploads without having to search
 * Arabic/English switch to change language
-* Sanitize metadata on image uploads for user privacy
 * Configure logs in the production web app for better debugging
-* Find a performant way to get random 20 objects from the database for the landing page rather than most recent
 * Try a more advanced [nginx config](https://gkedge.gitbooks.io/react-router-in-the-real/content/nginx.html) for the production version
-* Reduce filesize on landing page - try using better prompt images that are actually revolutionary art
-* Improve file compression on the backend for uploaded images
 * Add image tags to popover for image search results
 * Upgrade TLS to 1.3 for security
