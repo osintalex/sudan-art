@@ -106,8 +106,13 @@ class Artwork(models.Model):
         :return: Django File Object, smaller image.
         """
         pil_image_object = Image.open(image)
+        pil_image_object.thumbnail((100, 100))
+
+        # Strip metadata
+        data = list(pil_image_object.getdata())
+        image_without_metadata = Image.new(pil_image_object.mode, pil_image_object.size)
+        image_without_metadata.putdata(data)
         small_image_io = BytesIO()
-        # TODO: See if you should convert them to webp for better frontend performance
-        pil_image_object.save(small_image_io, "jpeg", quality=85, optimize=True)
+        image_without_metadata.save(small_image_io, "jpeg", quality=85, optimize=True)
         new_image = File(small_image_io, name=image.name)
         return new_image
