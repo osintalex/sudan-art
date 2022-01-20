@@ -105,8 +105,10 @@ class Artwork(models.Model):
         :param image: byte stream (I think?); the uploaded image.
         :return: Django File Object, smaller image.
         """
+
         pil_image_object = Image.open(image)
-        pil_image_object.thumbnail((100, 100))
+        maximum_size = (500, 500)
+        pil_image_object.thumbnail(maximum_size)
 
         # Strip metadata
         data = list(pil_image_object.getdata())
