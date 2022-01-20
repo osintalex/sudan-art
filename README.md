@@ -70,5 +70,5 @@ check what's going on if you're out of patience
    
 ## Contributing
 
-Contributions of all kind are **very welcome** :heart_eyes: ! Please read the [guide](https://github.com/osintalex/sudan-art/blob/dev/CONTRIBUTING.md) 
+Contributions of all kind are **very welcome** :heart_eyes: ! Please read the [guide](https://github.com/osintalex/sudan-art/blob/dev/CONTRIBUTING.MD) 
 to get started.
