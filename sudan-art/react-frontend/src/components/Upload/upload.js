@@ -16,7 +16,6 @@ import Thumbnail from "./thumbnail.js";
 import Tagger from "./tags.js";
 import UploadFeedback from "./uploadFeedback.js";
 import { config } from "../../constants.js";
-import Emoji from "../Emoji/emoji.js";
 
 /**
  * Main upload component. There are a few fiddly things going on here:
@@ -54,7 +53,6 @@ export default function Upload() {
       })
         .then((response) => {
           if (response.status === 400) {
-
             return response.json();
           }
           if (response.status === 201) {
@@ -217,15 +215,18 @@ export default function Upload() {
                     >
                       Submit
                     </Button>
-                    <div
-                      id="upload-emoji-spinner"
-                      style={{
-                        display:
-                          !success && submitted && !errors ? "block" : "none",
-                      }}
-                    >
-                      <Emoji symbol="🇸🇩" fontSize="30px" />
-                    </div>
+                    {!success && submitted && !errors ? (
+                      <div style={{ marginTop: "1rem" }}>
+                        <Text
+                          id="search-form-text"
+                          fontSize="sm"
+                          color="gray.800"
+                          as="i"
+                        >
+                          Uploading, please wait for validation...
+                        </Text>
+                      </div>
+                    ) : null}
                   </FormControl>
                 </form>
               </Stack>
