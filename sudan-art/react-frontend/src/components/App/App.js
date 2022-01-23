@@ -7,7 +7,6 @@ import "../CSS/media.css"
 import "../CSS/search.css"
 import "../CSS/upload.css";
 import "../CSS/nav.css";
-// import React from "react";
 import LandingPage from "../Landing/landing.js";
 import Introduction from "../Intro/intro.js";
 import Contact from "../Contact/contact.js";
