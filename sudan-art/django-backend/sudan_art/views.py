@@ -60,19 +60,12 @@ def add_artwork(request):
         return Response(artwork_serialized.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-@api_view(["GET"])
-def recent_artwork(request):
-    """
-    Get recent artwork, last 20 uploads from database.
-    :param request: user request instance. Weirdly this function breaks if you delete it even though I
-    don't do anything with the request below; some invisible Django magic happening here.
-    :return: Rest framework response containing the data.
-    """
-    queryset = Artwork.objects.order_by("-date_uploaded")[:20]
-    serializer = ArtworkSerializer(queryset, many=True)
-    return Response(serializer.data)
-
 class RecentArtworkList(generics.ListAPIView):
+    """
+    List recent artworks, ten per page. The pagination is included by default in a class based view
+    and configuring in the settings.py
+    """
+
     def get(self, request, format=None):
         artworks = Artwork.objects.all()
         serializer = ArtworkSerializer(artworks, many=True)
