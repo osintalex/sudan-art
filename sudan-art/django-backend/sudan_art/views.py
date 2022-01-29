@@ -71,3 +71,9 @@ def recent_artwork(request):
     queryset = Artwork.objects.order_by("-date_uploaded")[:20]
     serializer = ArtworkSerializer(queryset, many=True)
     return Response(serializer.data)
+
+class RecentArtworkList(generics.ListAPIView):
+    def get(self, request, format=None):
+        artworks = Artwork.objects.all()
+        serializer = ArtworkSerializer(artworks, many=True)
+        return Response(serializer.data)
