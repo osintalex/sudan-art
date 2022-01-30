@@ -40,5 +40,5 @@ Here is a long list of stuff to do - help welcome! :dizzy_face:
 
 * Improve unit test coverage with a focus on security for backend
 * Add an option to download full resolution images
-* Add social buttons to share on image popover
 * Arabic/English switch to change language
+* Add intelligent default parameters to social buttons in imagePopover.js

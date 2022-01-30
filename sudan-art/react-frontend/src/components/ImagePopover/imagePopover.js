@@ -12,9 +12,17 @@ import {
   Text,
   Tag,
   TagLabel,
-  Center
+  Center,
 } from "@chakra-ui/react";
 import { makeRepeated } from "../../utils/utils";
+import {
+  FacebookShareButton,
+  FacebookIcon,
+  TwitterShareButton,
+  TwitterIcon,
+  WhatsappShareButton,
+  WhatsappIcon,
+} from "react-share";
 /**
  * Popover for users to click on images once the search results have returned - this way they can see artist
  * and upload date
@@ -50,21 +58,20 @@ export default function ImagePopover(props) {
               onClick={props.onOpen}
             />
             <Center>
-            {imageDescription.split(",").map((tag, index) => (
-              <Tag
-                size={"md"}
-                key={`tag ${index}`}
-                className="image-tag"
-                bgGradient={tagGradients[index]}
-              >
-                <TagLabel key={`tag label ${index}`} color="gray.50">
-                  {tag.toLowerCase()}
-                </TagLabel>
-               
-              </Tag>
-            ))}
+              {imageDescription.split(",").map((tag, index) => (
+                <Tag
+                  size={"md"}
+                  key={`tag ${index}`}
+                  className="image-tag"
+                  bgGradient={tagGradients[index]}
+                >
+                  <TagLabel key={`tag label ${index}`} color="gray.50">
+                    {tag.toLowerCase()}
+                  </TagLabel>
+                </Tag>
+              ))}
             </Center>
-            <br/>
+
             <Text fontSize="sm" color="gray.50" as="abbr" align="center">
               {imageDate}
             </Text>
@@ -74,6 +81,32 @@ export default function ImagePopover(props) {
               {"Images are shared on this website for the sole purpose of supporting the Sudanese revolutionary" +
                 " movement. Do not share or otherwise reproduce for profit."}
             </Text>
+            <Center style={{ scale: "0.5" }}>
+              <FacebookShareButton
+                url={imageSrc}
+                quote={
+                  "Look at this amazing piece of Sudanese revolutionary art! Burhan fi kobr!"
+                }
+                hashtag={"#sudancoup"}
+              >
+                <FacebookIcon />
+              </FacebookShareButton>
+              <TwitterShareButton
+                url={imageSrc}
+                title={"Sudanese Revolutionary Art"}
+                via={"https://sudanart.com"}
+                hashtags={["#sudancoup", "#sudanart"]}
+                realted={["twitter_account_one", "twitter_account_two"]}
+              >
+                <TwitterIcon />
+              </TwitterShareButton>
+              <WhatsappShareButton
+                url={imageSrc}
+                title={"Sudanese Revolutionary Art"}
+              >
+                <WhatsappIcon />
+              </WhatsappShareButton>
+            </Center>
           </ModalBody>
 
           <ModalFooter className="search-modal-footer">
