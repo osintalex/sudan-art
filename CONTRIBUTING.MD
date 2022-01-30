@@ -42,3 +42,4 @@ Here is a long list of stuff to do - help welcome! :dizzy_face:
 * Add an option to download full resolution images
 * Arabic/English switch to change language
 * Add intelligent default parameters to social buttons in imagePopover.js
+* Invert the eye logo svg, not through css, so it works as a placeholder
