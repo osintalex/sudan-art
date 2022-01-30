@@ -22,32 +22,29 @@ export default function Browse() {
     imageDate: "",
   });
 
-  const getMaPics = useCallback(
-    async (page) => {
-      setLoading(true);
-      fetch(`${config.url}/recent/?page=${page}`)
-        .then((response) => {
-          return response.json();
-        })
-        .then((response) => {
-          // This bit adds more images on if there is more
-          setPics((previousImages) => {
-            return [...previousImages, ...response.results];
-          });
-          // Then handle a boolean state to track if there is indeed more below + relevant pagination
-          if (response.next) {
-            setHasMore(true);
-          } else {
-            setHasMore(false);
-          }
-          setLoading(false);
-        })
-        .catch((error) => {
-          console.error(error);
+  const getMaPics = useCallback(async (page) => {
+    setLoading(true);
+    fetch(`${config.url}/recent/?page=${page}`)
+      .then((response) => {
+        return response.json();
+      })
+      .then((response) => {
+        // This bit adds more images on if there is more
+        setPics((previousImages) => {
+          return [...previousImages, ...response.results];
         });
-    },
-    []
-  );
+        // Then handle a boolean state to track if there is indeed more below + relevant pagination
+        if (response.next) {
+          setHasMore(true);
+        } else {
+          setHasMore(false);
+        }
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
   useEffect(() => {
     getMaPics(page);
   }, [getMaPics, page]);
@@ -79,7 +76,7 @@ export default function Browse() {
                   onClick={() => {
                     setPopoverImageDetails({
                       imageSrc: `${config.url}${pic.image}`,
-                      imageDescription: pic.alt_description,
+                      imageDescription: pic.tags,
                       imageArtist: pic.artist,
                       imageDate: pic.date_uploaded,
                     });
@@ -106,7 +103,7 @@ export default function Browse() {
               width="200px"
               id="search-button"
               onClick={() => setPage((prevPageNumber) => prevPageNumber + 1)}
-              aria-label='has-more-button'
+              aria-label="has-more-button"
             >
               Load more
             </Button>

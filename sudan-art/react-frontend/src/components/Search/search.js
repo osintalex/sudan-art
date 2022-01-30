@@ -116,7 +116,7 @@ export default function Search() {
                   onClick={() => {
                     setPopoverImageDetails({
                       imageSrc: pic.image,
-                      imageDescription: pic.alt_description,
+                      imageDescription: pic.tags,
                       imageArtist: pic.artist,
                       imageDate: pic.date_uploaded,
                     });

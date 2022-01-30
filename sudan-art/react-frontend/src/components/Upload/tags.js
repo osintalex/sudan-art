@@ -1,5 +1,6 @@
 import React from "react";
 import { Tag, TagLabel, TagCloseButton, Input } from "@chakra-ui/react";
+import { makeRepeated } from "../../utils/utils";
 
 // I reworked this
 //https://dev.to/prvnbist/create-a-tags-input-component-in-reactjs-ki
@@ -10,8 +11,6 @@ import { Tag, TagLabel, TagCloseButton, Input } from "@chakra-ui/react";
  * @returns JSX for the Tagger component.
  */
 export default function Tagger(props) {
-  const makeRepeated = (arr, repeats) =>
-    Array.from({ length: repeats }, () => arr).flat();
   const tagGradients = makeRepeated(
     [
       "linear(to-r, orange.400, yellow.400)",

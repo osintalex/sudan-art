@@ -41,6 +41,4 @@ Here is a long list of stuff to do - help welcome! :dizzy_face:
 * Improve unit test coverage with a focus on security for backend
 * Add an option to download full resolution images
 * Add social buttons to share on image popover
-* Add a disclaimer that nothing should be shared for profit
 * Arabic/English switch to change language
-* Add image tags to popover for image search results
