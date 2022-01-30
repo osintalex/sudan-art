@@ -32,6 +32,7 @@ export default function ImageRenderer(props) {
           className={props.className}
           onClick={props.onClick}
           aria-label={props.label}
+          style={{ filter: "invert(1)"}}
         ></img>
       )}
     </>
