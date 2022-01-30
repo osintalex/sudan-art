@@ -25,6 +25,8 @@ services:
       DJANGO_SETTINGS_MODULE: ${DJANGO_SETTINGS_MODULE}
     ports:
       - 8000:8000
+    volumes:
+      - ./sudan-art/django-backend/logs:/home/worker/app/django-backend/logs
   nginx:
     build: ./sudan-art/react-frontend
     restart: unless-stopped

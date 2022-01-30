@@ -44,5 +44,4 @@ Here is a long list of stuff to do - help welcome! :dizzy_face:
 * Add a disclaimer that nothing should be shared for profit
 * Add unit test for Browse component
 * Arabic/English switch to change language
-* Configure logs in the production web app for better debugging
 * Add image tags to popover for image search results
