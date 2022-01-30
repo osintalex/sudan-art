@@ -47,4 +47,3 @@ Here is a long list of stuff to do - help welcome! :dizzy_face:
 * Configure logs in the production web app for better debugging
 * Try a more advanced [nginx config](https://gkedge.gitbooks.io/react-router-in-the-real/content/nginx.html) for the production version
 * Add image tags to popover for image search results
-* Upgrade TLS to 1.3 for security
