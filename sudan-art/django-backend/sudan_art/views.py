@@ -4,7 +4,7 @@ from rest_framework.decorators import api_view, parser_classes
 from rest_framework.response import Response
 from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework import status, viewsets, generics, filters, serializers, fields
-
+from rest_framework.pagination import PageNumberPagination
 # Create your views here.
 
 
@@ -60,13 +60,11 @@ def add_artwork(request):
         return Response(artwork_serialized.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-class RecentArtworkList(generics.ListAPIView):
-    """
-    List recent artworks, ten per page. The pagination is included by default in a class based view
-    and configuring in the settings.py
-    """
-
-    def get(self, request, format=None):
-        artworks = Artwork.objects.all()
-        serializer = ArtworkSerializer(artworks, many=True)
-        return Response(serializer.data)
+@api_view(['GET'])
+def recent_artwork(request):
+    paginator = PageNumberPagination()
+    paginator.page_size = 10
+    artworks = Artwork.objects.order_by("-date_uploaded").all()
+    result_page = paginator.paginate_queryset(artworks, request)
+    serializer = ArtworkSerializer(result_page, many=True)
+    return paginator.get_paginated_response(serializer.data)

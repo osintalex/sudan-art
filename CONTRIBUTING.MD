@@ -39,7 +39,10 @@ Please also make sure to run the test suites before starting work and submitting
 Here is a long list of stuff to do - help welcome! :dizzy_face:
 
 * Improve unit test coverage with a focus on security for backend
-* A Browse section on the frontend where users can scroll through recent uploads without having to search
+* Add an option to download full resolution images
+* Add social buttons to share on image popover
+* Add a disclaimer that nothing should be shared for profit
+* Add unit test for Browse component
 * Arabic/English switch to change language
 * Configure logs in the production web app for better debugging
 * Try a more advanced [nginx config](https://gkedge.gitbooks.io/react-router-in-the-real/content/nginx.html) for the production version

@@ -1,7 +1,7 @@
 /**
  * Utility function to handle navigation
  * @param {string} routeName name of the route
- * @param {Object} navigate result of destructuring useNavigate hook in desktopNavigation.js 
+ * @param {Object} navigate result of destructuring useNavigate hook in desktopNavigation.js
  * and mobileNavigation.js
  */
 export function handleClick(routeName, navigate) {
@@ -20,6 +20,9 @@ export function handleClick(routeName, navigate) {
       break;
     case "Search":
       navigate("/search");
+      break;
+    case "Browse":
+      navigate("/browse");
       break;
     default:
       navigate("/404");

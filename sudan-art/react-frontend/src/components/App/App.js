@@ -13,6 +13,7 @@ import Contact from "../Contact/contact.js";
 import Upload from "../Upload/upload.js";
 import Search from "../Search/search.js";
 import NotFound from "../NotFound/notFound.js";
+import Browse from "../Browse/browse.js"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 /**
@@ -29,6 +30,7 @@ function App() {
           <Route exact path="/contact" element={<Contact />}></Route>
           <Route exact path="/create" element={<Upload />}></Route>
           <Route exact path="/search" element={<Search />}></Route>
+          <Route exact path="/browse" element={<Browse />}></Route>
         </Routes>
       </BrowserRouter>
     </>

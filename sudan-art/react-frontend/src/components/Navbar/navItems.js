@@ -11,4 +11,7 @@ export const NAV_ITEMS = [
   {
     label: "Contact",
   },
+  {
+    label: "Browse",
+  },
 ];

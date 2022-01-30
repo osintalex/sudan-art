@@ -12,7 +12,7 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import SearchForm from "./searchForm.js";
-import ImagePopover from "./imagePopover.js";
+import ImagePopover from "../ImagePopover/imagePopover.js";
 import { config } from "../../constants.js";
 import ImageRenderer from "../ImageRenderer/imageRenderer.js";
 
