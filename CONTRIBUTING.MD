@@ -42,6 +42,5 @@ Here is a long list of stuff to do - help welcome! :dizzy_face:
 * Add an option to download full resolution images
 * Add social buttons to share on image popover
 * Add a disclaimer that nothing should be shared for profit
-* Add unit test for Browse component
 * Arabic/English switch to change language
 * Add image tags to popover for image search results
