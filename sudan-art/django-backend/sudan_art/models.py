@@ -49,7 +49,7 @@ def validate_tags(value):
         )
 
 
-def rename_images(instance, filename):
+def rename_generic(instance, filename):
     """
     Renames images to more human readable formats but uses the unique id field to ensure unique image names.
     :param instance: Artwork model instance
@@ -57,12 +57,40 @@ def rename_images(instance, filename):
     validation on the model Image Field.
     :return: string, more readable filename.
     """
+
     extension = filename.split(".")[-1]
     new_filename = "{}.{}".format(
         slugify(instance.artist + instance.tags + str(instance.id), extension),
         extension,
     )
     return new_filename
+
+
+def rename_thumbnail(instance, filename):
+    """
+    Rename the thumbnail image.
+    :param instance: Artwork model instance
+    :param filename: string, name of uploaded file. Validation for this is handled by Django default
+    validation on the model Image Field.
+    :return: string, more readable filename.
+    """
+    new_filename = rename_generic(instance, filename)
+    thumbnail_filename = f'thumbnail {new_filename}'
+    return thumbnail_filename
+
+
+def rename_highres(instance, filename):
+    """
+    Rename a highres image.
+    :param instance: Artwork model instance
+    :param filename: string, name of uploaded file. Validation for this is handled by Django default
+    validation on the model Image Field.
+    :return: string, more readable filename.
+    """
+
+    new_filename = rename_generic(instance, filename)
+    high_res_filename = f'high res {new_filename}'
+    return high_res_filename
 
 
 class Artwork(models.Model):
@@ -75,9 +103,11 @@ class Artwork(models.Model):
     # Media files are server from the django server in development but a CDN in production hence the
     # two different settings here. The DEBUG value is handled by an environment variable.
     if settings.DEBUG:
-        image = models.ImageField(upload_to=rename_images)
+        thumbnail = models.ImageField(upload_to=rename_thumbnail)
+        high_res_image = models.ImageField(upload_to=rename_highres)
     else:
-        image = models.ImageField(storage=PublicMediaStorage(), upload_to=rename_images)
+        thumbnail = models.ImageField(storage=PublicMediaStorage(), upload_to=rename_thumbnail)
+        high_res_image = models.ImageField(storage=PublicMediaStorage(), upload_to=rename_highres)
     date_uploaded = models.DateField(auto_now_add=True)
 
     class Meta:
@@ -95,20 +125,24 @@ class Artwork(models.Model):
         Custom save function that overrides the model default. This ensures image saved to the database have
         smaller filesizes since the max upload is about 10MB.
         """
-        new_image = self.reduce_image_size(self.image)
-        self.image = new_image
+        thumbnail_compressed = self.reduce_image_size(self.thumbnail, thumbnail=True)
+        high_res_image_compressed = self.reduce_image_size(self.high_res_image)
+        self.thumbnail = thumbnail_compressed
+        self.high_res_image = high_res_image_compressed
         super().save(*args, **kwargs)
 
-    def reduce_image_size(self, image):
+    def reduce_image_size(self, image, thumbnail=False):
         """
         Reduces image filesize.
         :param image: byte stream (I think?); the uploaded image.
-        :return: Django File Object, smaller image.
+        :param thumbnail: bool; make a thumbnail sized image.
+        :return: Django File object.
         """
 
         pil_image_object = Image.open(image)
-        maximum_size = (500, 500)
-        pil_image_object.thumbnail(maximum_size)
+        if thumbnail:
+            maximum_size = (500, 500)
+            pil_image_object.thumbnail(maximum_size)
 
         # Strip metadata
         data = list(pil_image_object.getdata())

@@ -39,8 +39,9 @@ export default function ImagePopover(props) {
     ],
     3
   );
-  const { imageSrc, imageDescription, imageArtist, imageDate } =
+  const { imageSrc, imageDescription, imageArtist, imageDate, imageHighRes } =
     props.popoverImageDetails;
+
   return (
     <>
       <Modal isOpen={props.isOpen} onClose={props.onClose}>
@@ -81,7 +82,7 @@ export default function ImagePopover(props) {
               {"Images are shared on this website for the sole purpose of supporting the Sudanese revolutionary" +
                 " movement. Do not share or otherwise reproduce for profit."}
             </Text>
-            <Center style={{ scale: "0.5" }}>
+            <Center style={{ transform: "scale(0.6)" }} >
               <FacebookShareButton
                 url={imageSrc}
                 quote={
@@ -89,7 +90,7 @@ export default function ImagePopover(props) {
                 }
                 hashtag={"#sudancoup"}
               >
-                <FacebookIcon />
+                <FacebookIcon/>
               </FacebookShareButton>
               <TwitterShareButton
                 url={imageSrc}
@@ -110,8 +111,8 @@ export default function ImagePopover(props) {
           </ModalBody>
 
           <ModalFooter className="search-modal-footer">
-            <Button id="upload-submit-button" onClick={props.onClose}>
-              Close
+            <Button id="upload-submit-button" size="sm">
+              <a href={imageHighRes}>Full Resolution</a>
             </Button>
           </ModalFooter>
         </ModalContent>

@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework import status, viewsets, generics, filters, serializers, fields
 from rest_framework.pagination import PageNumberPagination
+
 # Create your views here.
 
 
@@ -52,9 +53,21 @@ def add_artwork(request):
     :param request: user request instance.
     :return: Rest Framework Response, 201 if uploaded OK and 400 with error messages.
     """
+    request.data['thumbnail'] = request.data['image']
+    request.data['high_res_image'] = request.data['image']
     artwork_serialized = ArtworkSerializer(data=request.data)
     if artwork_serialized.is_valid():
         artwork_serialized.save()
+    # artwork_serialized = ArtworkUpload(data=request.data)
+    # if artwork_serialized.is_valid():
+    #     new_artwork = Artwork(artist=artwork_serialized.data['artist'],
+    #                           tags=artwork_serialized.data['tags'],
+    #                           thumbnail=artwork_serialized.data['image'],
+    #                           high_res_image=artwork_serialized.data['image'])
+    #     logger.info(new_artwork.thumbnail.name)
+    #     logger.info(new_artwork.thumbnail.path)
+    #     logger.info(new_artwork.thumbnail.url)
+    #     new_artwork.save()
         return Response(artwork_serialized.data, status=status.HTTP_201_CREATED)
     else:
         return Response(artwork_serialized.errors, status=status.HTTP_400_BAD_REQUEST)

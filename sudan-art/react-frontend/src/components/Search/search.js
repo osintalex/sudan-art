@@ -112,10 +112,10 @@ export default function Search() {
                 <ImageRenderer
                   className="search-image"
                   alt={pic.artist}
-                  src={pic.image}
+                  src={pic.thumbnail}
                   onClick={() => {
                     setPopoverImageDetails({
-                      imageSrc: pic.image,
+                      imageSrc: pic.thumbnail,
                       imageDescription: pic.tags,
                       imageArtist: pic.artist,
                       imageDate: pic.date_uploaded,

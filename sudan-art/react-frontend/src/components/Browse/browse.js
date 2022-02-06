@@ -72,13 +72,14 @@ export default function Browse() {
                 <ImageRenderer
                   className="search-image"
                   alt={pic.artist}
-                  src={`${config.url}${pic.image}`}
+                  src={`${config.url}${pic.thumbnail}`}
                   onClick={() => {
                     setPopoverImageDetails({
-                      imageSrc: `${config.url}${pic.image}`,
+                      imageSrc: `${config.url}${pic.thumbnail}`,
                       imageDescription: pic.tags,
                       imageArtist: pic.artist,
                       imageDate: pic.date_uploaded,
+                      imageHighRes: `${config.url}${pic.high_res_image}`
                     });
                     onOpen(true);
                   }}

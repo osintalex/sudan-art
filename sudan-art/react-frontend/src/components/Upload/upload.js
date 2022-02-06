@@ -64,7 +64,7 @@ export default function Upload() {
           if (apiResponse) {
             let apiErrorMessages = "";
             for (let [key, value] of Object.entries(apiResponse)) {
-              let uppercaseKey = key.replace(/^\w/, (c) => c.toUpperCase());
+              let uppercaseKey = key.replace(/^\w/, (x) => x.toUpperCase());
               apiErrorMessages += `${uppercaseKey} field error: ${value} `;
             }
             // TODO add Arabic version? Turn error message into English and Arabic, split on a weird character

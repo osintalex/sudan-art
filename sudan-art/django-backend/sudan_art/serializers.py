@@ -1,4 +1,4 @@
-from rest_framework import serializers
+from rest_framework import serializers, fields
 from .models import Artwork
 
 
@@ -7,4 +7,4 @@ from .models import Artwork
 class ArtworkSerializer(serializers.ModelSerializer):
     class Meta:
         model = Artwork
-        fields = ("artist", "tags", "image", "date_uploaded")
+        fields = ("artist", "tags", "thumbnail", "high_res_image", "date_uploaded")
