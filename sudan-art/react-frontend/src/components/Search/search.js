@@ -32,6 +32,7 @@ export default function Search() {
     imageDescription: "",
     imageArtist: "",
     imageDate: "",
+    imageHighRes: "",
   });
 
   const getMaPics = async (query) => {
@@ -109,21 +110,22 @@ export default function Search() {
             {pics.map((pic, index) => {
               return (
                 <div key={`search-image-container ${index}`}>
-                <ImageRenderer
-                  className="search-image"
-                  alt={pic.artist}
-                  src={pic.thumbnail}
-                  onClick={() => {
-                    setPopoverImageDetails({
-                      imageSrc: pic.thumbnail,
-                      imageDescription: pic.tags,
-                      imageArtist: pic.artist,
-                      imageDate: pic.date_uploaded,
-                    });
-                    onOpen(true);
-                  }}
-                  aria-label="search result image"
-                />
+                  <ImageRenderer
+                    className="search-image"
+                    alt={pic.artist}
+                    src={pic.thumbnail}
+                    onClick={() => {
+                      setPopoverImageDetails({
+                        imageSrc: pic.thumbnail,
+                        imageDescription: pic.tags,
+                        imageArtist: pic.artist,
+                        imageDate: pic.date_uploaded,
+                        imageHighRes: pic.high_res_image,
+                      });
+                      onOpen(true);
+                    }}
+                    aria-label="search result image"
+                  />
                 </div>
               );
             })}

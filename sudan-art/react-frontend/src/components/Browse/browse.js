@@ -20,6 +20,7 @@ export default function Browse() {
     imageDescription: "",
     imageArtist: "",
     imageDate: "",
+    imageHighRes: ""
   });
 
   const getMaPics = useCallback(async (page) => {
