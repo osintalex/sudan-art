@@ -12,8 +12,10 @@ USER worker
 WORKDIR /home/worker/app/django-backend
 COPY --chown=worker:worker ["django_backend/*.py", "django_backend/"]
 COPY --chown=worker:worker ["sudan_art/", "sudan_art/"]
-COPY --chown=worker:worker ["manage.py", "requirements.txt", "./"]
+COPY --chown=worker:worker ["manage.py", "requirements.txt", "gunicorn.sh", "./"]
+
 ENV PATH="/home/worker/.local/bin:${PATH}"
 RUN pip install -r requirements.txt
 EXPOSE 8000
+CMD ./gunicorn.sh
 CMD ["gunicorn", "--bind", ":8000", "--workers", "4", "--reload", "django_backend.wsgi:application"]
