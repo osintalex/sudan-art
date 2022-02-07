@@ -41,5 +41,4 @@ Here is a long list of stuff to do - help welcome! :dizzy_face:
 * Improve unit test coverage with a focus on security for backend
 * Arabic/English switch to change language
 * Add intelligent default parameters to social buttons in imagePopover.js
-* Invert the eye logo svg, not through css, so it works as a placeholder, do this in PIL
 * CI setup
