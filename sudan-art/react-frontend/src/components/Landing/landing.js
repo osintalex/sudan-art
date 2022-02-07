@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Button, Center, Box } from "@chakra-ui/react";
 import { useNavigate } from "react-router";
 import Emoji from "../Emoji/emoji.js";
@@ -10,8 +10,6 @@ export default function LandingPage() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const counter = useRef(0);
-
- 
 
   /**
    * Very simple click handler to go to the intro page on clicking the main enter button.
@@ -29,7 +27,15 @@ export default function LandingPage() {
       setLoading(false);
     }
   };
-
+  /**
+   * This hook temporarliy blocks scrolling on this page, which makes the masonry layout look better.
+   */
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  });
   return (
     <>
       <div style={{ display: loading ? "block" : "none" }}>
