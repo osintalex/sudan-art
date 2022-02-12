@@ -39,6 +39,6 @@ Please also make sure to run the test suites before starting work and submitting
 Here is a long list of stuff to do - help welcome! :dizzy_face:
 
 * Improve unit test coverage with a focus on security for backend
-* Arabic/English switch to change language
 * Add intelligent default parameters to social buttons in imagePopover.js
 * CI setup
+* Add some precommit hooks

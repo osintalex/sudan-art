@@ -9,6 +9,8 @@ import {
   Image,
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
+import { useNavigate } from "react-router";
+import { handleClick } from "./clickHandler.js";
 import logo from "./eye_logo.svg";
 import DesktopNav from "./desktopNavigation.js";
 import MobileNav from "./mobileNavigation.js";
@@ -19,6 +21,7 @@ import MobileNav from "./mobileNavigation.js";
  */
 export default function NavBar() {
   const { isOpen, onToggle } = useDisclosure();
+  const navigate = useNavigate();
 
   return (
     <Box>
@@ -52,7 +55,8 @@ export default function NavBar() {
             boxSize="30px"
             className="nav-image"
             objectFit="cover"
-            style={{ filter: "invert(1)"}}
+            style={{ filter: "invert(1)", cursor: "pointer" }}
+            onClick={handleClick.bind(this, "Home", navigate)}
           />
 
           <Flex display={{ base: "none", md: "flex" }} ml={10}>

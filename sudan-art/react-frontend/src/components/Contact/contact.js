@@ -10,7 +10,7 @@ import {
 } from "@chakra-ui/react";
 import NavBar from "../Navbar/navbar.js";
 import protestImage from "./protest.png";
-
+import MultiLingualContent from "../MultingualContent/multilingualContent.js";
 // Based off https://chakra-templates.dev/page-sections/hero CTA with Illustration
 /**
  * Main contact component
@@ -19,6 +19,7 @@ const Contact = () => {
   return (
     <>
       <NavBar />
+      <MultiLingualContent contentID="hello" />
       <Container maxW={"7xl"}>
         <Stack
           align={"center"}
@@ -47,7 +48,7 @@ const Contact = () => {
           </Flex>
           <Stack flex={1} spacing={{ base: 5, md: 10 }}>
             <Heading as="h4" size="md" className="contact-text">
-              You can email us at {" "}
+              You can email us at{" "}
               <Link
                 href="mailto:info@sudanart.com"
                 target="_blank"

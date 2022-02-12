@@ -1,17 +1,1 @@
-export const NAV_ITEMS = [
-  {
-    label: "About",
-  },
-  {
-    label: "Upload",
-  },
-  {
-    label: "Search",
-  },
-  {
-    label: "Contact",
-  },
-  {
-    label: "Browse",
-  },
-];
+export const NAV_ITEMS = ["About", "Browse", "Search", "Upload", "Contact"];
