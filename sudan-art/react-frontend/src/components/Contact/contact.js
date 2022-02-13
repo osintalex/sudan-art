@@ -10,7 +10,7 @@ import {
 } from "@chakra-ui/react";
 import NavBar from "../Navbar/navbar.js";
 import protestImage from "./protest.png";
-import MultiLingualContent from "../MultingualContent/multilingualContent.js";
+
 // Based off https://chakra-templates.dev/page-sections/hero CTA with Illustration
 /**
  * Main contact component
@@ -19,7 +19,6 @@ const Contact = () => {
   return (
     <>
       <NavBar />
-      <MultiLingualContent contentID="hello" />
       <Container maxW={"7xl"}>
         <Stack
           align={"center"}

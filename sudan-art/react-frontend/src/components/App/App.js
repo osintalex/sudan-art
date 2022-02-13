@@ -17,11 +17,17 @@ import Search from "../Search/search.js";
 import NotFound from "../NotFound/notFound.js";
 import Browse from "../Browse/browse.js";
 import { LanguageContext } from "../../multilingualContext/context";
+
 /**
  * Main app component along with client side routing from React Router DOM.
  */
 function App() {
   const [language, setLanguage] = useState("english");
+  
+  /**
+   * Switch to change the language from Arabic to English. It's in App.js since that way I can pass state down
+   * to the whole app using the language context provider.
+   */
   function toggleLanguage() {
     setLanguage((language) => (language === "english" ? "arabic" : "english"));
   }
