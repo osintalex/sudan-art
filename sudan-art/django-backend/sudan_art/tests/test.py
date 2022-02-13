@@ -16,18 +16,21 @@ import os
 
 
 class ArtworkModelTest(TestCase):
+
     def setUp(self):
         # TODO: Change all of these to arabic as that better reflects user behaviour
-        Artwork.objects.create(
-            artist="hussein",
-            tags="sudan,protest,art",
-            image=SimpleUploadedFile(
+        uploaded_image = SimpleUploadedFile(
                 name="test_image.jpg",
                 content=open(
                     os.path.join(os.getcwd(), "sudan_art/tests/test_image.jpg"), "rb"
                 ).read(),
                 content_type="image/jpeg",
-            ),
+            )
+        Artwork.objects.create(
+            artist="hussein",
+            tags="sudan,protest,art",
+            high_res_image=uploaded_image,
+            thumbnail=uploaded_image
         )
 
     def test_artwork_tags(self):
@@ -57,23 +60,23 @@ class SudanArtViewsTest(TestCase):
     def setUp(self):
         self.client = APIClient()
         # TODO: Change all of these to arabic as that better reflects user behaviour
+        uploaded_image = SimpleUploadedFile(
+            name="test_image.jpg",
+            content=open(
+                os.path.join(os.getcwd(), "sudan_art/tests/test_image.jpg"), "rb"
+            ).read(),
+            content_type="image/jpeg",
+        )
         Artwork.objects.create(
             artist="hussein",
             tags="sudan,protest,art",
-            image=SimpleUploadedFile(
-                name="test_image.jpg",
-                content=open(
-                    os.path.join(os.getcwd(), "sudan_art/tests/test_image.jpg"), "rb"
-                ).read(),
-                content_type="image/jpeg",
-            ),
+            high_res_image=uploaded_image,
+            thumbnail=uploaded_image
         )
 
     def test_get_recent_artwork(self):
         response = self.client.get(reverse("recent"))
-        recent_artworks = Artwork.objects.order_by("-date_uploaded")[:20]
-        serializer = ArtworkSerializer(recent_artworks, many=True)
-        self.assertEqual(response.data, serializer.data)
+        self.assertEqual(response.data["results"][0]["artist"], "hussein")
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
     def test_upload_artwork(self):
@@ -105,6 +108,6 @@ class SudanArtViewsTest(TestCase):
         )
         self.assertEqual(response.data["results"][0]["artist"], "hussein")
         self.assertEqual(response.data["results"][0]["tags"], "sudan,protest,art")
-        self.assertTrue("image" in response.data["results"][0])
+        self.assertTrue("thumbnail" and "high_res_image" in response.data["results"][0])
 
     # TODO: Add some invalid search query terms and check they don't pass

@@ -24,7 +24,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("upload/", views.add_artwork, name="upload"),
     path("api/artwork/", views.ArtworkList.as_view(), name="search"),
-    path('recent/', views.recent_artwork)
+    path('recent/', views.recent_artwork, name="recent")
 ]
 
 # In production media files are served from a CDN, in development they are server (insecurly) from the
