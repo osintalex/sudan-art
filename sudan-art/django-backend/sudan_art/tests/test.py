@@ -1,7 +1,6 @@
 from django.test import TestCase
 from rest_framework.test import APIClient
 from sudan_art.models import Artwork
-from sudan_art.serializers import ArtworkSerializer
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.conf import settings
 from django.urls import reverse
