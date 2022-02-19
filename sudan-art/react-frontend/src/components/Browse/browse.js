@@ -20,9 +20,8 @@ export default function Browse() {
     imageDescription: "",
     imageArtist: "",
     imageDate: "",
-    imageHighRes: ""
+    imageHighRes: "",
   });
-
   const getMaPics = useCallback(async (page) => {
     setLoading(true);
     fetch(`${config.url}/recent/?page=${page}`)
@@ -49,6 +48,7 @@ export default function Browse() {
   useEffect(() => {
     getMaPics(page);
   }, [getMaPics, page]);
+
   return (
     <>
       <NavBar />
@@ -73,14 +73,19 @@ export default function Browse() {
                 <ImageRenderer
                   className="search-image"
                   alt={pic.artist}
-                  src={`${config.url}${pic.thumbnail}`}
+                  // The backend delivers media urls differently in development vs production
+                  src={
+                    process.env.NODE_ENV === "development"
+                      ? `${config.url}${pic.thumbnail}`
+                      : pic.thumbnail
+                  }
                   onClick={() => {
                     setPopoverImageDetails({
-                      imageSrc: `${config.url}${pic.thumbnail}`,
+                      imageSrc: `${pic.thumbnail}`,
                       imageDescription: pic.tags,
                       imageArtist: pic.artist,
                       imageDate: pic.date_uploaded,
-                      imageHighRes: `${config.url}${pic.high_res_image}`
+                      imageHighRes: `${pic.high_res_image}`,
                     });
                     onOpen(true);
                   }}

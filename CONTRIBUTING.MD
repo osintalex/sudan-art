@@ -43,4 +43,4 @@ Here is a long list of stuff to do - help welcome! :dizzy_face:
 * CI setup
 * Add some precommit hooks
 * Change backend upload validation errors to codes so these can be handled in different languages in the frontend
-* Figure out how to exclude migrations files from dev branch
+* Add some helpful logs

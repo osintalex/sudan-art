@@ -58,16 +58,6 @@ def add_artwork(request):
     artwork_serialized = ArtworkSerializer(data=request.data)
     if artwork_serialized.is_valid():
         artwork_serialized.save()
-    # artwork_serialized = ArtworkUpload(data=request.data)
-    # if artwork_serialized.is_valid():
-    #     new_artwork = Artwork(artist=artwork_serialized.data['artist'],
-    #                           tags=artwork_serialized.data['tags'],
-    #                           thumbnail=artwork_serialized.data['image'],
-    #                           high_res_image=artwork_serialized.data['image'])
-    #     logger.info(new_artwork.thumbnail.name)
-    #     logger.info(new_artwork.thumbnail.path)
-    #     logger.info(new_artwork.thumbnail.url)
-    #     new_artwork.save()
         return Response(artwork_serialized.data, status=status.HTTP_201_CREATED)
     else:
         return Response(artwork_serialized.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -79,5 +69,5 @@ def recent_artwork(request):
     paginator.page_size = 10
     artworks = Artwork.objects.order_by("-date_uploaded").all()
     result_page = paginator.paginate_queryset(artworks, request)
-    serializer = ArtworkSerializer(result_page, many=True)
-    return paginator.get_paginated_response(serializer.data)
+    artwork_serialized = ArtworkSerializer(result_page, many=True)
+    return paginator.get_paginated_response(artwork_serialized.data)
