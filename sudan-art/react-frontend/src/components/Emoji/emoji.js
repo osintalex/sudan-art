@@ -24,7 +24,7 @@ function Emoji(props) {
 Emoji.propTypes = {
   label: PropTypes.string,
   fontSize: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
+  id: PropTypes.string,
   symbol: PropTypes.string.isRequired,
 };
 export default Emoji;

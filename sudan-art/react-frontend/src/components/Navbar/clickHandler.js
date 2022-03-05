@@ -6,22 +6,22 @@
  */
 export function handleClick(routeName, navigate) {
   switch (routeName) {
-    case "About":
+    case "nav_about":
       navigate("/mrhaba");
       break;
     case "Home":
       navigate("/");
       break;
-    case "Contact":
+    case "nav_contact":
       navigate("/contact");
       break;
-    case "Upload":
+    case "nav_upload":
       navigate("/create");
       break;
-    case "Search":
+    case "nav_search":
       navigate("/search");
       break;
-    case "Browse":
+    case "nav_browse":
       navigate("/browse");
       break;
     default:

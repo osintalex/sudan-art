@@ -16,6 +16,7 @@ import Thumbnail from "./thumbnail.js";
 import UploadFeedback from "./uploadFeedback.js";
 import { config } from "../../constants.js";
 import NavBar from "../Navbar/navbar.js";
+import MultiLingualContent from "../MultingualContent/multilingualContent.js";
 
 /**
  * Main upload component. There are a few fiddly things going on here:
@@ -83,9 +84,7 @@ export default function Upload() {
           setErrors("Invalid form submission, please try again.");
         });
     } else {
-      setErrors(
-        "You must enter data into every field. Please resubmit the form."
-      );
+      setErrors(<MultiLingualContent contentID="upload_errors_1" />);
       onOpen(true);
     }
   }
@@ -117,7 +116,7 @@ export default function Upload() {
                         color="gray.800"
                         id="search-form-text"
                       >
-                        Upload Art
+                        {<MultiLingualContent contentID="upload_title" />}
                       </Text>
                     </FormLabel>
                     {submitted && (
@@ -134,7 +133,7 @@ export default function Upload() {
                     {/* Here is the label I'm using to sit on top of the file upload id component since I can't
                     really style it otherwise */}
                     <label htmlFor="file-upload" className="fake-upload-button">
-                      Browse
+                      {<MultiLingualContent contentID="upload_browse_button" />}
                     </label>
                     <Input
                       id="file-upload"
@@ -144,7 +143,7 @@ export default function Upload() {
                       onChange={(event) => {
                         if (event.currentTarget.files[0].size > 10000000) {
                           setErrors(
-                            "Sorry, your image is too large! The maximum size is 10MB."
+                            <MultiLingualContent contentID="upload_bad_image" />
                           );
                         }
                         setFileValue(event.currentTarget.files[0]);
@@ -159,7 +158,7 @@ export default function Upload() {
                         fontSize="lg"
                         color="gray.800"
                       >
-                        Tags
+                        {<MultiLingualContent contentID="upload_tags" />}
                       </Text>
                       <Text
                         id="search-form-text"
@@ -167,7 +166,9 @@ export default function Upload() {
                         color="gray.800"
                         as="i"
                       >
-                        Add between 3 and 6 tags
+                        {
+                          <MultiLingualContent contentID="upload_tags_instructions" />
+                        }
                       </Text>
                     </FormLabel>
                     <Tagger
@@ -180,7 +181,7 @@ export default function Upload() {
                         fontSize="lg"
                         color="gray.800"
                       >
-                        Artist
+                        {<MultiLingualContent contentID="upload_artist" />}
                       </Text>
                       <Text
                         id="search-form-text"
@@ -188,7 +189,9 @@ export default function Upload() {
                         color="gray.800"
                         as="i"
                       >
-                        Write &apos;anonymous&apos; if you want to be careful
+                        {
+                          <MultiLingualContent contentID="upload_artist_instructions" />
+                        }
                       </Text>
                     </FormLabel>
                     <Input
@@ -217,7 +220,7 @@ export default function Upload() {
                       id="upload-submit-button"
                       type="submit"
                     >
-                      Submit
+                      {<MultiLingualContent contentID="upload_submit" />}
                     </Button>
                     {!success && submitted && !errors ? (
                       <div style={{ marginTop: "1rem" }}>

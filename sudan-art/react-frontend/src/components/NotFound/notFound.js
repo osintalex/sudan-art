@@ -1,17 +1,9 @@
-import {
-  Box,
-  Container,
-  Flex,
-  Heading,
-  Image,
-  Link,
-  Stack,
-} from "@chakra-ui/react";
+import { Box, Container, Flex, Heading, Image, Stack } from "@chakra-ui/react";
 import React from "react";
-import { Link as ReactRouterLink } from "react-router-dom";
 import notFoundImage from "./404.png";
 import Emoji from "../Emoji/emoji.js";
 import NavBar from "../Navbar/navbar.js";
+import MultiLingualContent from "../MultingualContent/multilingualContent";
 
 /**
  * Not found component; routing for this handled in App.js
@@ -49,25 +41,13 @@ export default function NotFound() {
           </Flex>
           <Stack flex={1} spacing={{ base: 5, md: 10 }}>
             <Heading as="h4" size="md" className="contact-text">
-              Oh no! There is nothing here.
+              {<MultiLingualContent contentID="not_found_1" />}
               <br />
               <br />
-              It seems this page is as empty as Burhan&apos;s heart.{" "}
+              {<MultiLingualContent contentID="not_found_2" />}{" "}
               <Emoji symbol="😭" fontSize="23px" />
               <Emoji symbol="😭" fontSize="23px" />
               <Emoji symbol="😭" fontSize="23px" />
-              <br />
-              <br />
-              Click{" "}
-              <Link
-                as={ReactRouterLink}
-                bgGradient="linear(to-r,orange.400, yellow.400)"
-                bgClip="text"
-                to="/mrhaba"
-              >
-                here
-              </Link>{" "}
-              to go back to the about page.
             </Heading>
           </Stack>
         </Stack>

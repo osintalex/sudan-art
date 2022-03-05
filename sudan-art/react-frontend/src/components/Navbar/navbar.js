@@ -15,6 +15,7 @@ import { handleClick } from "./clickHandler.js";
 import DesktopNav from "./desktopNavigation.js";
 import logo from "./eye_logo.svg";
 import MobileNav from "./mobileNavigation.js";
+import MultiLingualContent from "../MultingualContent/multilingualContent.js";
 
 // Based off the with sub navigation one here https://chakra-templates.dev/navigation/navbar
 /**
@@ -83,7 +84,7 @@ export default function NavBar() {
               target="_blank"
               rel="noreferrer"
             >
-              Donate
+              {<MultiLingualContent contentID="donate_button" />}
             </a>
           </Button>
         </Stack>

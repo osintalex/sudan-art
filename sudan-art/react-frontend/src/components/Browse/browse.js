@@ -5,6 +5,7 @@ import Emoji from "../Emoji/emoji.js";
 import ImagePopover from "../ImagePopover/imagePopover.js";
 import ImageRenderer from "../ImageRenderer/imageRenderer.js";
 import NavBar from "../Navbar/navbar.js";
+import MultiLingualContent from "../MultingualContent/multilingualContent.js";
 
 /**
  * Browse component.
@@ -56,7 +57,7 @@ export default function Browse() {
       <br />
       <div className="search-container">
         <Box position={"relative"}>
-          <Heading>Explore Art</Heading>
+          <Heading>{<MultiLingualContent contentID="browse_1" />}</Heading>
         </Box>
       </div>
       {loading && (

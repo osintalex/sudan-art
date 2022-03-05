@@ -9,6 +9,7 @@ import {
 import { Field, Form, Formik } from "formik";
 import PropTypes from "prop-types";
 import React from "react";
+import MultiLingualContent from "../MultingualContent/multilingualContent.js";
 
 /**
  * React search form component.
@@ -66,7 +67,7 @@ function SearchForm(props) {
               >
                 <FormLabel htmlFor="search terms" id="search-form-label">
                   <Text id="search-form-text" fontSize="lg" color="gray.800">
-                    Search terms
+                    {<MultiLingualContent contentID="search_terms" />}
                   </Text>
                 </FormLabel>
                 <Input
@@ -92,7 +93,7 @@ function SearchForm(props) {
               >
                 <FormLabel htmlFor="artist" id="search-form-label">
                   <Text id="search-form-text" fontSize="lg" color="gray.800">
-                    Artist
+                    {<MultiLingualContent contentID="search_artist" />}
                   </Text>
                 </FormLabel>
                 <Input
@@ -116,7 +117,7 @@ function SearchForm(props) {
               >
                 <FormLabel htmlFor="dateFrom" id="search-form-label">
                   <Text id="search-form-text" fontSize="lg" color="gray.800">
-                    Date from
+                    {<MultiLingualContent contentID="search_date_from" />}
                   </Text>
                 </FormLabel>
                 <Input
@@ -140,7 +141,7 @@ function SearchForm(props) {
               >
                 <FormLabel htmlFor="dateTo" id="search-form-label">
                   <Text id="search-form-text" fontSize="lg" color="gray.800">
-                    Date to
+                    {<MultiLingualContent contentID="search_date_to" />}
                   </Text>
                 </FormLabel>
                 <Input
@@ -164,7 +165,7 @@ function SearchForm(props) {
             disabled={isSubmitting}
             aria-label="search button"
           >
-            Search
+            {<MultiLingualContent contentID="search_button" />}
           </Button>
         </Form>
       )}

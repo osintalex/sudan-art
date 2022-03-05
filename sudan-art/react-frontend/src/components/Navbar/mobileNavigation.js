@@ -5,6 +5,7 @@ import { useNavigate } from "react-router";
 import { handleClick } from "./clickHandler.js";
 import { NAV_ITEMS } from "./navItems.js";
 import { LanguageContext } from "../../multilingualContext/context.js";
+import MultiLingualContent from "../MultingualContent/multilingualContent.js";
 
 /**
  * Component for mobile navigation.
@@ -49,12 +50,15 @@ const MobileNav = () => {
 
   return (
     <Stack bg={"gray.100"} p={4} display={{ md: "none" }} onClick={onToggle}>
-      {NAV_ITEMS.map((navItem) => (
-        <MobileNavItem key={navItem} label={navItem} />
+      {NAV_ITEMS.map((contentID) => (
+        <MobileNavItem
+          key={contentID}
+          label={<MultiLingualContent contentID={contentID} />}
+        />
       ))}
       <Stack spacing={4}>
         <Link fontWeight={200} color={"gray.600"} onClick={toggleLanguage}>
-          {language}
+          {language == "english" ? "عربي" : "English"}
         </Link>
       </Stack>
     </Stack>
@@ -62,6 +66,6 @@ const MobileNav = () => {
 };
 
 MobileNav.propTypes = {
-  label: PropTypes.string.isRequired,
+  label: PropTypes.string,
 };
 export default MobileNav;

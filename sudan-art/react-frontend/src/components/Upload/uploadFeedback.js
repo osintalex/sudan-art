@@ -12,6 +12,7 @@ import {
 import PropTypes from "prop-types";
 import React from "react";
 import Emoji from "../Emoji/emoji.js";
+import MultiLingualContent from "../MultingualContent/multilingualContent.js";
 
 /**
  * React component for feedback after image upload
@@ -34,8 +35,16 @@ function UploadFeedback(props) {
     >
       <ModalOverlay />
       <ModalContent color="gray.800">
-        {props.errors && <ModalHeader>Invalid Submission</ModalHeader>}
-        {props.success && <ModalHeader>Success!</ModalHeader>}
+        {props.errors && (
+          <ModalHeader>
+            <MultiLingualContent contentID="upload_fail" />
+          </ModalHeader>
+        )}
+        {props.success && (
+          <ModalHeader>
+            <MultiLingualContent contentID="upload_success" />
+          </ModalHeader>
+        )}
         <ModalCloseButton />
         {props.errors && (
           <ModalBody>

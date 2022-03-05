@@ -10,6 +10,7 @@ import {
 import React from "react";
 import protestImage from "./protest.png";
 import NavBar from "../Navbar/navbar.js";
+import MultiLingualContent from "../MultingualContent/multilingualContent";
 
 // Based off https://chakra-templates.dev/page-sections/hero CTA with Illustration
 /**
@@ -48,7 +49,8 @@ const Contact = () => {
           </Flex>
           <Stack flex={1} spacing={{ base: 5, md: 10 }}>
             <Heading as="h4" size="md" className="contact-text">
-              You can email us at{" "}
+              {<MultiLingualContent contentID="contact_1" />}
+              <br />
               <Link
                 href="mailto:info@sudanart.com"
                 target="_blank"
@@ -59,20 +61,20 @@ const Contact = () => {
               </Link>
               <br />
               <br />
-              If you&apos;re a developer, the code for this project is open
-              source! Please check out our github repository and consider
-              contributing{" "}
+              {<MultiLingualContent contentID="contact_2" />}
+              <br />
               <Link
                 href="https://www.github.com"
                 target="_blank"
                 bgGradient="linear(to-r,orange.400, yellow.400)"
                 bgClip="text"
               >
-                here.
+                {<MultiLingualContent contentID="contact_code" />}
               </Link>
               <br />
               <br />
-              You should also check out our fantastic sister site{" "}
+              {<MultiLingualContent contentID="contact_3" />}
+              <br />
               <Link
                 href="https://www.sudancoup.com"
                 target="_blank"
@@ -81,7 +83,6 @@ const Contact = () => {
               >
                 sudancoup.com
               </Link>
-              .
             </Heading>
           </Stack>
         </Stack>

@@ -1,7 +1,8 @@
 import { Input, Tag, TagCloseButton, TagLabel } from "@chakra-ui/react";
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useContext } from "react";
 import { makeRepeated } from "../../utils/utils";
+import { LanguageContext } from "../../multilingualContext/context.js";
 
 // I reworked this
 // https://dev.to/prvnbist/create-a-tags-input-component-in-reactjs-ki
@@ -38,7 +39,11 @@ function Tagger(props) {
       ),
     ]);
   };
-
+  const { language } = useContext(LanguageContext);
+  const placeholderText =
+    language == "english"
+      ? "Press Enter to add tags"
+      : "اضغط على Enter لإضافة العلامات";
   return (
     <>
       <Input
@@ -46,7 +51,7 @@ function Tagger(props) {
         id="upload-tagger"
         aria-label="image-tagger"
         onKeyUp={(event) => addTags(event)}
-        placeholder="Press enter to add tags"
+        placeholder={placeholderText}
         _focus={{ boxShadow: "outline", color: "gray.800" }}
         _hover={{ color: "gray.800" }}
         width="20rem"

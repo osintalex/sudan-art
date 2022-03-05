@@ -34,6 +34,6 @@ function Thumbnail(props) {
 }
 
 Thumbnail.propTypes = {
-  file: PropTypes.object.isRequired,
+  file: PropTypes.string.isRequired,
 };
 export default Thumbnail;

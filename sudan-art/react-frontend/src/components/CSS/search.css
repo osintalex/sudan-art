@@ -29,7 +29,7 @@ Note that the masonry grid layout for images is in search.css
   width: 20rem;
 }
 
-#search-form-label {
+.search-form-label {
   margin-bottom: 0.5rem;
   text-align: center;
 }

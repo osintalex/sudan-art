@@ -15,6 +15,7 @@ import Emoji from "../Emoji/emoji.js";
 import ImagePopover from "../ImagePopover/imagePopover.js";
 import ImageRenderer from "../ImageRenderer/imageRenderer.js";
 import NavBar from "../Navbar/navbar.js";
+import MultiLingualContent from "../MultingualContent/multilingualContent.js";
 
 /**
  * Main search component.
@@ -84,7 +85,9 @@ export default function Search() {
             >
               <Stack spacing={4}>
                 <FormLabel className="search-form-label">
-                  <Heading color="gray.800">Find revolutionary art</Heading>
+                  <Heading color="gray.800" className="search-form-label">
+                    {<MultiLingualContent contentID="search_1" />}
+                  </Heading>
                 </FormLabel>
                 <br />
 

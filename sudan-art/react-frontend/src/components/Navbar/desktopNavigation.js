@@ -4,6 +4,7 @@ import { useNavigate } from "react-router";
 import { handleClick } from "./clickHandler.js";
 import { NAV_ITEMS } from "./navItems.js";
 import { LanguageContext } from "../../multilingualContext/context.js";
+import MultiLingualContent from "../MultingualContent/multilingualContent.js";
 
 /**
  * Component for destkop navigation.
@@ -16,8 +17,8 @@ const DesktopNav = () => {
   const { language, toggleLanguage } = useContext(LanguageContext);
   return (
     <Stack direction={"row"} spacing={4}>
-      {NAV_ITEMS.map((navItem) => (
-        <Box key={navItem}>
+      {NAV_ITEMS.map((contentID) => (
+        <Box key={contentID}>
           <Link
             p={2}
             fontSize={"sm"}
@@ -28,10 +29,10 @@ const DesktopNav = () => {
               color: linkHoverColor,
             }}
             /* eslint-disable no-invalid-this */
-            onClick={handleClick.bind(this, navItem, navigate)}
+            onClick={handleClick.bind(this, contentID, navigate)}
             /* eslint-enable no-invalid-this */
           >
-            {navItem}
+            {<MultiLingualContent contentID={contentID} />}
           </Link>
         </Box>
       ))}
@@ -47,7 +48,7 @@ const DesktopNav = () => {
           }}
           onClick={toggleLanguage}
         >
-          {language}
+          {language == "english" ? "عربي" : "English"}
         </Link>
       </Box>
     </Stack>
