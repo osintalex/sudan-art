@@ -52,12 +52,12 @@ const Contact = () => {
               {<MultiLingualContent contentID="contact_1" />}
               <br />
               <Link
-                href="mailto:info@sudanart.com"
+                href="mailto:sudanart2022@gmail.com"
                 target="_blank"
                 bgGradient="linear(to-r,orange.400, yellow.400)"
                 bgClip="text"
               >
-                info@sudanart.com.
+                sudanart2022@gmail.com
               </Link>
               <br />
               <br />
