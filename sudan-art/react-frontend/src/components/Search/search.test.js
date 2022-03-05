@@ -1,8 +1,8 @@
-import React from "react";
+import { ChakraProvider } from "@chakra-ui/react";
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import React from "react";
 import Search from "./search.js";
-import { ChakraProvider } from "@chakra-ui/react";
 
 describe("Search Component", () => {
   let originalFetch;

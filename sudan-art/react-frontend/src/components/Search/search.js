@@ -1,23 +1,24 @@
-import React, { useState } from "react";
-import NavBar from "../Navbar/navbar.js";
-import Emoji from "../Emoji/emoji.js";
 import {
-  Button,
-  Heading,
   Box,
+  Button,
   Container,
-  Stack,
-  SimpleGrid,
   FormLabel,
+  Heading,
+  SimpleGrid,
+  Stack,
   useDisclosure,
 } from "@chakra-ui/react";
+import React, { useState } from "react";
 import SearchForm from "./searchForm.js";
-import ImagePopover from "../ImagePopover/imagePopover.js";
 import { config } from "../../constants.js";
+import Emoji from "../Emoji/emoji.js";
+import ImagePopover from "../ImagePopover/imagePopover.js";
 import ImageRenderer from "../ImageRenderer/imageRenderer.js";
+import NavBar from "../Navbar/navbar.js";
 
 /**
  * Main search component.
+ * @return {component} main search component.
  */
 export default function Search() {
   const [pics, setPics] = useState([]);
@@ -40,7 +41,7 @@ export default function Search() {
     setSubmit(true);
     setLoading(true);
     let apiQueryParameters = `search=${query.query}&page=${page}`;
-    for (let [key, value] of Object.entries(query)) {
+    for (const [key, value] of Object.entries(query)) {
       if (value && key !== "query") {
         apiQueryParameters += `&${key}=${value}`;
       }

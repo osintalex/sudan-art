@@ -1,12 +1,14 @@
-import { useContext } from "react";
-import { Flex, Stack, useDisclosure, Link } from "@chakra-ui/react";
+import { Flex, Link, Stack, useDisclosure } from "@chakra-ui/react";
+import PropTypes from "prop-types";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router";
-import { NAV_ITEMS } from "./navItems.js";
 import { handleClick } from "./clickHandler.js";
+import { NAV_ITEMS } from "./navItems.js";
 import { LanguageContext } from "../../multilingualContext/context.js";
 
 /**
  * Component for mobile navigation.
+ * @return {component} mobile navigation component.
  */
 const MobileNav = () => {
   /**
@@ -17,7 +19,7 @@ const MobileNav = () => {
 
   const { onToggle } = useDisclosure();
   const { language, toggleLanguage } = useContext(LanguageContext);
-  
+
   const MobileNavItem = ({ label }) => {
     const navigate = useNavigate();
 
@@ -34,7 +36,9 @@ const MobileNav = () => {
           <Link
             fontWeight={200}
             color={"gray.600"}
+            /* eslint-disable no-invalid-this */
             onClick={handleClick.bind(this, label, navigate)}
+            /* eslint-disable no-invalid-this */
           >
             {label}
           </Link>
@@ -57,4 +61,7 @@ const MobileNav = () => {
   );
 };
 
+MobileNav.propTypes = {
+  label: PropTypes.string.isRequired,
+};
 export default MobileNav;

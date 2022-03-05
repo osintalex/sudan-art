@@ -1,12 +1,13 @@
+import PropTypes from "prop-types";
 import React, { useState } from "react";
 import placeholder from "../Navbar/eye_logo.svg";
 
 /**
  * Made this so that images show an eye logo as a placeholder before rendering.
- * @param {React Component Props} props alt, src, className, onClick handler, label
- * @returns an <img> tag with fallback rendering
+ * @param {props} props alt, src, className, onClick handler, label
+ * @return {component} component for rendering images with fallback rendering.
  */
-export default function ImageRenderer(props) {
+function ImageRenderer(props) {
   const [loading, setLoading] = useState(false);
 
   const handleOnLoad = () => {
@@ -37,3 +38,11 @@ export default function ImageRenderer(props) {
     </>
   );
 }
+ImageRenderer.propTypes = {
+  alt: PropTypes.string.isRequired,
+  src: PropTypes.string.isRequired,
+  className: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
+  label: PropTypes.string.isRequired,
+};
+export default ImageRenderer;

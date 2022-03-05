@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """django_backend URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -13,22 +14,21 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
-from django.urls import path, include, re_path
-from sudan_art import views
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib import admin
+from django.urls import path
 
+from sudan_art import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("upload/", views.add_artwork, name="upload"),
     path("api/artwork/", views.ArtworkList.as_view(), name="search"),
-    path('recent/', views.recent_artwork, name="recent")
+    path("recent/", views.recent_artwork, name="recent"),
 ]
 
-# In production media files are served from a CDN, in development they are server (insecurly) from the
-# development Django server which is what this setting allows for. The DEBUG value is handled in the
-# by environment variables
+# In production media files are served from a CDN, in development they are served from
+# the Django dev server which is what this setting allows for.
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

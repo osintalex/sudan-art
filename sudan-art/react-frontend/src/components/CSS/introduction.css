@@ -1,25 +1,21 @@
-
 .introduction-div {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    word-break: normal;
-    margin-top: 1.5rem;
-    margin-right: 2rem;
-    margin-left: 2rem;
-    margin-bottom: 1rem;
-  }
-  
-  .introduction-image {
-    width: 100%;
-    border: 3px solid #d7e3eb;
-    margin-top: 0.3rem;
-    /* Note this borrows form stuff in contact.css*/
-      -webkit-animation: fadein 5s; /* Safari, Chrome and Opera > 12.1 */
-      -moz-animation: fadein 5s; /* Firefox < 16 */
-      -ms-animation: fadein 5s; /* Internet Explorer */
-      -o-animation: fadein 5s; /* Opera < 12.1 */
-      animation: fadein 5s;
-  }
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 1.5rem 2rem 2rem 1rem;
+  text-align: center;
+  word-break: normal;
+}
+
+/* Note this borrows form stuff in contact.css*/
+.introduction-image {
+  -moz-animation: fadein 5s;
+  -ms-animation: fadein 5s;
+  -o-animation: fadein 5s;
+  -webkit-animation: fadein 5s;
+  animation: fadein 5s;
+  border: 3px solid #d7e3eb;
+  margin-top: 0.3rem;
+  width: 100%;
+}

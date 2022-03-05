@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Django settings for django_backend project.
 
@@ -10,8 +11,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
-from pathlib import Path
 import os
+from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -148,15 +149,20 @@ CACHES = {
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-LOGGING = {'version': 1,
-           'disable_existing_loggers': False,
-           'formatters': {'console': {
-               'format': '%(asctime)s %(levelname)s [%(name)s:%(lineno)s] %(module)s %(process)d %(thread)d %(message)s'}},
-           'handlers': {'console': {'class': 'logging.StreamHandler',
-                                    'formatter': 'console'}},
-           'loggers': {'': {'level': 'INFO', 'handlers': ['console']}}}
+STATIC_URL = "/static/"
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {
+        "console": {
+            "format": "%(asctime)s %(levelname)s [%(name)s:%(lineno)s] %(module)s %(process)d %("
+            "thread)d %(message)s "
+        }
+    },
+    "handlers": {"console": {"class": "logging.StreamHandler", "formatter": "console"}},
+    "loggers": {"": {"level": "INFO", "handlers": ["console"]}},
+}
 
 DATA_UPLOAD_MAX_MEMORY_SIZE = 11000000
 

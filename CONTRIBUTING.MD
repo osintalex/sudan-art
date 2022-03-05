@@ -1,30 +1,29 @@
 # Overview
 
-Contributions of all kinds are very welcome! Please bear in mind this is the first open source 
+Contributions of all kinds are very welcome! Please bear in mind this is the first open source
 project I've ever run, so I may get a few things wrong but am very open to helpful pointers :sparkling_heart:
 Here are some areas I'm currently looking at:
 
-* End user experience - most users will use phones and speak Arabic
-* Code readability and documentation
-* Test coverage - currently very poor
-* Set up accessibility with Docker
-* Arabic version of site - crucial
-* Security - also crucial given the political nature of the site
+- End user experience - most users will use phones and speak Arabic
+- Code readability and documentation
+- Test coverage - currently very poor
+- Set up accessibility with Docker
+- Arabic version of site - crucial
+- Security - also crucial given the political nature of the site
 
 ## Table of contents
 
-* [Background](#background)
-* [Getting Started](#getting-started)
-* [To Dos](#to-dos)
+- [Background](#background)
+- [Getting Started](#getting-started)
+- [To Dos](#to-dos)
 
 ## Background
 
 This site is a full stack web application that uses:
 
-* React for the frontend
-* Django for the backend
-* Docker to tie things together
-
+- React for the frontend
+- Django for the backend
+- Docker to tie things together
 
 ## Getting Started
 
@@ -38,9 +37,8 @@ Please also make sure to run the test suites before starting work and submitting
 
 Here is a long list of stuff to do - help welcome! :dizzy_face:
 
-* Improve unit test coverage with a focus on security for backend
-* Add intelligent default parameters to social buttons in imagePopover.js
-* CI setup
-* Add some precommit hooks
-* Change backend upload validation errors to codes so these can be handled in different languages in the frontend
-* Add some helpful logs
+- Improve unit test coverage with a focus on security for backend
+- Add intelligent default parameters to social buttons in imagePopover.js
+- CI setup
+- Change backend upload validation errors to codes so these can be handled in different languages in the frontend
+- Add some helpful logs to backend

@@ -1,5 +1,6 @@
-import MultiLingualContent from "./multilingualContent";
 import { render, screen } from "@testing-library/react";
+import React from "react";
+import MultiLingualContent from "./multilingualContent";
 import { LanguageContext } from "../../multilingualContext/context.js";
 
 describe("Multilingual componentt", () => {

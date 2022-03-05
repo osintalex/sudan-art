@@ -1,7 +1,7 @@
-import React from "react";
-import { render, screen, waitFor } from "@testing-library/react";
-import Browse from "./browse";
 import { ChakraProvider } from "@chakra-ui/react";
+import { render, screen, waitFor } from "@testing-library/react";
+import React from "react";
+import Browse from "./browse";
 
 describe("Browse Component", () => {
   let originalFetch;

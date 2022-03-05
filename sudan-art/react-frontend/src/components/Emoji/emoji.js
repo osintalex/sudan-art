@@ -1,11 +1,12 @@
+import PropTypes from "prop-types";
 import React from "react";
 
 /**
  * Emoji component. Read in a few places that it's better to put it in a span tag for accessibility
- * @param {React Component Props} props label, font size for emoji size, id for styling and symbol for the emoji
- * @returns a span tag containing an emoji.
+ * @param {props} props label, font size for emoji size, id for styling and symbol for the emoji
+ * @return {component} a span tag containing an emoji.
  */
-export default function Emoji(props) {
+function Emoji(props) {
   return (
     <>
       <span
@@ -20,3 +21,10 @@ export default function Emoji(props) {
     </>
   );
 }
+Emoji.propTypes = {
+  label: PropTypes.string,
+  fontSize: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  symbol: PropTypes.string.isRequired,
+};
+export default Emoji;

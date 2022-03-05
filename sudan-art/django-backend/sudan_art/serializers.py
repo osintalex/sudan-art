@@ -1,10 +1,19 @@
-from rest_framework import serializers, fields
+# -*- coding: utf-8 -*-
+
+"""
+Artwork class serializer. This also handles a lot of data validaiton.
+"""
+
+from rest_framework import serializers
+
 from .models import Artwork
 
 
-# Note that this serializer does a lot of security work; it handles a lot of validation in views.py
-# The validation for the serializer is all inherited from the validation on Art in models.py
 class ArtworkSerializer(serializers.ModelSerializer):
+    """Artwork model serializer."""
+
     class Meta:
+        """Metadata for the parent class."""
+
         model = Artwork
         fields = ("artist", "tags", "thumbnail", "high_res_image", "date_uploaded")

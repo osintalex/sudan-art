@@ -1,6 +1,7 @@
-import Navbar from "./navbar.js";
 import { ChakraProvider } from "@chakra-ui/react";
 import { render, screen } from "@testing-library/react";
+import React from "react";
+import Navbar from "./navbar.js";
 import { LanguageContext } from "../../multilingualContext/context.js";
 
 test("renders Navbar component", () => {

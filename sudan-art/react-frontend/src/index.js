@@ -1,17 +1,17 @@
-import * as React from "react";
 import { ChakraProvider } from "@chakra-ui/react";
-import theme from "./components/Theme/theme.js";
+import * as React from "react";
 import ReactDOM from "react-dom";
 import App from "./components/App/App.js";
-import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
+import theme from "./components/Theme/theme.js";
 import reportWebVitals from "./reportWebVitals";
+import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import "@fontsource/varta/400.css";
 
 ReactDOM.render(
   <React.StrictMode>
-      <ChakraProvider theme={theme}>
-        <App />
-      </ChakraProvider>
+    <ChakraProvider theme={theme}>
+      <App />
+    </ChakraProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

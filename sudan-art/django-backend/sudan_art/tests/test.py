@@ -1,35 +1,35 @@
-from django.test import TestCase
-from rest_framework.test import APIClient
-from sudan_art.models import Artwork
-from django.core.files.uploadedfile import SimpleUploadedFile
+# -*- coding: utf-8 -*-
+import os
+import shutil
+from datetime import datetime
+from uuid import uuid4
+
 from django.conf import settings
+from django.core.files.uploadedfile import SimpleUploadedFile
+from django.test import TestCase
 from django.urls import reverse
 from rest_framework import status
-from uuid import uuid4
-from datetime import datetime
-import shutil
-import os
-
+from rest_framework.test import APIClient
+from sudan_art.models import Artwork
 
 # Create your tests here.
 
 
 class ArtworkModelTest(TestCase):
-
     def setUp(self):
         # TODO: Change all of these to arabic as that better reflects user behaviour
         uploaded_image = SimpleUploadedFile(
-                name="test_image.jpg",
-                content=open(
-                    os.path.join(os.getcwd(), "sudan_art/tests/test_image.jpg"), "rb"
-                ).read(),
-                content_type="image/jpeg",
-            )
+            name="test_image.jpg",
+            content=open(
+                os.path.join(os.getcwd(), "sudan_art/tests/test_image.jpg"), "rb"
+            ).read(),
+            content_type="image/jpeg",
+        )
         Artwork.objects.create(
             artist="hussein",
             tags="sudan,protest,art",
             high_res_image=uploaded_image,
-            thumbnail=uploaded_image
+            thumbnail=uploaded_image,
         )
 
     def test_artwork_tags(self):
@@ -70,7 +70,7 @@ class SudanArtViewsTest(TestCase):
             artist="hussein",
             tags="sudan,protest,art",
             high_res_image=uploaded_image,
-            thumbnail=uploaded_image
+            thumbnail=uploaded_image,
         )
 
     def test_get_recent_artwork(self):

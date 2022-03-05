@@ -1,13 +1,14 @@
-import React, { useState, useEffect, useCallback } from "react";
-import NavBar from "../Navbar/navbar.js";
-import Emoji from "../Emoji/emoji.js";
-import { Button, Heading, Box, useDisclosure } from "@chakra-ui/react";
+import { Box, Button, Heading, useDisclosure } from "@chakra-ui/react";
+import React, { useCallback, useEffect, useState } from "react";
 import { config } from "../../constants.js";
-import ImageRenderer from "../ImageRenderer/imageRenderer.js";
+import Emoji from "../Emoji/emoji.js";
 import ImagePopover from "../ImagePopover/imagePopover.js";
+import ImageRenderer from "../ImageRenderer/imageRenderer.js";
+import NavBar from "../Navbar/navbar.js";
 
 /**
  * Browse component.
+ * @return {component} the browse component.
  */
 export default function Browse() {
   const [pics, setPics] = useState([]);

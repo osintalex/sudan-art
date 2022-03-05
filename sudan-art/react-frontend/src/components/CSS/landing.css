@@ -24,7 +24,21 @@
 }
 
 #landing-button {
-  background: radial-gradient(circle at 50% 50%, #b52626, #bc2828, #c22b2b, #c82d2d, #cf3030, #d03838, #d14040, #d24848, #d35050, #d45757, #d55f5f, #d66767);
+  background: radial-gradient(
+    circle at 50% 50%,
+    #b52626,
+    #bc2828,
+    #c22b2b,
+    #c82d2d,
+    #cf3030,
+    #d03838,
+    #d14040,
+    #d24848,
+    #d35050,
+    #d45757,
+    #d55f5f,
+    #d66767
+  );
   color: #d7e3eb;
 }
 
@@ -32,18 +46,17 @@
   animation-name: spin;
   animation-duration: 2000ms;
   animation-iteration-count: infinite;
-  animation-timing-function: linear; 
-  position: fixed;
+  animation-timing-function: linear;
   bottom: 50%;
+  position: fixed;
   left: 50%;
-
 }
 
 @keyframes spin {
   from {
-      transform:rotate(0deg);
+    transform: rotate(0deg);
   }
   to {
-      transform:rotate(360deg);
+    transform: rotate(360deg);
   }
 }

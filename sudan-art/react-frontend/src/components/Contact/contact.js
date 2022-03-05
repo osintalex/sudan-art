@@ -1,19 +1,20 @@
-import React from "react";
 import {
-  Heading,
   Box,
-  Link,
   Container,
-  Stack,
   Flex,
+  Heading,
   Image,
+  Link,
+  Stack,
 } from "@chakra-ui/react";
-import NavBar from "../Navbar/navbar.js";
+import React from "react";
 import protestImage from "./protest.png";
+import NavBar from "../Navbar/navbar.js";
 
 // Based off https://chakra-templates.dev/page-sections/hero CTA with Illustration
 /**
  * Main contact component
+ * @return {component} Contact component.
  */
 const Contact = () => {
   return (
@@ -58,8 +59,9 @@ const Contact = () => {
               </Link>
               <br />
               <br />
-              If you're a developer, the code for this project is open source!
-              Please check out our github repository and consider contributing{" "}
+              If you&apos;re a developer, the code for this project is open
+              source! Please check out our github repository and consider
+              contributing{" "}
               <Link
                 href="https://www.github.com"
                 target="_blank"

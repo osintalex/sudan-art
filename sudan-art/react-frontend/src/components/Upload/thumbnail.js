@@ -1,12 +1,13 @@
+import PropTypes from "prop-types";
 import React from "react";
 
 /**
  * Simple thumbnail component to show a preview of the image when uploaded successfully.
- * @param {React Component Props} props file, handed down from parent upload component which manages state
+ * @param {props} props file, handed down from parent upload component which manages state
  * of uploaded file
- * @returns JSX for Thumbnail image; only renders if the file is uploaded
+ * @return {component} image thumbnail component.
  */
-export default function Thumbnail(props) {
+function Thumbnail(props) {
   if (props.file) {
     return (
       <div className="tag-container">
@@ -31,3 +32,8 @@ export default function Thumbnail(props) {
     return null;
   }
 }
+
+Thumbnail.propTypes = {
+  file: PropTypes.object.isRequired,
+};
+export default Thumbnail;

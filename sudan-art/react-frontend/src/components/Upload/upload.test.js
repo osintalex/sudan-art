@@ -1,8 +1,8 @@
-import React from "react";
+import { ChakraProvider } from "@chakra-ui/react";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import React from "react";
 import Upload from "./upload.js";
-import { ChakraProvider } from "@chakra-ui/react";
 
 describe("Upload Component", () => {
   window.URL.createObjectURL = jest.fn(() => {});
@@ -49,7 +49,7 @@ describe("Upload Component", () => {
     const file = new File(["(⌐□_□)"], "al-mahdi.png", { type: "image/png" });
     const imageInput = screen.getByLabelText("image-upload");
     fireEvent.change(imageInput, { target: { files: [file] } });
-    await waitFor(() => screen.getByLabelText("image-preview"));
+    await screen.findByLabelText("image-preview");
 
     // Tags
     const taggerInput = screen.getByLabelText("image-tagger");

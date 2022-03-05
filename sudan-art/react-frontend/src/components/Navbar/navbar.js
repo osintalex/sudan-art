@@ -1,23 +1,25 @@
+import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
 import {
   Box,
+  Button,
+  Collapse,
   Flex,
   IconButton,
-  Button,
-  Stack,
-  Collapse,
-  useDisclosure,
   Image,
+  Stack,
+  useDisclosure,
 } from "@chakra-ui/react";
-import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
+import React from "react";
 import { useNavigate } from "react-router";
 import { handleClick } from "./clickHandler.js";
-import logo from "./eye_logo.svg";
 import DesktopNav from "./desktopNavigation.js";
+import logo from "./eye_logo.svg";
 import MobileNav from "./mobileNavigation.js";
 
 // Based off the with sub navigation one here https://chakra-templates.dev/navigation/navbar
 /**
  * Main navigation component with destkop and mobile versions.
+ * @return {component} navbar component.
  */
 export default function NavBar() {
   const { isOpen, onToggle } = useDisclosure();

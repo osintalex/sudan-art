@@ -1,21 +1,22 @@
-import React from "react";
 import {
+  Button,
   FormControl,
+  FormErrorMessage,
   FormLabel,
   Input,
-  Button,
-  FormErrorMessage,
   Text,
 } from "@chakra-ui/react";
-import { Formik, Form, Field } from "formik";
+import { Field, Form, Formik } from "formik";
+import PropTypes from "prop-types";
+import React from "react";
 
 /**
  * React search form component.
- * @param {React Component Props} props setPics passed down from search.js and handlesubmit also passed down from
+ * @param {props} props setPics passed down from search.js and handlesubmit also passed down from
  * search.js parent component
- * @returns JSX for the search form!
+ * @return {component} search form component.
  */
-export default function SearchForm(props) {
+function SearchForm(props) {
   return (
     <Formik
       initialValues={{
@@ -170,3 +171,9 @@ export default function SearchForm(props) {
     </Formik>
   );
 }
+
+SearchForm.propTypes = {
+  setPics: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+};
+export default SearchForm;

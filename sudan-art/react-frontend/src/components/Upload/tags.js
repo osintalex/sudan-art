@@ -1,16 +1,17 @@
+import { Input, Tag, TagCloseButton, TagLabel } from "@chakra-ui/react";
+import PropTypes from "prop-types";
 import React from "react";
-import { Tag, TagLabel, TagCloseButton, Input } from "@chakra-ui/react";
 import { makeRepeated } from "../../utils/utils";
 
 // I reworked this
-//https://dev.to/prvnbist/create-a-tags-input-component-in-reactjs-ki
+// https://dev.to/prvnbist/create-a-tags-input-component-in-reactjs-ki
 /**
  * Tagger component
- * @param {React Component Props} props passed down from upload.js; setTags and selectedTags which are used
+ * @param {props} props passed down from upload.js; setTags and selectedTags which are used
  * to manage the state of which tags the user has chosen in the parent component.
- * @returns JSX for the Tagger component.
+ * @return {component} Tagger component.
  */
-export default function Tagger(props) {
+function Tagger(props) {
   const tagGradients = makeRepeated(
     [
       "linear(to-r, orange.400, yellow.400)",
@@ -79,3 +80,9 @@ export default function Tagger(props) {
     </>
   );
 }
+
+Tagger.propTypes = {
+  selectedTags: PropTypes.array.isRequired,
+  setTags: PropTypes.func.isRequired,
+};
+export default Tagger;

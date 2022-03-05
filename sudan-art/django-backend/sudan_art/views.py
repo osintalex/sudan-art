@@ -1,15 +1,24 @@
-from .serializers import ArtworkSerializer
-from .models import Artwork
+# -*- coding: utf-8 -*-
+"""
+Application views.
+"""
+from rest_framework import fields, filters, generics, serializers, status
 from rest_framework.decorators import api_view, parser_classes
-from rest_framework.response import Response
-from rest_framework.parsers import MultiPartParser, FormParser
-from rest_framework import status, viewsets, generics, filters, serializers, fields
 from rest_framework.pagination import PageNumberPagination
+from rest_framework.parsers import FormParser, MultiPartParser
+from rest_framework.response import Response
+
+from .models import Artwork
+from .serializers import ArtworkSerializer
 
 # Create your views here.
+# pylint: disable=W0223
+# pylint: disable=E1101
 
 
 class ValidateQueryParams(serializers.Serializer):
+    """Serializer to validate query parameters sent to the search API endpoint."""
+
     search = fields.RegexField(
         "^[\u0621-\u064A\u0660-\u0669 a-zA-Z0-9]{3,30}$",
     )
@@ -21,6 +30,8 @@ class ValidateQueryParams(serializers.Serializer):
 
 
 class ArtworkList(generics.ListAPIView):
+    """View for searching artworks."""
+
     search_fields = ["artist", "tags", "date_uploaded"]
     filter_backends = (filters.SearchFilter, filters.OrderingFilter)
     serializer_class = ArtworkSerializer
@@ -53,18 +64,22 @@ def add_artwork(request):
     :param request: user request instance.
     :return: Rest Framework Response, 201 if uploaded OK and 400 with error messages.
     """
-    request.data['thumbnail'] = request.data['image']
-    request.data['high_res_image'] = request.data['image']
+    request.data["thumbnail"] = request.data["image"]
+    request.data["high_res_image"] = request.data["image"]
     artwork_serialized = ArtworkSerializer(data=request.data)
     if artwork_serialized.is_valid():
         artwork_serialized.save()
         return Response(artwork_serialized.data, status=status.HTTP_201_CREATED)
-    else:
-        return Response(artwork_serialized.errors, status=status.HTTP_400_BAD_REQUEST)
+    return Response(artwork_serialized.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-@api_view(['GET'])
+@api_view(["GET"])
 def recent_artwork(request):
+    """
+    Get recent artworks view
+    :param request: user request instance
+    :return: Paginated API response.
+    """
     paginator = PageNumberPagination()
     paginator.page_size = 10
     artworks = Artwork.objects.order_by("-date_uploaded").all()

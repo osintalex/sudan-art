@@ -19,6 +19,7 @@
   max-width: 20rem;
   flex-wrap: wrap;
 }
+
 .fake-upload-button {
   border-radius: 5px;
   display: flex;
@@ -28,7 +29,22 @@
   background-attachment: scroll;
   background-clip: border-box;
   background-color: rgba(0, 0, 0, 0);
-  background-image: radial-gradient(circle at 50% 50%, #b52626, #bc2828, #c22b2b, #c82d2d, #cf3030, #d03838, #d14040, #d24848, #d35050, #d45757, #d55f5f, #d66767);  background-origin: padding-box;
+  background-image: radial-gradient(
+    circle at 50% 50%,
+    #b52626,
+    #bc2828,
+    #c22b2b,
+    #c82d2d,
+    #cf3030,
+    #d03838,
+    #d14040,
+    #d24848,
+    #d35050,
+    #d45757,
+    #d55f5f,
+    #d66767
+  );
+  background-origin: padding-box;
   background-position: 0% 0%;
   background-position-x: 0%;
   background-position-y: 0%;
@@ -107,7 +123,22 @@ input[type="file"] {
 }
 
 #upload-submit-button {
-  background: radial-gradient(circle at 50% 50%, #b52626, #bc2828, #c22b2b, #c82d2d, #cf3030, #d03838, #d14040, #d24848, #d35050, #d45757, #d55f5f, #d66767);  color: #d7e3eb;
+  background: radial-gradient(
+    circle at 50% 50%,
+    #b52626,
+    #bc2828,
+    #c22b2b,
+    #c82d2d,
+    #cf3030,
+    #d03838,
+    #d14040,
+    #d24848,
+    #d35050,
+    #d45757,
+    #d55f5f,
+    #d66767
+  );
+  color: #d7e3eb;
   margin-top: 1rem;
 }
 
@@ -128,6 +159,6 @@ input[type="file"] {
   animation-name: spin;
   animation-duration: 2000ms;
   animation-iteration-count: infinite;
-  animation-timing-function: linear; 
+  animation-timing-function: linear;
   margin-top: 1rem;
 }

@@ -1,6 +1,6 @@
 # Reference https://docs.docker.com/compose/compose-file/compose-file-v3/
 
-version: '3.9'
+version: "3.9"
 
 services:
   django:

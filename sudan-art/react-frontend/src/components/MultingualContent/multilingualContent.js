@@ -4,8 +4,8 @@ import { translations } from "../../multilingualContext/translations.js";
 
 /**
  * Utility function to generate text dependant on the language
- * @param {React Component props} props destructured just for the contentID
- * @returns
+ * @param {props} props destructured just for the contentID
+ * @return {component} multilingual content component
  */
 export default function MultiLingualContent({ contentID }) {
   const { language } = useContext(LanguageContext);

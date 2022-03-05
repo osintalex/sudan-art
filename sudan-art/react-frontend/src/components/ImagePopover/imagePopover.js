@@ -1,36 +1,39 @@
-import React from "react";
 import {
+  Button,
+  Center,
+  Image,
   Modal,
-  ModalOverlay,
+  ModalBody,
+  ModalCloseButton,
   ModalContent,
   ModalFooter,
   ModalHeader,
-  ModalBody,
-  ModalCloseButton,
-  Button,
-  Image,
-  Text,
+  ModalOverlay,
   Tag,
   TagLabel,
-  Center,
+  Text,
 } from "@chakra-ui/react";
-import { makeRepeated } from "../../utils/utils";
+import PropTypes from "prop-types";
+import React from "react";
 import {
-  FacebookShareButton,
   FacebookIcon,
-  TwitterShareButton,
+  FacebookShareButton,
   TwitterIcon,
-  WhatsappShareButton,
+  TwitterShareButton,
   WhatsappIcon,
+  WhatsappShareButton,
 } from "react-share";
+import { makeRepeated } from "../../utils/utils";
+import { config } from "../../constants.js";
+
 /**
  * Popover for users to click on images once the search results have returned - this way they can see artist
  * and upload date
- * @param {React Component Props} props popoverImageDetails is an object containing the image details,
- * isOpen, onClose, onOpen are all passed down from the Chakra Modal component see - search.js
- * @returns a modal popover in JSX
+ * @param {props} props contains the image details. In addition,  isOpen, onClose, onOpen
+ * are all passed down from the Chakra Modal component see - search.js
+ * @return {component} a modal popover component
  */
-export default function ImagePopover(props) {
+function ImagePopover(props) {
   const tagGradients = makeRepeated(
     [
       "linear(to-r, orange.400, yellow.400)",
@@ -39,8 +42,13 @@ export default function ImagePopover(props) {
     ],
     3
   );
-  const { imageSrc, imageDescription, imageArtist, imageDate, imageHighRes } =
+  const { imageDescription, imageArtist, imageDate, imageHighRes } =
     props.popoverImageDetails;
+
+  const imageSrc =
+    process.env.NODE_ENV === "development"
+      ? `${config.url}${props.popoverImageDetails.imageSrc}`
+      : props.popoverImageDetails.imageSrc;
 
   return (
     <>
@@ -82,7 +90,7 @@ export default function ImagePopover(props) {
               {"Images are shared on this website for the sole purpose of supporting the Sudanese revolutionary" +
                 " movement. Do not share or otherwise reproduce for profit."}
             </Text>
-            <Center style={{ transform: "scale(0.6)" }} >
+            <Center style={{ transform: "scale(0.6)" }}>
               <FacebookShareButton
                 url={imageSrc}
                 quote={
@@ -90,7 +98,7 @@ export default function ImagePopover(props) {
                 }
                 hashtag={"#sudancoup"}
               >
-                <FacebookIcon/>
+                <FacebookIcon />
               </FacebookShareButton>
               <TwitterShareButton
                 url={imageSrc}
@@ -120,3 +128,10 @@ export default function ImagePopover(props) {
     </>
   );
 }
+ImagePopover.propTypes = {
+  popoverImageDetails: PropTypes.object.isRequired,
+  isOpen: PropTypes.bool.isRequired,
+  onOpen: PropTypes.bool.isRequired,
+  onClose: PropTypes.bool.isRequired,
+};
+export default ImagePopover;

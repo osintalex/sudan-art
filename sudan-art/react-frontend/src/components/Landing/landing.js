@@ -1,10 +1,11 @@
-import React, { useState, useRef, useEffect } from "react";
-import { Button, Center, Box } from "@chakra-ui/react";
+import { Box, Button, Center } from "@chakra-ui/react";
+import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router";
-import Emoji from "../Emoji/emoji.js";
 import { IMAGES } from "./landingImages.js";
+import Emoji from "../Emoji/emoji.js";
 /**
  * Main landing page component.
+ * @return {component} landing page component.
  */
 export default function LandingPage() {
   const navigate = useNavigate();

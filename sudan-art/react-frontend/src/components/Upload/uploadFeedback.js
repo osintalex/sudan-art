@@ -1,25 +1,26 @@
-import React from "react";
 import {
+  Button,
   Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
   ModalBody,
   ModalCloseButton,
-  Button,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
   Text,
 } from "@chakra-ui/react";
+import PropTypes from "prop-types";
+import React from "react";
 import Emoji from "../Emoji/emoji.js";
 
 /**
  * React component for feedback after image upload
- * @param {React Component Props} props isOpen, onOpen, onClose are all passed down from upload.js and are part
+ * @param {props} props isOpen, onOpen, onClose are all passed down from upload.js and are part
  * of the Chakra modal component; the state is handled in upload.js. Similarly, errors and success also have
  * their state handled in upload.js and are passed down here.
- * @returns 
+ * @return {component} upload feedback component.
  */
-export default function UploadFeedback(props) {
+function UploadFeedback(props) {
   return (
     <Modal
       isOpen={props.isOpen}
@@ -46,8 +47,8 @@ export default function UploadFeedback(props) {
         {props.success && (
           <ModalBody>
             <Text fontSize="md" color="gray.800">
-              We've received your submission! Thank your for adding your work to
-              the site.
+              We&pos;ve received your submission! Thank your for adding your
+              work to the site.
               {["🥳", "🥳", "🥳"].map((x, index) => (
                 <Emoji
                   symbol={x}
@@ -74,3 +75,11 @@ export default function UploadFeedback(props) {
     </Modal>
   );
 }
+
+UploadFeedback.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  onClose: PropTypes.bool.isRequired,
+  errors: PropTypes.string.isRequired,
+  success: PropTypes.bool.isRequired,
+};
+export default UploadFeedback;

@@ -1,20 +1,21 @@
-import React from "react";
 import {
-  Heading,
   Box,
-  Link,
   Container,
-  Stack,
   Flex,
+  Heading,
   Image,
+  Link,
+  Stack,
 } from "@chakra-ui/react";
-import NavBar from "../Navbar/navbar.js";
-import exampleImage from "./example.jpeg";
+import React from "react";
 import { Link as ReactRouterLink } from "react-router-dom";
+import exampleImage from "./example.jpeg";
+import NavBar from "../Navbar/navbar.js";
 
 // Based off https://chakra-templates.dev/page-sections/hero CTA with Illustration
 /**
  * Introduction component
+ * @return {component} introduction component
  */
 const Introduction = () => {
   return (

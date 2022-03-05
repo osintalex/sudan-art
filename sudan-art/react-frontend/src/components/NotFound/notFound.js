@@ -1,20 +1,21 @@
-import React from "react";
-import NavBar from "../Navbar/navbar.js";
-import Emoji from "../Emoji/emoji.js";
 import {
   Box,
-  Heading,
   Container,
-  Stack,
   Flex,
+  Heading,
   Image,
   Link,
+  Stack,
 } from "@chakra-ui/react";
-import notFoundImage from "./404.png";
+import React from "react";
 import { Link as ReactRouterLink } from "react-router-dom";
+import notFoundImage from "./404.png";
+import Emoji from "../Emoji/emoji.js";
+import NavBar from "../Navbar/navbar.js";
 
 /**
  * Not found component; routing for this handled in App.js
+ * @return {component} not found component.
  */
 export default function NotFound() {
   return (
@@ -51,7 +52,7 @@ export default function NotFound() {
               Oh no! There is nothing here.
               <br />
               <br />
-              It seems this page is as empty as Burhan's heart.{" "}
+              It seems this page is as empty as Burhan&apos;s heart.{" "}
               <Emoji symbol="😭" fontSize="23px" />
               <Emoji symbol="😭" fontSize="23px" />
               <Emoji symbol="😭" fontSize="23px" />

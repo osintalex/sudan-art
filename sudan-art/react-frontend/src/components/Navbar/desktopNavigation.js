@@ -1,12 +1,13 @@
-import { useContext } from "react";
-import { Box, Stack, Link } from "@chakra-ui/react";
+import { Box, Link, Stack } from "@chakra-ui/react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router";
-import { NAV_ITEMS } from "./navItems.js";
 import { handleClick } from "./clickHandler.js";
+import { NAV_ITEMS } from "./navItems.js";
 import { LanguageContext } from "../../multilingualContext/context.js";
 
 /**
  * Component for destkop navigation.
+ * @return {component} Desktop navigation component.
  */
 const DesktopNav = () => {
   const linkColor = "gray.200";
@@ -26,7 +27,9 @@ const DesktopNav = () => {
               textDecoration: "none",
               color: linkHoverColor,
             }}
+            /* eslint-disable no-invalid-this */
             onClick={handleClick.bind(this, navItem, navigate)}
+            /* eslint-enable no-invalid-this */
           >
             {navItem}
           </Link>

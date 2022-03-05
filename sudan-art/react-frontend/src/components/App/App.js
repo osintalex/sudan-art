@@ -7,23 +7,24 @@ import "../CSS/media.css";
 import "../CSS/search.css";
 import "../CSS/upload.css";
 import "../CSS/nav.css";
-import { useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import LandingPage from "../Landing/landing.js";
-import Introduction from "../Intro/intro.js";
-import Contact from "../Contact/contact.js";
-import Upload from "../Upload/upload.js";
-import Search from "../Search/search.js";
-import NotFound from "../NotFound/notFound.js";
-import Browse from "../Browse/browse.js";
+import React, { useState } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { LanguageContext } from "../../multilingualContext/context";
+import Browse from "../Browse/browse.js";
+import Contact from "../Contact/contact.js";
+import Introduction from "../Intro/intro.js";
+import LandingPage from "../Landing/landing.js";
+import NotFound from "../NotFound/notFound.js";
+import Search from "../Search/search.js";
+import Upload from "../Upload/upload.js";
 
 /**
  * Main app component along with client side routing from React Router DOM.
+ * @return {component} the application.
  */
 function App() {
   const [language, setLanguage] = useState("english");
-  
+
   /**
    * Switch to change the language from Arabic to English. It's in App.js since that way I can pass state down
    * to the whole app using the language context provider.

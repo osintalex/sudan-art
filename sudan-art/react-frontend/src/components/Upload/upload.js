@@ -1,21 +1,21 @@
-import React, { useState } from "react";
-import NavBar from "../Navbar/navbar.js";
 import {
+  Box,
+  Button,
+  Container,
   FormControl,
   FormLabel,
   Input,
-  Button,
+  SimpleGrid,
+  Stack,
   Text,
   useDisclosure,
-  SimpleGrid,
-  Box,
-  Container,
-  Stack,
 } from "@chakra-ui/react";
-import Thumbnail from "./thumbnail.js";
+import React, { useState } from "react";
 import Tagger from "./tags.js";
+import Thumbnail from "./thumbnail.js";
 import UploadFeedback from "./uploadFeedback.js";
 import { config } from "../../constants.js";
+import NavBar from "../Navbar/navbar.js";
 
 /**
  * Main upload component. There are a few fiddly things going on here:
@@ -27,7 +27,7 @@ import { config } from "../../constants.js";
  * to submission.
  * 3. I used a label to sit on top of a file upload input button. This is because the latter is impossible to
  * style, so I've just hidden it with CSS.
- * @returns
+ * @return {component} Upload component
  */
 export default function Upload() {
   const [fileValue, setFileValue] = useState("");
@@ -38,10 +38,14 @@ export default function Upload() {
   const [submitted, setSubmitted] = useState(false);
   const { isOpen, onOpen, onClose } = useDisclosure();
 
+  /**
+   * Handle submit function
+   * @param {object} event from the form entry.
+   */
   function handleSubmit(event) {
     setSubmitted(true);
     event.preventDefault();
-    let data = new FormData();
+    const data = new FormData();
     if (fileValue && artist && selectedTags.length > 0) {
       data.append("image", fileValue, fileValue.name);
       data.append("artist", artist);
@@ -63,8 +67,8 @@ export default function Upload() {
         .then((apiResponse) => {
           if (apiResponse) {
             let apiErrorMessages = "";
-            for (let [key, value] of Object.entries(apiResponse)) {
-              let uppercaseKey = key.replace(/^\w/, (x) => x.toUpperCase());
+            for (const [key, value] of Object.entries(apiResponse)) {
+              const uppercaseKey = key.replace(/^\w/, (x) => x.toUpperCase());
               apiErrorMessages += `${uppercaseKey} field error: ${value} `;
             }
             // TODO add Arabic version? Turn error message into English and Arabic, split on a weird character
@@ -184,7 +188,7 @@ export default function Upload() {
                         color="gray.800"
                         as="i"
                       >
-                        Write 'anonymous' if you want to be careful
+                        Write &apos;anonymous&apos; if you want to be careful
                       </Text>
                     </FormLabel>
                     <Input
