@@ -3,8 +3,14 @@ import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import React from "react";
 import Upload from "./upload.js";
+import { LanguageContext } from "../../multilingualContext/context.js";
 
 describe("Upload Component", () => {
+  const wrapper = ({ children }) => (
+    <LanguageContext.Provider value={{ language: "english" }}>
+      {children}
+    </LanguageContext.Provider>
+  );
   window.URL.createObjectURL = jest.fn(() => {});
   let originalFetch;
   beforeEach(() => {
@@ -19,7 +25,8 @@ describe("Upload Component", () => {
     render(
       <ChakraProvider>
         <Upload />
-      </ChakraProvider>
+      </ChakraProvider>,
+      { wrapper }
     );
     const artistNameInput = screen.getByLabelText("artist-name-input");
     await userEvent.type(artistNameInput, "anonymous", { delay: 1 });
@@ -29,7 +36,8 @@ describe("Upload Component", () => {
     render(
       <ChakraProvider>
         <Upload />
-      </ChakraProvider>
+      </ChakraProvider>,
+      { wrapper }
     );
     const artistNameInput = screen.getByLabelText("artist-name-input");
     await userEvent.type(artistNameInput, "anonymous", { delay: 1 });
@@ -42,9 +50,10 @@ describe("Upload Component", () => {
     render(
       <ChakraProvider>
         <Upload />
-      </ChakraProvider>
+      </ChakraProvider>,
+      { wrapper }
     );
-    // TODO: Wrap this stuff in act(() and poss other stuff
+
     // File upload
     const file = new File(["(⌐□_□)"], "al-mahdi.png", { type: "image/png" });
     const imageInput = screen.getByLabelText("image-upload");
@@ -67,9 +76,7 @@ describe("Upload Component", () => {
 
     // Test the result
     await waitFor(() => {
-      expect(
-        screen.getAllByText(/we've received your submission/i)
-      ).toHaveLength(1);
+      expect(screen.getAllByText(/received your submission/i)).toHaveLength(1);
     });
   });
 });

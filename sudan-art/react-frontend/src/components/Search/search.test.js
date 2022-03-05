@@ -3,8 +3,14 @@ import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import React from "react";
 import Search from "./search.js";
+import { LanguageContext } from "../../multilingualContext/context.js";
 
 describe("Search Component", () => {
+  const wrapper = ({ children }) => (
+    <LanguageContext.Provider value={{ language: "english" }}>
+      {children}
+    </LanguageContext.Provider>
+  );
   let originalFetch;
 
   beforeEach(() => {
@@ -36,7 +42,8 @@ describe("Search Component", () => {
     render(
       <ChakraProvider>
         <Search />
-      </ChakraProvider>
+      </ChakraProvider>,
+      { wrapper }
     );
     const searchTermsInput = screen.getByLabelText("search terms input");
     // Delay avoids a weird bug https://github.com/testing-library/user-event/issues/539
@@ -47,7 +54,8 @@ describe("Search Component", () => {
     render(
       <ChakraProvider>
         <Search />
-      </ChakraProvider>
+      </ChakraProvider>,
+      { wrapper }
     );
     const searchTermsInput = screen.getByLabelText("search terms input");
     await userEvent.type(searchTermsInput, "sudan", { delay: 1 });

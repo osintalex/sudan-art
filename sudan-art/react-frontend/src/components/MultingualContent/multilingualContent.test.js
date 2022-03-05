@@ -12,11 +12,11 @@ describe("Multilingual componentt", () => {
     );
     render(
       <>
-        <MultiLingualContent contentID="hello" />
+        <MultiLingualContent contentID="nav_about" />
       </>,
       { wrapper }
     );
-    expect(screen.getByText(/hello/)).toBeInTheDocument();
+    expect(screen.getByText(/About/)).toBeInTheDocument();
   });
   test("renders Arabic OK", () => {
     const wrapper = ({ children }) => (
@@ -26,10 +26,10 @@ describe("Multilingual componentt", () => {
     );
     render(
       <>
-        <MultiLingualContent contentID="hello" />
+        <MultiLingualContent contentID="nav_about" />
       </>,
       { wrapper }
     );
-    expect(screen.getByText(/mrhaba/)).toBeInTheDocument();
+    expect(screen.getByText(/نبذه/)).toBeInTheDocument();
   });
 });

@@ -31,7 +31,7 @@ import MultiLingualContent from "../MultingualContent/multilingualContent.js";
  * @return {component} Upload component
  */
 export default function Upload() {
-  const [fileValue, setFileValue] = useState("");
+  const [fileValue, setFileValue] = useState({});
   const [selectedTags, setSelectedTags] = useState([]);
   const [artist, setArtist] = useState("");
   const [errors, setErrors] = useState("");

@@ -39,10 +39,10 @@ function ImageRenderer(props) {
   );
 }
 ImageRenderer.propTypes = {
-  alt: PropTypes.string.isRequired,
-  src: PropTypes.string.isRequired,
-  className: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
-  label: PropTypes.string.isRequired,
+  alt: PropTypes.string,
+  src: PropTypes.string,
+  className: PropTypes.string,
+  onClick: PropTypes.func,
+  label: PropTypes.string,
 };
 export default ImageRenderer;

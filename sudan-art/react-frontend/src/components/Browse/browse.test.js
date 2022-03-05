@@ -2,10 +2,15 @@ import { ChakraProvider } from "@chakra-ui/react";
 import { render, screen, waitFor } from "@testing-library/react";
 import React from "react";
 import Browse from "./browse";
+import { LanguageContext } from "../../multilingualContext/context.js";
 
 describe("Browse Component", () => {
   let originalFetch;
-
+  const wrapper = ({ children }) => (
+    <LanguageContext.Provider value={{ language: "english" }}>
+      {children}
+    </LanguageContext.Provider>
+  );
   beforeEach(() => {
     originalFetch = global.fetch;
     global.fetch = jest.fn(() =>
@@ -35,7 +40,8 @@ describe("Browse Component", () => {
     render(
       <ChakraProvider>
         <Browse />
-      </ChakraProvider>
+      </ChakraProvider>,
+      { wrapper }
     );
     await waitFor(() => {
       expect(screen.getAllByLabelText("search-results")).toHaveLength(1);

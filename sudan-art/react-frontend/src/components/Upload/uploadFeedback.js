@@ -87,8 +87,11 @@ function UploadFeedback(props) {
 
 UploadFeedback.propTypes = {
   isOpen: PropTypes.bool.isRequired,
-  onClose: PropTypes.bool.isRequired,
-  errors: PropTypes.string.isRequired,
+  onClose: PropTypes.func.isRequired,
+  errors: PropTypes.oneOfType([
+    PropTypes.object.isRequired,
+    PropTypes.string.isRequired,
+  ]),
   success: PropTypes.bool.isRequired,
 };
 export default UploadFeedback;
