@@ -23,8 +23,8 @@ function Emoji(props) {
 }
 Emoji.propTypes = {
   label: PropTypes.string,
-  fontSize: PropTypes.string.isRequired,
+  fontSize: PropTypes.string,
   id: PropTypes.string,
-  symbol: PropTypes.string.isRequired,
+  symbol: PropTypes.string,
 };
 export default Emoji;

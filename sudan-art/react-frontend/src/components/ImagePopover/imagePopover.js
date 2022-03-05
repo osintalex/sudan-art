@@ -129,9 +129,9 @@ function ImagePopover(props) {
   );
 }
 ImagePopover.propTypes = {
-  popoverImageDetails: PropTypes.object.isRequired,
-  isOpen: PropTypes.bool.isRequired,
-  onOpen: PropTypes.bool.isRequired,
-  onClose: PropTypes.bool.isRequired,
+  popoverImageDetails: PropTypes.object,
+  isOpen: PropTypes.bool,
+  onOpen: PropTypes.bool,
+  onClose: PropTypes.func,
 };
 export default ImagePopover;
