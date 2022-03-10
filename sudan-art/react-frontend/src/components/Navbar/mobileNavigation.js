@@ -12,16 +12,16 @@ import MultiLingualContent from "../MultingualContent/multilingualContent.js";
  * @return {component} mobile navigation component.
  */
 const MobileNav = () => {
-  /**
-   * Function to programatically create the mobile navigation menu
-   * @param {String} label, destructed from props
-   * @returns JSX of mobile navigation menu
-   */
-
   const { onToggle } = useDisclosure();
   const { language, toggleLanguage } = useContext(LanguageContext);
 
-  const MobileNavItem = ({ label }) => {
+  /**
+   * Function to programatically create the mobile navigation menu
+   * @param {String} label, destructed from props
+   * @param {String} contentID, destructured from props and used for navigation
+   * @return {jsx} of mobile navigation menu
+   */
+  const MobileNavItem = ({ label, contentID }) => {
     const navigate = useNavigate();
 
     return (
@@ -38,7 +38,7 @@ const MobileNav = () => {
             fontWeight={200}
             color={"gray.600"}
             /* eslint-disable no-invalid-this */
-            onClick={handleClick.bind(this, label, navigate)}
+            onClick={handleClick.bind(this, contentID, navigate)}
             /* eslint-disable no-invalid-this */
           >
             {label}
@@ -50,10 +50,11 @@ const MobileNav = () => {
 
   return (
     <Stack bg={"gray.100"} p={4} display={{ md: "none" }} onClick={onToggle}>
-      {NAV_ITEMS.map((contentID) => (
+      {NAV_ITEMS.map((contentID, index) => (
         <MobileNavItem
-          key={contentID}
+          key={`${contentID}-${index}`}
           label={<MultiLingualContent contentID={contentID} />}
+          contentID={contentID}
         />
       ))}
       <Stack spacing={4}>
@@ -67,5 +68,7 @@ const MobileNav = () => {
 
 MobileNav.propTypes = {
   label: PropTypes.string,
+  key: PropTypes.string,
+  contentID: PropTypes.string,
 };
 export default MobileNav;
