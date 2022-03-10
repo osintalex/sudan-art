@@ -32,7 +32,7 @@ def validate_tags(value):
     Custom validator for tags
     :param value: string, comma separated tags
     """
-    tags_regex = re.compile("^[\u0621-\u064A\u0660-\u0669a-zA-Z0-9, ]{3,10}$")
+    tags_regex = re.compile("^[\u0621-\u064A\u0660-\u0669a-zA-Z0-9, ]{1,20}$")
     try:
         tags_list = value.split(",")
         if len(tags_list) < 3 or len(tags_list) > 6:
@@ -44,9 +44,8 @@ def validate_tags(value):
             match = re.search(tags_regex, tag)
             if not match:
                 raise ValidationError(
-                    "Tags must be between 3 and 10 characters long each. The following characters "
-                    "are allowed: Arabic "
-                    "letters and numbers, English letters and numbers, a comma, and a space.",
+                    "Tags must be between 1 and 20 characters long each. The following characters "
+                    "are allowed: Arabic letters and numbers, English letters and numbers, a comma, and a space.",
                     params={"value": value},
                 )
     except Exception:

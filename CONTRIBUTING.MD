@@ -37,7 +37,6 @@ Please also make sure to run the test suites before starting work and submitting
 
 Here is a list of stuff to do - help welcome! :dizzy_face:
 
-- Improve unit test coverage with a focus on security for backend
 - Add intelligent default parameters to social buttons in imagePopover.js
 - CI setup if more people start to work on the project
 - Change backend upload validation errors to codes so these can be handled in different languages in the frontend
