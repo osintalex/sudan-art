@@ -5,8 +5,7 @@
 
 # Sudan Art - A Revolutionary Web App
 
-> A website to help the anti-coup resistance movement in Sudan. See a work in progress
-> [sudan-art.com](https://www.sudan-art.com).
+> A website to help the anti-coup resistance movement in Sudan. See [sudan-art.com](https://sudan-art.com).
 
 ![Landing](.img/landing.png)
 
