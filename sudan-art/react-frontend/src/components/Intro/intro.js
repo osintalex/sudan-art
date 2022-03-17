@@ -168,7 +168,7 @@ const Introduction = () => {
                   {" "}
                   تشاركوا
                 </Link>{" "}
-                بإعمالكم الفنيه من
+                بإعمالكم الفنيه
               </Heading>
             </Stack>
           </Stack>

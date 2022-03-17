@@ -2,8 +2,7 @@ import { Input, Tag, TagCloseButton, TagLabel } from "@chakra-ui/react";
 import PropTypes from "prop-types";
 import React, { useContext } from "react";
 import { makeRepeated } from "../../utils/utils";
-import { LanguageContext } from "../../multilingualContext/context.js";
-
+import { LanguageContext } from "../../multilingualContext/context";
 // I reworked this
 // https://dev.to/prvnbist/create-a-tags-input-component-in-reactjs-ki
 /**
@@ -40,10 +39,13 @@ function Tagger(props) {
     ]);
   };
   const { language } = useContext(LanguageContext);
+  const wordOne = "لزيادة ";
+  const wordTwo = "علامات";
+  const wordThree = "اضغط ";
   const placeholderText =
     language == "english"
       ? "Press Enter to add tags"
-      : "اضغط على Enter لإضافة العلامات";
+      : `Enter ${wordOne} ${wordTwo} ${wordThree}`;
   return (
     <>
       <Input

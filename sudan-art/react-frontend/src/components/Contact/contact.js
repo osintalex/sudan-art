@@ -62,9 +62,8 @@ const Contact = () => {
               <br />
               <br />
               {<MultiLingualContent contentID="contact_2" />}
-              <br />
               <Link
-                href="https://www.github.com"
+                href="https://www.github.com/osintalex/sudan-art"
                 target="_blank"
                 bgGradient="linear(to-r,orange.400, yellow.400)"
                 bgClip="text"

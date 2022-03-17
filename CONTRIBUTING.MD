@@ -40,3 +40,4 @@ Here is a list of stuff to do - help welcome! :dizzy_face:
 - Add intelligent default parameters to social buttons in imagePopover.js
 - CI setup if more people start to work on the project
 - Change backend upload validation errors to codes so these can be handled in different languages in the frontend
+- Include right text alignment as part of the usecontext language hook to handle arabic text better

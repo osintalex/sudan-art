@@ -8,23 +8,16 @@ import React from "react";
  * @return {component} image thumbnail component.
  */
 function Thumbnail(props) {
-  if (props.file) {
+  if (props.file instanceof File) {
     return (
       <div className="tag-container">
         <img
           aria-label="image-preview"
-          src={props.file ? URL.createObjectURL(props.file) : null}
-          alt={props.file ? props.file.name : null}
-          height={props.file ? 200 : null}
-          width={props.file ? 200 : null}
-          style={
-            props.file
-              ? {
-                  marginTop: "0.3rem",
-                  border: "2px solid #292f3a",
-                }
-              : null
-          }
+          src={URL.createObjectURL(props.file)}
+          alt={props.file.name}
+          height={200}
+          width={200}
+          style={{ marginTop: "0.3rem", border: "2px solid #292f3a" }}
         />
       </div>
     );
