@@ -162,3 +162,7 @@ input[type="file"] {
   animation-timing-function: linear;
   margin-top: 1rem;
 }
+
+.upload-text-descriptions {
+  text-align: center;
+}

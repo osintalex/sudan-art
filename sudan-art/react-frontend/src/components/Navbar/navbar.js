@@ -9,13 +9,14 @@ import {
   Stack,
   useDisclosure,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router";
 import { handleClick } from "./clickHandler.js";
 import DesktopNav from "./desktopNavigation.js";
 import logo from "./eye_logo.svg";
 import MobileNav from "./mobileNavigation.js";
 import MultiLingualContent from "../MultingualContent/multilingualContent.js";
+import { LanguageContext } from "../../multilingualContext/context.js";
 
 // Based off the with sub navigation one here https://chakra-templates.dev/navigation/navbar
 /**
@@ -25,7 +26,7 @@ import MultiLingualContent from "../MultingualContent/multilingualContent.js";
 export default function NavBar() {
   const { isOpen, onToggle } = useDisclosure();
   const navigate = useNavigate();
-
+  const { language } = useContext(LanguageContext);
   return (
     <Box>
       <Flex
@@ -58,7 +59,11 @@ export default function NavBar() {
             boxSize="30px"
             className="nav-image"
             objectFit="cover"
-            style={{ filter: "invert(1)", cursor: "pointer" }}
+            style={{
+              filter: "invert(1)",
+              cursor: "pointer",
+              marginLeft: language === "arabic" ? "1.5rem" : "0rem",
+            }}
             onClick={handleClick.bind(this, "Home", navigate)}
           />
 
