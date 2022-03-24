@@ -135,7 +135,8 @@ const Introduction = () => {
             <Stack flex={1} spacing={{ base: 5, md: 10 }}>
               <Heading as="h4" size="md" className="contact-text">
                 {<MultiLingualContent contentID="intro_1" />} <br />
-                <br />{" "}
+                <br />
+                {<MultiLingualContent contentID="intro_2" />}{" "}
                 <Link
                   href="https://www.threefingers.org"
                   target="_blank"
@@ -144,7 +145,6 @@ const Introduction = () => {
                 >
                   threefingers.org
                 </Link>{" "}
-                {<MultiLingualContent contentID="intro_2" />}{" "}
                 {<MultiLingualContent contentID="intro_3" />}
                 <br />
                 <br />

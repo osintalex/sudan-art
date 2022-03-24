@@ -105,7 +105,7 @@ function ImagePopover(props) {
                 title={"Sudanese Revolutionary Art"}
                 via={"https://sudanart.com"}
                 hashtags={["#sudancoup", "#sudanart"]}
-                realted={["twitter_account_one", "twitter_account_two"]}
+                related={["twitter_account_one", "twitter_account_two"]}
               >
                 <TwitterIcon />
               </TwitterShareButton>

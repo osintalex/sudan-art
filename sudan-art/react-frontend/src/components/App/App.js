@@ -32,6 +32,9 @@ function App() {
   function toggleLanguage() {
     setLanguage((language) => (language === "english" ? "arabic" : "english"));
   }
+  language === "english"
+    ? (document.getElementsByTagName("html")[0].style.direction = "ltr")
+    : (document.getElementsByTagName("html")[0].style.direction = "rtl");
   return (
     <>
       <LanguageContext.Provider value={{ language, toggleLanguage }}>

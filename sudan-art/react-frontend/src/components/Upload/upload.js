@@ -161,7 +161,7 @@ export default function Upload() {
                         {<MultiLingualContent contentID="upload_tags" />}
                       </Text>
                       <Text
-                        id="search-form-text"
+                        style={{ textAlign: "center", display: "grid" }}
                         fontSize="sm"
                         color="gray.800"
                         as="i"
@@ -184,7 +184,7 @@ export default function Upload() {
                         {<MultiLingualContent contentID="upload_artist" />}
                       </Text>
                       <Text
-                        id="search-form-text"
+                        style={{ textAlign: "center", display: "grid" }}
                         fontSize="sm"
                         color="gray.800"
                         as="i"
