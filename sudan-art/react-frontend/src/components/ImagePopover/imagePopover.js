@@ -25,6 +25,7 @@ import {
 } from "react-share";
 import { makeRepeated } from "../../utils/utils";
 import { config } from "../../constants.js";
+import MultiLingualContent from "../MultingualContent/multilingualContent.js";
 
 /**
  * Popover for users to click on images once the search results have returned - this way they can see artist
@@ -87,8 +88,7 @@ function ImagePopover(props) {
             <br />
 
             <Text fontSize="sm" color="gray.50" as="i" align="center">
-              {"Images are shared on this website for the sole purpose of supporting the Sudanese revolutionary" +
-                " movement. Do not share or otherwise reproduce for profit."}
+              <MultiLingualContent contentID="image_popover" />
             </Text>
             <Center style={{ transform: "scale(0.6)" }}>
               <FacebookShareButton

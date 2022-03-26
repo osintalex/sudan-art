@@ -42,6 +42,9 @@ export const translations = {
     upload_bad_image:
       "Sorry, your image is too large! The maximum size is 10MB.",
     upload_wait: "Uploading, please wait for validation...",
+    image_popover:
+      "Images are shared on this website to support the Sudanese revolutionary movement. " +
+      "Do not share or otherwise reproduce for profit",
   },
 
   // home page is wrong - need to do that manually in the code for that page
@@ -83,5 +86,7 @@ export const translations = {
     upload_errors_1: "يجب أدخال البيانات في كل حقل يرجي اعدة أرسال النموذج",
     upload_bad_image: "عذرًا صورتك كبيره جدا! الحجم الحقيقي 10 ميقابايت",
     upload_wait: "جاري التحميل، يرجي أنتظار التحقق",
+    image_popover:
+      "الصور منشورة على هذا الموقع لدعم الحركة الثورية السودانية. لا تشارك أو تستنسخ من أجل الربح",
   },
 };
