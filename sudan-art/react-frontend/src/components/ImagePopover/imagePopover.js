@@ -120,7 +120,9 @@ function ImagePopover(props) {
 
           <ModalFooter className="search-modal-footer">
             <Button id="upload-submit-button" size="sm">
-              <a href={imageHighRes}>Full Resolution</a>
+              <a href={imageHighRes}>
+                <MultiLingualContent contentID="full_resolution" />
+              </a>
             </Button>
           </ModalFooter>
         </ModalContent>

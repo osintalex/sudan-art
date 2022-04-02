@@ -45,6 +45,7 @@ export const translations = {
     image_popover:
       "Images are shared on this website to support the Sudanese revolutionary movement. " +
       "Do not share or otherwise reproduce for profit",
+    full_resolution: "Full resolution",
   },
 
   // home page is wrong - need to do that manually in the code for that page
@@ -87,6 +88,7 @@ export const translations = {
     upload_bad_image: "عذرًا صورتك كبيره جدا! الحجم الحقيقي 10 ميقابايت",
     upload_wait: "جاري التحميل، يرجي أنتظار التحقق",
     image_popover:
-      "الصور منشورة على هذا الموقع لدعم الحركة الثورية السودانية. لا تشارك أو تستنسخ من أجل الربح",
+      "تتم مشاركة الصور علي هذا الموقع فقط لغرض وحيد هو لدعم الحركه الثوريه السودانيه. لا تشارك او تستنسخ بغرض الربح..",
+    full_resolution: "حل شامل ",
   },
 };
