@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import React from "react";
+import SudanFlag from "../../images/sudan-flag.svg";
 
 /**
  * Emoji component. Read in a few places that it's better to put it in a span tag for accessibility
@@ -16,7 +17,12 @@ function Emoji(props) {
         style={{ fontSize: props.fontSize }}
         id={props.id}
       >
-        {props.symbol}
+        {/* Flags only render on mac so I'm using a custom svg instead */}
+        {props.symbol === "🇸🇩" ? (
+          <img src={SudanFlag} style={{ width: "2rem", height: "2rem" }} />
+        ) : (
+          props.symbol
+        )}
       </span>
     </>
   );
