@@ -2,6 +2,7 @@
 import os
 import shutil
 from datetime import datetime
+from unittest.mock import patch
 from uuid import uuid4
 
 from django.conf import settings
@@ -57,7 +58,11 @@ class SudanArtViewsTest(TestBase):
         self.assertEqual(response.data["results"][0]["artist"], "حسين")
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-    def test_upload_artwork(self):
+    @patch("sudan_art.views.requests.Session.post")
+    def test_upload_artwork(self, mocked):
+        mocked.return_value.json.return_value = [
+            {"translations": [{"text": "sudan", "to": "en"}]}
+        ]
         with open(
             os.path.join(os.getcwd(), "sudan_art/tests/test_image.jpg"), "rb"
         ) as test_image_file:
@@ -67,6 +72,7 @@ class SudanArtViewsTest(TestBase):
                     "artist": "حسين",
                     "tags": "السودان,وقفة احتجاجية,فن",
                     "image": test_image_file,
+                    "target_language": "en",
                 },
                 format="multipart",
             )
@@ -83,6 +89,7 @@ class SudanArtViewsTest(TestBase):
                     "artist": "$$$H4CK3RZ$$$!>",
                     "tags": "السودان,وقفة احتجاجية,فن",
                     "image": test_image_file,
+                    "target_language": "en",
                 },
                 format="multipart",
             )
@@ -98,6 +105,23 @@ class SudanArtViewsTest(TestBase):
                     "artist": "حسين",
                     "tags": "root.protocol(delete some shit)",
                     "image": test_image_file,
+                    "target_language": "en",
+                },
+                format="multipart",
+            )
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+
+    def test_invalid_target_language(self):
+        with open(
+            os.path.join(os.getcwd(), "sudan_art/tests/test_image.jpg"), "rb"
+        ) as test_image_file:
+            response = self.client.post(
+                reverse("upload"),
+                {
+                    "artist": "حسين",
+                    "tags": "root.protocol(delete some shit)",
+                    "image": test_image_file,
+                    "target_language": "german",
                 },
                 format="multipart",
             )

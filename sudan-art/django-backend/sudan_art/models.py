@@ -32,13 +32,12 @@ def validate_tags(value):
     Custom validator for tags
     :param value: string, comma separated tags
     """
-    tags_regex = re.compile("^[\u0621-\u064A\u0660-\u0669a-zA-Z0-9, ]{1,20}$")
+    tags_regex = re.compile("^[\u0600-\u06FFa-zA-Z0-9, ]{1,20}$")
     try:
         tags_list = value.split(",")
-        if len(tags_list) < 3 or len(tags_list) > 6:
+        if len(tags_list) < 3 or len(tags_list) > 12:
             raise ValidationError(
                 "You must enter between 3 and 6 tags.",
-                params={"value": value},
             )
         for tag in tags_list:
             match = re.search(tags_regex, tag)
@@ -46,14 +45,12 @@ def validate_tags(value):
                 raise ValidationError(
                     "Tags must be between 1 and 20 characters long each. The following characters "
                     "are allowed: Arabic letters and numbers, English letters and numbers, a comma, and a space.",
-                    params={"value": value},
                 )
     except Exception:
         raise ValidationError(
-            "You must enter between 3 and 6 tags, which must be between 3 and 10 characters long "
+            "You must enter between 3 and 6 tags, which must be between 1 and 20 characters long "
             "each. The following characters are allowed: Arabic letters and numbers, English "
             "letters and numbers, a comma, and a space.",
-            params={"value": value},
         )
 
 
@@ -104,7 +101,7 @@ class Artwork(models.Model):
     """Artwork database model."""
 
     artist = models.CharField(max_length=30, validators=[validate_artist])
-    tags = models.CharField(max_length=30, validators=[validate_tags])
+    tags = models.CharField(max_length=250, validators=[validate_tags])
     id = models.UUIDField(
         primary_key=True, default=uuid.uuid4, editable=False, unique=True
     )
