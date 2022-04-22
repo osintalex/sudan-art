@@ -29,6 +29,7 @@ class TestBase(TestCase):
             tags="السودان,وقفة احتجاجية,فن",
             high_res_image=uploaded_image,
             thumbnail=uploaded_image,
+            url="https://www.example.com",
         )
 
     def tearDown(self):
@@ -51,6 +52,10 @@ class ArtworkModelTest(TestBase):
             datetime.today().strftime("%Y-%m-%d"),
         )
 
+    def test_artwork_url(self):
+        artwork_instance = Artwork.objects.get(artist="حسين")
+        self.assertEqual(artwork_instance.url, "https://www.example.com")
+
 
 class SudanArtViewsTest(TestBase):
     def test_get_recent_artwork(self):
@@ -71,6 +76,7 @@ class SudanArtViewsTest(TestBase):
                 {
                     "artist": "حسين",
                     "tags": "السودان,وقفة احتجاجية,فن",
+                    "url": "https://sudanese-revolution.org",
                     "image": test_image_file,
                     "target_language": "en",
                 },
@@ -89,6 +95,7 @@ class SudanArtViewsTest(TestBase):
                     "artist": "$$$H4CK3RZ$$$!>",
                     "tags": "السودان,وقفة احتجاجية,فن",
                     "image": test_image_file,
+                    "url": "https://sudanese-revolution.org",
                     "target_language": "en",
                 },
                 format="multipart",
@@ -105,6 +112,7 @@ class SudanArtViewsTest(TestBase):
                     "artist": "حسين",
                     "tags": "root.protocol(delete some shit)",
                     "image": test_image_file,
+                    "url": "https://sudanese-revolution.org",
                     "target_language": "en",
                 },
                 format="multipart",
@@ -121,6 +129,24 @@ class SudanArtViewsTest(TestBase):
                     "artist": "حسين",
                     "tags": "root.protocol(delete some shit)",
                     "image": test_image_file,
+                    "url": "https://sudanese-revolution.org",
+                    "target_language": "german",
+                },
+                format="multipart",
+            )
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+
+    def test_invalid_url(self):
+        with open(
+            os.path.join(os.getcwd(), "sudan_art/tests/test_image.jpg"), "rb"
+        ) as test_image_file:
+            response = self.client.post(
+                reverse("upload"),
+                {
+                    "artist": "حسين",
+                    "tags": "root.protocol(delete some shit)",
+                    "image": test_image_file,
+                    "url": "I am not a url",
                     "target_language": "german",
                 },
                 format="multipart",

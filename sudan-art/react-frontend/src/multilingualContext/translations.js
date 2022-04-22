@@ -37,6 +37,8 @@ export const translations = {
     not_found_2: "It seems this page is as empty as Burhan's heart",
     upload_fail: "Invalid submission",
     upload_success: "Success!",
+    upload_url: "URL",
+    upload_url_instructions: "Optionally add the url of the artwork",
     upload_errors_1:
       "You must enter data into every field. Please resubmit the form.",
     upload_bad_image:
@@ -84,6 +86,8 @@ export const translations = {
     not_found_2: "يبدو أن هذه الصفحه فارغه مثل قلب برهان",
     upload_fail: "أرسال غير صالح",
     upload_success: "نجاح",
+    upload_url: "عنوان url",
+    upload_url_instructions: "اختياريا إضافة عنوان url للصورة",
     upload_errors_1: "يجب أدخال البيانات في كل حقل يرجي اعدة أرسال النموذج",
     upload_bad_image: "عذرًا صورتك كبيره جدا! الحجم الحقيقي 10 ميقابايت",
     upload_wait: "جاري التحميل، يرجي أنتظار التحقق",

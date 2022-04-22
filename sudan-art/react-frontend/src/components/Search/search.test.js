@@ -28,6 +28,7 @@ describe("Search Component", () => {
                 tags: "sudan,flag,protest",
                 image: "nothing.jpeg",
                 date_uploaded: "2021-12-24",
+                url: "example.com",
               },
             ],
           }),

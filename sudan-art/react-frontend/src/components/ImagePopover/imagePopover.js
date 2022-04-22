@@ -12,6 +12,7 @@ import {
   Tag,
   TagLabel,
   Text,
+  Link,
 } from "@chakra-ui/react";
 import PropTypes from "prop-types";
 import React from "react";
@@ -43,7 +44,7 @@ function ImagePopover(props) {
     ],
     3
   );
-  const { imageDescription, imageArtist, imageDate, imageHighRes } =
+  const { imageDescription, imageArtist, imageDate, imageHighRes, sourceURL } =
     props.popoverImageDetails;
 
   const imageSrc =
@@ -67,26 +68,27 @@ function ImagePopover(props) {
               src={imageSrc}
               onClick={props.onOpen}
             />
-            <Center>
-              {imageDescription.split(",").map((tag, index) => (
-                <Tag
-                  size={"md"}
-                  key={`tag ${index}`}
-                  className="image-tag"
-                  bgGradient={tagGradients[index]}
-                >
-                  <TagLabel key={`tag label ${index}`} color="gray.50">
-                    {tag.toLowerCase()}
-                  </TagLabel>
-                </Tag>
-              ))}
-            </Center>
-
+            {imageDescription.split(",").map((tag, index) => (
+              <Tag
+                size={"lg"}
+                key={`tag ${index}`}
+                className="image-tag"
+                bgGradient={tagGradients[index]}
+              >
+                <TagLabel key={`tag label ${index}`} color="gray.50">
+                  {tag.toLowerCase()}
+                </TagLabel>
+              </Tag>
+            ))}
+            <br />
             <Text fontSize="sm" color="gray.50" as="abbr" align="center">
               {imageDate}
             </Text>
             <br />
-
+            <Link fontSize="sm" color="gray.50" as="abbr" align="center">
+              {sourceURL}
+            </Link>
+            <br />
             <Text fontSize="sm" color="gray.50" as="i" align="center">
               <MultiLingualContent contentID="image_popover" />
             </Text>

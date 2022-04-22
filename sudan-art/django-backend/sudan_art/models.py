@@ -105,6 +105,7 @@ class Artwork(models.Model):
     id = models.UUIDField(
         primary_key=True, default=uuid.uuid4, editable=False, unique=True
     )
+    url = models.URLField(default="")
 
     # Media files are server from the django server in development but a CDN in production hence the
     # two different settings here. The DEBUG value is handled by an environment variable.

@@ -25,6 +25,7 @@ describe("Browse Component", () => {
                 artist: "anon",
                 tags: "sudan,flag,protest",
                 image: "nothing.jpeg",
+                url: "example.com",
                 date_uploaded: "2021-12-24",
               },
             ],

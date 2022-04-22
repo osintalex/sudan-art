@@ -72,6 +72,10 @@ describe("Upload Component", () => {
     // Artist Name
     const artistNameInput = screen.getByLabelText("artist-name-input");
     await userEvent.type(artistNameInput, "anonymous", { delay: 1 });
+
+    // URL
+    const urlInput = screen.getByLabelText("url-input");
+    await userEvent.type(urlInput, "example.com", { delay: 1 });
     userEvent.click(screen.getByLabelText("upload-form-submission"));
 
     // Test the result

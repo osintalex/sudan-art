@@ -23,6 +23,7 @@ export default function Browse() {
     imageArtist: "",
     imageDate: "",
     imageHighRes: "",
+    sourceURL: "",
   });
   const getMaPics = useCallback(async (page) => {
     setLoading(true);
@@ -88,6 +89,7 @@ export default function Browse() {
                       imageArtist: pic.artist,
                       imageDate: pic.date_uploaded,
                       imageHighRes: `${pic.high_res_image}`,
+                      sourceURL: pic.url,
                     });
                     onOpen(true);
                   }}

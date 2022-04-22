@@ -23,16 +23,7 @@ import MultiLingualContent from "../MultingualContent/multilingualContent.js";
  */
 function UploadFeedback(props) {
   return (
-    <Modal
-      isOpen={props.isOpen}
-      onClose={() => {
-        // I think this is the most elegant thing to do even if it's a bit annyoing; this just refreshes
-        // the page so you have to start again after an attempt
-        // I do the same for the second close button below
-        document.location.reload();
-        return props.onClose;
-      }}
-    >
+    <Modal isOpen={props.isOpen} onClose={() => document.location.reload()}>
       <ModalOverlay />
       <ModalContent color="gray.800">
         {props.errors && (
@@ -72,10 +63,7 @@ function UploadFeedback(props) {
         <ModalFooter>
           <Button
             id="upload-submit-button"
-            onClick={() => {
-              document.location.reload();
-              return props.onClose;
-            }}
+            onClick={() => document.location.reload()}
           >
             Close
           </Button>

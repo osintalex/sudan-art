@@ -35,6 +35,7 @@ export default function Upload() {
   const [fileValue, setFileValue] = useState({});
   const [selectedTags, setSelectedTags] = useState([]);
   const [artist, setArtist] = useState("");
+  const [url, setUrl] = useState("");
   const [errors, setErrors] = useState("");
   const [success, setSuccess] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -52,6 +53,7 @@ export default function Upload() {
     if (fileValue && artist && selectedTags.length > 0) {
       data.append("image", fileValue, fileValue.name);
       data.append("artist", artist);
+      data.append("url", url);
       data.append("tags", selectedTags.toString());
       data.append("target_language", language === "english" ? "ar" : "en");
       fetch(`${config.url}/upload/`, {
@@ -74,8 +76,6 @@ export default function Upload() {
               const uppercaseKey = key.replace(/^\w/, (x) => x.toUpperCase());
               apiErrorMessages += `${uppercaseKey} field error: ${value} `;
             }
-            // TODO add Arabic version? Turn error message into English and Arabic, split on a weird character
-            // return version based off create context
             setErrors(apiErrorMessages);
             onOpen(true);
           }
@@ -203,6 +203,44 @@ export default function Upload() {
                       onChange={(event) => {
                         event.preventDefault();
                         setArtist(event.target.value);
+                      }}
+                      _focus={{ boxShadow: "outline", color: "gray.800" }}
+                      _hover={{ color: "gray.800" }}
+                      width="20rem"
+                      bg={"gray.100"}
+                      border={0}
+                      color={"gray.800"}
+                      _placeholder={{
+                        color: "gray.800",
+                      }}
+                    />
+                    <br />
+                    <FormLabel htmlFor="url" id="search-form-label">
+                      <Text
+                        id="search-form-text"
+                        fontSize="lg"
+                        color="gray.800"
+                      >
+                        {<MultiLingualContent contentID="upload_url" />}
+                      </Text>
+                      <Text
+                        style={{ textAlign: "center", display: "grid" }}
+                        fontSize="sm"
+                        color="gray.800"
+                        as="i"
+                      >
+                        {
+                          <MultiLingualContent contentID="upload_url_instructions" />
+                        }
+                      </Text>
+                    </FormLabel>
+                    <Input
+                      id="url"
+                      aria-label="url-input"
+                      className="url-input"
+                      onChange={(event) => {
+                        event.preventDefault();
+                        setUrl(event.target.value);
                       }}
                       _focus={{ boxShadow: "outline", color: "gray.800" }}
                       _hover={{ color: "gray.800" }}

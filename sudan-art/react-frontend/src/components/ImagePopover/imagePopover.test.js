@@ -19,6 +19,7 @@ test("renders Intro component", () => {
             imageDescription: "beautiful",
             imageArtist: "tayeb salih",
             imageDate: "01-01-1982",
+            url: "example.com",
           }}
           isOpen={true}
           onClose={() => false}

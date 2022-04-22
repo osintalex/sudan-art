@@ -16,4 +16,11 @@ class ArtworkSerializer(serializers.ModelSerializer):
         """Metadata for the parent class."""
 
         model = Artwork
-        fields = ("artist", "tags", "thumbnail", "high_res_image", "date_uploaded")
+        fields = (
+            "artist",
+            "tags",
+            "url",
+            "thumbnail",
+            "high_res_image",
+            "date_uploaded",
+        )
