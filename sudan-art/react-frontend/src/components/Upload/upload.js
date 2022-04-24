@@ -130,6 +130,7 @@ export default function Upload() {
                         artist={artist}
                         selectedTags={selectedTags}
                         success={success}
+                        setErrors={setErrors}
                       />
                     )}
                     {/* Here is the label I'm using to sit on top of the file upload id component since I can't

@@ -23,7 +23,13 @@ import MultiLingualContent from "../MultingualContent/multilingualContent.js";
  */
 function UploadFeedback(props) {
   return (
-    <Modal isOpen={props.isOpen} onClose={() => document.location.reload()}>
+    <Modal
+      isOpen={props.isOpen}
+      onClose={() => {
+        props.setErrors("");
+        props.onClose();
+      }}
+    >
       <ModalOverlay />
       <ModalContent color="gray.800">
         {props.errors && (
@@ -63,7 +69,10 @@ function UploadFeedback(props) {
         <ModalFooter>
           <Button
             id="upload-submit-button"
-            onClick={() => document.location.reload()}
+            onClick={() => {
+              props.setErrors("");
+              props.onClose();
+            }}
           >
             Close
           </Button>
@@ -76,6 +85,7 @@ function UploadFeedback(props) {
 UploadFeedback.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
+  setErrors: PropTypes.func.isRequired,
   errors: PropTypes.oneOfType([
     PropTypes.object.isRequired,
     PropTypes.string.isRequired,
