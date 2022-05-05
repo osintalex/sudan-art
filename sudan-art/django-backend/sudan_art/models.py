@@ -20,8 +20,8 @@ from .media_storage import PublicMediaStorage
 # pylint: disable=R0201
 
 validate_artist = RegexValidator(
-    regex="^[\u0621-\u064A\u0660-\u0669 a-zA-Z0-9]{3,30}$",
-    message="Artist names must be between 3 to 30 characters long. The following characters are "
+    regex="^[\u0621-\u064A\u0660-\u0669 a-zA-Z0-9]{3,50}$",
+    message="Artist names must be between 3 to 50 characters long. The following characters are "
     "allowed: Arabic "
     "letters and numbers, English letters and numbers, underscores, hyphens, and a space.",
 )
