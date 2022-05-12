@@ -30,7 +30,7 @@ export const translations = {
     contact_1: "You can email us at:",
     contact_2:
       "If you are a developer, the code for this project is open source! " +
-      "Please check out our github repository and consider contributing",
+      "Please check out our github repository and consider contributing ",
     contact_code: "here",
     contact_3: "You should also check out our fantastic sister site:",
     not_found_1: "Oh no! There is nothing here.",
