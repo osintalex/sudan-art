@@ -13,6 +13,7 @@ import PropTypes from "prop-types";
 import React from "react";
 import Emoji from "../Emoji/emoji.js";
 import MultiLingualContent from "../MultingualContent/multilingualContent.js";
+import { useNavigate } from "react-router-dom";
 
 /**
  * React component for feedback after image upload
@@ -22,6 +23,8 @@ import MultiLingualContent from "../MultingualContent/multilingualContent.js";
  * @return {component} upload feedback component.
  */
 function UploadFeedback(props) {
+  const navigate = useNavigate();
+
   return (
     <Modal
       isOpen={props.isOpen}
@@ -42,7 +45,11 @@ function UploadFeedback(props) {
             <MultiLingualContent contentID="upload_success" />
           </ModalHeader>
         )}
-        <ModalCloseButton />
+        {props.success ? (
+          <ModalCloseButton onClick={() => navigate("/browse")} />
+        ) : (
+          <ModalCloseButton />
+        )}
         {props.errors && (
           <ModalBody>
             <Text fontSize="md" color="red.400">
@@ -67,15 +74,28 @@ function UploadFeedback(props) {
           </ModalBody>
         )}
         <ModalFooter>
-          <Button
-            id="upload-submit-button"
-            onClick={() => {
-              props.setErrors("");
-              props.onClose();
-            }}
-          >
-            Close
-          </Button>
+          {props.success ? (
+            <Button
+              id="upload-submit-button"
+              onClick={() => {
+                props.setErrors("");
+                props.onClose();
+                navigate("/browse");
+              }}
+            >
+              Close
+            </Button>
+          ) : (
+            <Button
+              id="upload-submit-button"
+              onClick={() => {
+                props.setErrors("");
+                props.onClose();
+              }}
+            >
+              Close
+            </Button>
+          )}
         </ModalFooter>
       </ModalContent>
     </Modal>
