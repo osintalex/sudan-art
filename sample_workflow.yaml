@@ -1,0 +1,59 @@
+# https://medium.com/swlh/how-to-deploy-your-application-to-digital-ocean-using-github-actions-and-save-up-on-ci-cd-costs-74b7315facc2
+# TODO: If this works remove the migrations part in the README
+# TODO: Run all of this on pull requests to main and only do deploy on push to main
+name: ci/cd
+on:
+  push:
+    branches: [ main ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+#      - uses: actions/checkout@v3
+#      - name: Build the stack
+#        run: docker-compose up -f docker-compose-dev.yaml --env-file ${{ secrets.dev_env }} -d
+#      - name: Django Tests
+#        run: |
+#          docker-compose run django bash
+#          python manage.py test sudan_art.tests
+#          exit
+#      - name: React Tests
+#        run: |
+#          docker-compose run frontend bash
+#          npm test -- --watchAll=false
+#          exit
+    - uses: actions/checkout@v3
+    - uses: actions/setup-python@v3
+    - name: Cache PIP Dependencies
+      with:
+        python-version: '3.10'
+        cache: 'pip'
+    - name: Lint Django
+      run: |
+        pylint --rcfile=.pylintrc
+    - name: Test Django
+      run: |
+        pip install -r requirements.txt
+        python sudan-art/django-backend/manage.py sudan-art/django-backend/sudan_art/tests
+    - name: Cache NPM Dependencies
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+    - name: Lint React
+      run: bash -c "cd sudan-art/react-frontend && npx eslint --fix 'src/**/*.js'"
+    - name: Test React
+      run: npm test -- --watchAll=false
+    - name: Deploy
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        port: ${{ secrets.PORT }}
+        script: |
+              cd sudan-art
+              docker-compose --env-file env down
+              git pull origin main --ff-only
+              docker-compose --env-file env up -d
