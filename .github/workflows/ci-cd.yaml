@@ -22,6 +22,8 @@ jobs:
         cache-dependency-path: sudan-art/react-frontend/package-lock.json
     - run: npm --prefix sudan-art/react-frontend ci
     - name: Test Django
+      env:
+        DJANGO_SETTINGS_MODULE: ${{ secrets.DJANGO_SETTINGS_MODULE }}
       run: python sudan-art/django-backend/manage.py test sudan_art/tests
     - name: Test React
       run: npm --prefix sudan-art/react-frontend test
