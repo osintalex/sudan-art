@@ -32,7 +32,7 @@ jobs:
       run: npm --prefix sudan-art/react-frontend test
   deploy:
     needs: test
-    if: github.event_name == 'push'
+#    if: github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
     - name: Deploy
@@ -40,11 +40,9 @@ jobs:
       with:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
-        password: ${{ secrets.PASSWORD }}
-        port: ${{ secrets.PORT }}
+        password: ${{ secrets.PASSPHRASE }}
         script: |
-          su ${{ secrets.USER_PASSWORD }}
           cd sudan-art
-          sudo docker-compose --env-file env down
-          sudo git pull origin main --ff-only
-          sudo docker-compose --env-file env up -d
+          echo ${{ secrets.USER_PASSWORD }} | sudo -S docker-compose --env-file env down
+          echo ${{ secrets.USER_PASSWORD }} | sudo -S git pull origin main --ff-only
+          echo ${{ secrets.USER_PASSWORD }} | sudo -S docker-compose --env-file env up -d
