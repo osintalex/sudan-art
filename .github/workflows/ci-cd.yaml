@@ -1,0 +1,50 @@
+name: ci-cd
+on:
+  push:
+    branches: main
+  pull_request:
+    branches: main
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-python@v3
+      with:
+        python-version: '3.10'
+        cache: 'pip'
+    - run: pip install -r sudan-art/django-backend/requirements.txt
+    - uses: actions/setup-node@v3
+      name: Cache NPM Dependencies
+      with:
+        node-version: 14
+        cache: 'npm'
+        cache-dependency-path: sudan-art/react-frontend/package-lock.json
+    - run: npm --prefix sudan-art/react-frontend ci
+    - name: Test Django
+      env:
+        DJANGO_SETTINGS_MODULE: ${{ secrets.DJANGO_SETTINGS_MODULE }}
+        DJANGO_SECRET_KEY: ${ secrets.DJANGO_SECRET_KEY }}
+      run: |
+        cd sudan-art/django-backend
+        python manage.py test sudan_art/tests --settings=django_backend.test_settings
+    - name: Test React
+      run: npm --prefix sudan-art/react-frontend test
+  deploy:
+    needs: test
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+    - name: Deploy
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        port: ${{ secrets.PORT }}
+        script: |
+          su ${{ secrets.USER_PASSWORD }}
+          cd sudan-art
+          sudo docker-compose --env-file env down
+          sudo git pull origin main --ff-only
+          sudo docker-compose --env-file env up -d
