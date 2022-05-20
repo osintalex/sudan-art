@@ -1,7 +1,7 @@
 # https://medium.com/swlh/how-to-deploy-your-application-to-digital-ocean-using-github-actions-and-save-up-on-ci-cd-costs-74b7315facc2
 # TODO: If this works remove the migrations part in the README
 # TODO: Add a dependency scan
-name: ci/cd
+name: ci-cd
 on:
   push:
     branches: main
