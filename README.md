@@ -56,9 +56,10 @@ DJANGO_SECRET_KEY=<make your own secret key>
 DJANGO_SETTINGS_MODULE=django_backend.dev_settings
 ```
 
-6. Install docker and make sure it's running; follow the instructions [here](https://docs.docker.com/engine/install/).
-7. Now from the root directory of the repository, run `docker-compose -f docker-compose-dev.yml --env-file env up --build -d`.
-   This will take some time, so check there are no basic errors then go have a break
+6. To run python tests, hit `python.manage py test sudan_art.tests` --settings=django_backend.test_settings
+7. Now from the root directory of the repository, run
+   `docker-compose -f docker-compose-dev.yml --env-file env up --build -d`. This will take some time, so check there are
+   no basic errors then go have a break
 8. Run `docker ps -a` to get the id of the django container - it's also the id output by the command above
 9. Run `docker exec -it <container id goes here> /bin/bash` to get a shell on the Django container
 10. Run `python manage.py migrate` to run migrations
