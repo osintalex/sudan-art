@@ -15,7 +15,7 @@ jobs:
         cache: 'pip'
     - run: pip install -r requirements.txt
     - uses: actions/setup-node@v3
-    - name: Cache NPM Dependencies
+      name: Cache NPM Dependencies
       with:
         node-version: 14
         cache: 'npm'
