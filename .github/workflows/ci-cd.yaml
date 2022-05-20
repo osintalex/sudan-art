@@ -24,6 +24,7 @@ jobs:
     - name: Test Django
       env:
         DJANGO_SETTINGS_MODULE: ${{ secrets.DJANGO_SETTINGS_MODULE }}
+        DJANGO_SECRET_KEY: ${ secrets.DJANGO_SECRET_KEY }}
       run: |
         cd sudan-art/django-backend
         python manage.py test sudan_art/tests --settings=django_backend.test_settings
