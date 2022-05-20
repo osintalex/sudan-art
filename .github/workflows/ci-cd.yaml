@@ -41,6 +41,7 @@ jobs:
         host: ${{ secrets.HOST }}
         key: ${{ secrets.SSH_KEY }}
         username: ${{ secrets.USERNAME }}
+        passphrase: ${{ secrets.PASSPHRASE }}
         script: |
           cd sudan-art
           echo ${{ secrets.USER_PASSWORD }} | sudo -S docker-compose --env-file env down
