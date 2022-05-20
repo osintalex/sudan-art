@@ -24,8 +24,7 @@ jobs:
       #          docker-compose run frontend bash
       #          npm test -- --watchAll=false
       #          exit
-    - name: Checkout source code
-      uses: actions/checkout@v3
+    - uses: actions/checkout@v3
     - name: Cache PIP Dependencies
       uses: actions/setup-python@v3
       with:
