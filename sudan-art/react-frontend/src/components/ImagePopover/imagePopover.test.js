@@ -1,7 +1,7 @@
 import { ChakraProvider } from "@chakra-ui/react";
 import { render, screen } from "@testing-library/react";
 import React from "react";
-import ImagePopover from "./ImagePopover.js";
+import ImagePopover from "./imagePopover.js";
 import { LanguageContext } from "../../multilingualContext/context.js";
 
 test("renders Intro component", () => {
