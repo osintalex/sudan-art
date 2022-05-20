@@ -24,7 +24,9 @@ jobs:
     - name: Test Django
       env:
         DJANGO_SETTINGS_MODULE: ${{ secrets.DJANGO_SETTINGS_MODULE }}
-      run: python sudan-art/django-backend/manage.py test sudan-art/django-backend/sudan_art/tests
+      run: |
+        cd sudan-art/django-backend
+        python manage.py test sudan_art/tests --settings=django_backend.test_settings
     - name: Test React
       run: npm --prefix sudan-art/react-frontend test
   deploy:
