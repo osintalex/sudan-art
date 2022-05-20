@@ -9,19 +9,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - name: Cache PIP Dependencies
-      uses: actions/setup-python@v3
+    - uses: actions/setup-python@v3
       with:
         python-version: '3.10'
         cache: 'pip'
-      run: pip install -r requirements.txt
+    - run: pip install -r requirements.txt
     - name: Cache NPM Dependencies
       with:
         path: ~/.npm
         key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
         restore-keys: |
           ${{ runner.os }}-node-
-      run: npm ci
+    - run: npm ci
     - name: Lint Django
       run: pylint --rcfile=.pylintrc
     - name: Lint React
