@@ -44,6 +44,6 @@ jobs:
         passphrase: ${{ secrets.PASSPHRASE }}
         script: |
           cd sudan-art
-          echo ${{ secrets.USER_PASSWORD }} | sudo -S docker-compose --env-file env down
-          echo ${{ secrets.USER_PASSWORD }} | sudo -S git pull origin main --ff-only
-          echo ${{ secrets.USER_PASSWORD }} | sudo -S docker-compose --env-file env up -d
+          sudo docker-compose --env-file env down
+          sudo git pull origin main --ff-only
+          sudo docker-compose --env-file env up -d
