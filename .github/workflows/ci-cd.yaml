@@ -1,6 +1,3 @@
-# https://medium.com/swlh/how-to-deploy-your-application-to-digital-ocean-using-github-actions-and-save-up-on-ci-cd-costs-74b7315facc2
-# TODO: If this works remove the migrations part in the README
-# TODO: Add a dependency scan
 name: ci-cd
 on:
   push:
@@ -11,19 +8,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      #      - uses: actions/checkout@v3
-      #      - name: Build the stack
-      #        run: docker-compose up -f docker-compose-dev.yaml --env-file ${{ secrets.dev_env }} -d
-      #      - name: Django Tests
-      #        run: |
-      #          docker-compose run django bash
-      #          python manage.py test sudan_art.tests
-      #          exit
-      #      - name: React Tests
-      #        run: |
-      #          docker-compose run frontend bash
-      #          npm test -- --watchAll=false
-      #          exit
     - uses: actions/checkout@v3
     - name: Cache PIP Dependencies
       uses: actions/setup-python@v3
