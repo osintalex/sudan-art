@@ -21,12 +21,6 @@ jobs:
         cache: 'npm'
         cache-dependency-path: sudan-art/react-frontend/package-lock.json
     - run: npm --prefix sudan-art/react-frontend ci
-    - name: Lint Django
-      env:
-        DJANGO_SETTINGS_MODULE: ${{ secrets.DJANGO_SETTINGS_MODULE }}
-      run: pylint --rcfile=.pylintrc sudan-art/django-backend
-    - name: Lint React
-      run: npx --prefix sudan-art/react-frontend eslint --fix 'src/**/*.js'"
     - name: Test Django
       run: python sudan-art/django-backend/manage.py test sudan_art/tests
     - name: Test React
