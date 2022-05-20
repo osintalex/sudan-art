@@ -43,7 +43,7 @@ jobs:
         username: ${{ secrets.USERNAME }}
         passphrase: ${{ secrets.PASSPHRASE }}
         script: |
-          cd sudan-art
+          cd /home/alex/sudan-art
           docker-compose --env-file env down
           git pull origin main --ff-only
           docker-compose --env-file env up -d
