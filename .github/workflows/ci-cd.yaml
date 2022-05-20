@@ -24,44 +24,43 @@ jobs:
       #          docker-compose run frontend bash
       #          npm test -- --watchAll=false
       #          exit
-      - name: Checkout source code
-        uses: actions/checkout@v3
-      - name: Cache PIP Dependencies
-        uses: actions/setup-python@v3
-        with:
-          python-version: '3.10'
-          cache: 'pip'
-      - name: Cache NPM Dependencies
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-      - name: Lint Django
-        run: |
-          pylint --rcfile=.pylintrc
-      - name: Lint React
-        run: bash -c "cd sudan-art/react-frontend && npx eslint --fix 'src/**/*.js'"
-      - name: Test Django
-        run: |
-          pip install -r requirements.txt
-          python sudan-art/django-backend/manage.py sudan-art/django-backend/sudan_art/tests
-      - name: Test React
-        run: npm test -- --watchAll=false
+    - name: Checkout source code
+      uses: actions/checkout@v3
+    - name: Cache PIP Dependencies
+      uses: actions/setup-python@v3
+      with:
+        python-version: '3.10'
+        cache: 'pip'
+    - name: Cache NPM Dependencies
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+    - name: Lint Django
+      run: pylint --rcfile=.pylintrc
+    - name: Lint React
+      run: bash -c "cd sudan-art/react-frontend && npx eslint --fix 'src/**/*.js'"
+    - name: Test Django
+      run: |
+        pip install -r requirements.txt
+        python sudan-art/django-backend/manage.py sudan-art/django-backend/sudan_art/tests
+    - name: Test React
+      run: npm test -- --watchAll=false
   deploy:
     needs: build
     if: github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          port: ${{ secrets.PORT }}
-          script: |
-            cd sudan-art
-            docker-compose --env-file env down
-            git pull origin main --ff-only
-            docker-compose --env-file env up -d
+    - name: Deploy
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        port: ${{ secrets.PORT }}
+        script: |
+          cd sudan-art
+          docker-compose --env-file env down
+          git pull origin main --ff-only
+          docker-compose --env-file env up -d
