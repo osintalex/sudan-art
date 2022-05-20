@@ -39,12 +39,11 @@ jobs:
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.HOST }}
+        key: ${{ secrets.SSH_KEY }}
         username: ${{ secrets.USERNAME }}
-        password: ${{ secrets.PASSWORD }}
-        port: ${{ secrets.PORT }}
+        passphrase: ${{ secrets.PASSPHRASE }}
         script: |
-          su ${{ secrets.USER_PASSWORD }}
-          cd sudan-art
-          sudo docker-compose --env-file env down
-          sudo git pull origin main --ff-only
-          sudo docker-compose --env-file env up -d
+          cd /home/alex/sudan-art
+          docker-compose --env-file env down
+          git pull origin main --ff-only
+          docker-compose --env-file env up -d
