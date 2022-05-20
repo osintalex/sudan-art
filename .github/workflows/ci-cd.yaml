@@ -31,7 +31,7 @@ jobs:
     - name: Test React
       run: npm --prefix sudan-art/react-frontend test
   deploy:
-    needs: build
+    needs: test
     if: github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
