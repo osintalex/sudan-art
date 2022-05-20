@@ -20,7 +20,7 @@ jobs:
         node-version: 14
         cache: 'npm'
         cache-dependency-path: sudan-art/react-frontend/package-lock.json
-    - run: npm ci
+    - run: bash -c "cd sudan-art/react-frontend" && npm ci
     - name: Lint Django
       run: pylint --rcfile=.pylintrc
     - name: Lint React
@@ -28,7 +28,7 @@ jobs:
     - name: Test Django
       run: python sudan-art/django-backend/manage.py sudan-art/django-backend/sudan_art/tests
     - name: Test React
-      run: npm test
+      run: bash -c "cd sudan-art/react-frontend && npm test"
   deploy:
     needs: build
     if: github.event_name == 'push'
