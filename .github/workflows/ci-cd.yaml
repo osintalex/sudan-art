@@ -14,12 +14,12 @@ jobs:
         python-version: '3.10'
         cache: 'pip'
     - run: pip install -r requirements.txt
+    - uses: actions/setup-node@v3
     - name: Cache NPM Dependencies
       with:
-        path: ~/.npm
-        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-node-
+        node-version: 14
+        cache: 'npm'
+        cache-dependency-path: sudan-art/react-frontend/package-lock.json
     - run: npm ci
     - name: Lint Django
       run: pylint --rcfile=.pylintrc
@@ -28,7 +28,7 @@ jobs:
     - name: Test Django
       run: python sudan-art/django-backend/manage.py sudan-art/django-backend/sudan_art/tests
     - name: Test React
-      run: npm test -- --watchAll=false
+      run: npm test
   deploy:
     needs: build
     if: github.event_name == 'push'
