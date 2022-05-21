@@ -41,6 +41,12 @@ repos:
     hooks:
       - id: pylint
         types: [ python ]
+        exclude: |
+          (?x)^(
+              sudan-art/django-backend/sudan_art/migrations/|
+              sudan-art/django-backend/sudan_art/tests/|
+              sudan-art/django-backend/django_backend/.*_settings.py
+                )
         name: pylint
         entry: pylint --rcfile=.pylintrc
         language: python

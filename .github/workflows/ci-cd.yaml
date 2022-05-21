@@ -38,7 +38,9 @@ jobs:
       with:
         python-version: '3.10'
         cache: 'pip'
-    - run: pip install -r sudan-art/django-backend/requirements-dev.txt
+    - run: |
+        pip install -r sudan-art/django-backend/requirements-dev.txt
+        pip install -r sudan-art/django-backend/requirements.txt
     - uses: actions/setup-node@v3
       name: Cache NPM Dependencies
       with:
@@ -47,9 +49,12 @@ jobs:
         cache-dependency-path: sudan-art/react-frontend/package-lock.json
     - run: npm --prefix sudan-art/react-frontend ci
     - name: Lint Django
-      run: pylint --rcfile=.pylintrc $(find . -name "*.py" | xargs)
+      run: |
+        pylint --rcfile=.pylintrc **/*.py \
+        --ignore-paths=sudan-art/django-backend/sudan_art/migrations,sudan-art/django-backend/sudan_art/tests \
+        --ignore-patterns=".*_settings.py"
     - name: Lint React
-      run: npx --prefix sudan-art/react-frontend eslint --fix 'src/**/*.js'"
+      run: bash -c "cd sudan-art/react-frontend && npx eslint --fix 'src/**/*.js'"
   deploy:
     needs: [test, lint]
     if: github.event_name == 'push'
