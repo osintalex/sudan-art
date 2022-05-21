@@ -37,6 +37,9 @@ export const translations = {
     not_found_2: "It seems this page is as empty as Burhan's heart",
     upload_fail: "Invalid submission",
     upload_success: "Success!",
+    upload_success_message:
+      "We&apos;ve received your submission!" +
+      "Thank your for adding your work to the site.",
     upload_url: "URL",
     upload_url_instructions: "Optionally add the url of the artwork",
     upload_errors_1:
@@ -48,6 +51,7 @@ export const translations = {
       "Images are shared on this website to support the Sudanese revolutionary movement. " +
       "Do not share or otherwise reproduce for profit",
     full_resolution: "Full resolution",
+    load_more: "Load more",
   },
 
   // home page is wrong - need to do that manually in the code for that page
@@ -86,6 +90,7 @@ export const translations = {
     not_found_2: "يبدو أن هذه الصفحه فارغه مثل قلب برهان",
     upload_fail: "أرسال غير صالح",
     upload_success: "نجاح",
+    upload_success_message: "لقد تلقينا ما أرسلته! شكرا لمساهمتك",
     upload_url: "عنوان url",
     upload_url_instructions: "اختياريا إضافة عنوان url للصورة",
     upload_errors_1: "يجب أدخال البيانات في كل حقل يرجي اعدة أرسال النموذج",
@@ -94,5 +99,6 @@ export const translations = {
     image_popover:
       "تتم مشاركة الصور علي هذا الموقع فقط لغرض وحيد هو لدعم الحركه الثوريه السودانيه. لا تشارك او تستنسخ بغرض الربح..",
     full_resolution: "حل شامل ",
+    load_more: "تحميل المزيد",
   },
 };
