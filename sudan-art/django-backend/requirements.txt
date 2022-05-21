@@ -2,7 +2,7 @@ asgiref==3.4.1
 boto3==1.20.25
 botocore==1.23.25
 click==8.0.3
-Django==4.0
+Django==4.0.4
 django-cors-headers==3.10.1
 django-storages==1.12.3
 djangorestframework==3.12.4
@@ -10,7 +10,7 @@ gunicorn==20.1.0
 jmespath==0.10.0
 mypy-extensions==0.4.3
 pathspec==0.9.0
-Pillow==8.4.0
+Pillow==9.0.1
 platformdirs==2.4.0
 psycopg2==2.9.2
 python-dateutil==2.8.2
