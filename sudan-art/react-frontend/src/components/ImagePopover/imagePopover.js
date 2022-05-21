@@ -41,8 +41,9 @@ function ImagePopover(props) {
       "linear(to-r, orange.400, yellow.400)",
       "linear(to-r, teal.400, blue.400)",
       "linear(to-r, pink.400, red.400)",
+      "linear(to-r, green.200, pink.500)",
     ],
-    3
+    5
   );
   const { imageDescription, imageArtist, imageDate, imageHighRes, sourceURL } =
     props.popoverImageDetails;
