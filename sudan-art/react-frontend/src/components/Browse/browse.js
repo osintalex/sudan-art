@@ -116,7 +116,7 @@ export default function Browse() {
               onClick={() => setPage((prevPageNumber) => prevPageNumber + 1)}
               aria-label="has-more-button"
             >
-              Load more
+              {<MultiLingualContent contentID="load_more" />}
             </Button>
           </div>
         </>
