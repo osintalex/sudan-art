@@ -108,13 +108,13 @@ function ImagePopover(props) {
                 title={"Sudanese Revolutionary Art"}
                 via={"https://sudanart.com"}
                 hashtags={["#sudancoup", "#sudanart"]}
-                related={["twitter_account_one", "twitter_account_two"]}
+                related={["bsonblast"]}
               >
                 <TwitterIcon />
               </TwitterShareButton>
               <WhatsappShareButton
                 url={imageSrc}
-                title={"Sudanese Revolutionary Art"}
+                title={"Check out this amazing Sudanese art!"}
               >
                 <WhatsappIcon />
               </WhatsappShareButton>

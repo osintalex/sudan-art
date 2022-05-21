@@ -153,7 +153,7 @@ export default function Search() {
               id="search-button"
               onClick={() => getMaPics(query)}
             >
-              Load more
+              {<MultiLingualContent contentID="load_more" />}
             </Button>
           </div>
         </>
