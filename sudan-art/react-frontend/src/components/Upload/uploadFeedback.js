@@ -60,8 +60,7 @@ function UploadFeedback(props) {
         {props.success && (
           <ModalBody>
             <Text fontSize="md" color="gray.800">
-              We&apos;ve received your submission! Thank your for adding your
-              work to the site.
+              <MultiLingualContent contentID="upload_success_message" />
               {["🥳", "🥳", "🥳"].map((x, index) => (
                 <Emoji
                   symbol={x}
