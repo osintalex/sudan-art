@@ -55,6 +55,14 @@ jobs:
         --ignore-patterns=".*_settings.py"
     - name: Lint React
       run: bash -c "cd sudan-art/react-frontend && npx eslint --fix 'src/**/*.js'"
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build Django
+      run: bash -c "cd sudan-art/django-backend && docker build ."
+    - name: Build React
+      run: bash -c "cd sudan-art/react-frontend && docker build ."
   deploy:
     needs: [test, lint]
     if: github.event_name == 'push'
@@ -71,4 +79,4 @@ jobs:
           cd /home/alex/sudan-art
           docker-compose --env-file env down
           git pull origin main --ff-only
-          docker-compose --env-file env up -d
+          docker-compose --env-file env up --build -d
