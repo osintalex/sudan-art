@@ -50,7 +50,7 @@ jobs:
     - run: npm --prefix sudan-art/react-frontend ci
     - name: Lint Django
       run: >
-        pylint --rcfile=.pylintrc **/*.py
+        pylint --rcfile=.pylintrc $(git ls-files '*.py')
         --ignore-paths=sudan-art/django-backend/sudan_art/migrations,sudan-art/django-backend/sudan_art/tests
         --ignore-patterns=".*_settings.py"
     - name: Lint React
