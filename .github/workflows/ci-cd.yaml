@@ -64,7 +64,7 @@ jobs:
     - name: Build React
       run: bash -c "cd sudan-art/react-frontend && docker build ."
   deploy:
-    needs: [test, lint]
+    needs: [test, lint, build]
     if: github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
