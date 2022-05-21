@@ -30,8 +30,33 @@ jobs:
         python manage.py test sudan_art/tests --settings=django_backend.test_settings
     - name: Test React
       run: npm --prefix sudan-art/react-frontend test
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-python@v3
+      with:
+        python-version: '3.10'
+        cache: 'pip'
+    - run: |
+        pip install -r sudan-art/django-backend/requirements-dev.txt
+        pip install -r sudan-art/django-backend/requirements.txt
+    - uses: actions/setup-node@v3
+      name: Cache NPM Dependencies
+      with:
+        node-version: 14
+        cache: 'npm'
+        cache-dependency-path: sudan-art/react-frontend/package-lock.json
+    - run: npm --prefix sudan-art/react-frontend ci
+    - name: Lint Django
+      run: >
+        pylint --rcfile=.pylintrc $(git ls-files '*.py')
+        --ignore-paths=sudan-art/django-backend/sudan_art/migrations,sudan-art/django-backend/sudan_art/tests
+        --ignore-patterns=".*_settings.py"
+    - name: Lint React
+      run: bash -c "cd sudan-art/react-frontend && npx eslint --fix 'src/**/*.js'"
   deploy:
-    needs: test
+    needs: [test, lint]
     if: github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
