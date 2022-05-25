@@ -169,11 +169,19 @@ CACHES = {
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
+    "formatters": {
+        "simple": {
+            "format": "[%(asctime)s] %(levelname)s|%(name)s|%(message)s",
+            "datefmt": "%Y-%m-%d %H:%M:%S",
+        },
+    },
     "handlers": {
         "file": {
             "level": "DEBUG",
-            "class": "logging.FileHandler",
+            "class": "logging.handlers.RotatingFileHandler",
             "filename": os.path.join(BASE_DIR, "logs", "backend.log"),
+            "backupCount": 10,
+            "formatter": "simple",
         },
     },
     "loggers": {
