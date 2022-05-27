@@ -10,14 +10,13 @@ import {
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import Tagger from "./tags.js";
 import Thumbnail from "./thumbnail.js";
 import UploadFeedback from "./uploadFeedback.js";
 import { config } from "../../constants.js";
 import NavBar from "../Navbar/navbar.js";
 import MultiLingualContent from "../MultingualContent/multilingualContent.js";
-import { LanguageContext } from "../../multilingualContext/context.js";
 
 /**
  * Main upload component. There are a few fiddly things going on here:
@@ -40,7 +39,6 @@ export default function Upload() {
   const [success, setSuccess] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { language } = useContext(LanguageContext);
 
   /**
    * Handle submit function
@@ -55,7 +53,6 @@ export default function Upload() {
       data.append("artist", artist);
       data.append("url", url);
       data.append("tags", selectedTags.toString());
-      data.append("target_language", language === "english" ? "ar" : "en");
       fetch(`${config.url}/upload/`, {
         method: "POST",
         body: data,

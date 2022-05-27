@@ -57,7 +57,7 @@ DJANGO_SECRET_KEY=<make your own secret key>
 DJANGO_SETTINGS_MODULE=django_backend.dev_settings
 ```
 
-7. To run python tests, hit `python.manage py test sudan_art.tests` --settings=django_backend.test_settings
+7. To run python tests, hit `python manage.py test sudan_art.tests --settings=django_backend.test_settings`
 8. Now from the root directory of the repository, run
    `docker-compose -f docker-compose-dev.yml --env-file env up --build -d`. This will take some time, so check there are
    no basic errors then go have a break
