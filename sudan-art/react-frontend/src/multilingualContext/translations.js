@@ -38,7 +38,7 @@ export const translations = {
     upload_fail: "Invalid submission",
     upload_success: "Success!",
     upload_success_message:
-      "We&apos;ve received your submission!" +
+      "We've received your submission! " +
       "Thank your for adding your work to the site.",
     upload_url: "URL",
     upload_url_instructions: "Optionally add the url of the artwork",
