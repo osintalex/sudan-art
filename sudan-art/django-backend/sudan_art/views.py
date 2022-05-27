@@ -7,8 +7,6 @@ Application views.
 
 import logging
 
-import requests
-from django.conf import settings
 from django.core.exceptions import ValidationError
 from rest_framework import fields, filters, generics, serializers, status
 from rest_framework.decorators import api_view, parser_classes
@@ -35,40 +33,6 @@ class ValidateQueryParams(serializers.Serializer):
     )
     date_from = fields.DateField(format="%Y%m%d", required=False)
     date_to = fields.DateField(format="%Y%m%d", required=False)
-
-
-def translate_tags(tags, target_language):
-    """
-    Translate tags so there are English and Arabic versions.
-    :param tags: comma separated string of tags.
-    :return: comma separated string of tags in English and Arabic.
-    """
-
-    params = {
-        "api-version": "3.0",
-        "from": "en" if target_language == "ar" else "ar",
-        "to": target_language,
-    }
-    headers = {
-        "Ocp-Apim-Subscription-Key": settings.MICROSOFT_TRANSLATOR_API_KEY,
-        "Ocp-Apim-Subscription-Region": settings.MICROSOFT_TRANSLATOR_LOCATION,
-        "Content-type": "application/json",
-    }
-    session = requests.session()
-    translated_tags = []
-    for tag in tags.split(","):
-        body = [{"text": tag}]
-        response = session.post(
-            url=settings.MICROSOFT_TRANSLATOR_URL,
-            params=params,
-            headers=headers,
-            json=body,
-        )
-        response.raise_for_status()
-        translated_text = response.json()[0]["translations"][0]["text"]
-        translated_tags.append(translated_text)
-    english_and_arabic_texts = f"{tags},{','.join(translated_tags)}"
-    return english_and_arabic_texts
 
 
 class ArtworkList(generics.ListAPIView):
@@ -106,25 +70,15 @@ def add_artwork(request):
     :param request: user request instance.
     :return: Rest Framework Response, 201 if uploaded OK and 400 with error messages.
     """
-    if request.data.get("target_language") not in {"ar", "en"}:
-        return Response(
-            data={"Language": "Language not supported"},
-            status=status.HTTP_400_BAD_REQUEST,
-        )
-    target_language = request.data.get("target_language")
-    request.data.pop("target_language")
     request.data["thumbnail"] = request.data["image"]
     request.data["high_res_image"] = request.data["image"]
 
     try:
         validate_tags(request.data["tags"])
-        request.data["tags"] = translate_tags(
-            tags=request.data["tags"], target_language=target_language
-        )
-    except (requests.HTTPError, ValidationError) as error_message:
-        logger.error(f"Error translating tags: {error_message}")
+    except ValidationError as error_message:
+        logger.error(f"Error validating tags: {error_message}")
         return Response(
-            data={"Translation": "Translation error"},
+            data={"Invalid input": error_message},
             status=status.HTTP_400_BAD_REQUEST,
         )
 
