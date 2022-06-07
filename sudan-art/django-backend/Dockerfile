@@ -15,7 +15,6 @@ COPY --chown=worker:worker ["manage.py", "requirements.txt", "startserver.sh", "
 ENV PATH="/home/worker/.local/bin:${PATH}"
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
-RUN chmod +x startserver.sh
-RUN chmod 777 startserver.sh
+RUN chmod 500 startserver.sh
 EXPOSE 8000
 CMD ./startserver.sh

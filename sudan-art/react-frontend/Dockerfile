@@ -10,8 +10,15 @@ RUN npm run build
 
 FROM nginx:1.21.4-alpine
 COPY nginx.conf /etc/nginx/conf.d/default.conf
+USER nginx
 WORKDIR /usr/share/nginx/html
 RUN rm -rf ./*
-COPY --from=builder /app/react-frontend/build .
+COPY --from=builder --chown=nginx:nginx /app/react-frontend/build .
+RUN chmod -R 755 . && \
+    chown -R nginx:nginx /var/cache/nginx && \
+    chown -R nginx:nginx /var/log/nginx && \
+    chown -R nginx:nginx /etc/nginx/conf.d
+RUN touch /var/run/nginx.pid && \
+    chown -R nginx:nginx /var/run/nginx.pid
 EXPOSE 80 443
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
