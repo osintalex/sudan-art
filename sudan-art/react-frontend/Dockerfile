@@ -10,9 +10,9 @@ RUN npm run build
 
 FROM nginx:1.21.4-alpine
 COPY nginx.conf /etc/nginx/conf.d/default.conf
+RUN rm -rf /usr/share/nginx/html/*
 USER nginx
 WORKDIR /usr/share/nginx/html
-RUN rm -rf ./*
 COPY --from=builder --chown=nginx:nginx /app/react-frontend/build .
 RUN chmod -R 755 . && \
     chown -R nginx:nginx /var/cache/nginx && \
