@@ -86,7 +86,14 @@ function ImagePopover(props) {
               {imageDate}
             </Text>
             <br />
-            <Link fontSize="sm" color="gray.50" as="abbr" align="center">
+            <Link
+              fontSize="sm"
+              color="gray.50"
+              as="abbr"
+              align="center"
+              href={sourceURL}
+              isExternal
+            >
               {sourceURL}
             </Link>
             <br />
