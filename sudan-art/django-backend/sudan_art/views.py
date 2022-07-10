@@ -78,7 +78,10 @@ def add_artwork(request):
     except ValidationError as error_message:
         logger.error(f"Error validating tags: {error_message}")
         return Response(
-            data={"Invalid input": error_message},
+            data={
+                "Invalid input": "Please try again with fewer characters. "
+                "Only Arabic and English letters are allowed."
+            },
             status=status.HTTP_400_BAD_REQUEST,
         )
 
