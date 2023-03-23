@@ -3,6 +3,9 @@
 ![forthebadge made-with-javascript](https://forthebadge.com/images/badges/made-with-javascript.svg)
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 
+> **Note**
+This repository is now archived and has moved to [a new home](https://github.com/osintalex/sudan-art-v2).
+
 # Sudan Art - A Revolutionary Web App
 
 > A website to help the anti-coup resistance movement in Sudan. See [sudan-art.com](https://sudan-art.com).
